@@ -1,0 +1,14 @@
+#view{
+	-fx-background-image: url("/fotos/backgroundroot.jpg");
+	-fx-background-repeat:no-repeat;
+	-fx-background-size:contain;
+	-fx-background-position:center;
+}
+
+#vbox{
+	-fx-background-color: #ACE7C1;
+	-fx-background-radius:10px;
+}
+#rootimage{
+	-fx-background-radius:10px;
+}
