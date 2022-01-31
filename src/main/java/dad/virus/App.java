@@ -13,12 +13,12 @@ public class App extends Application {
 		launch(args);
 	}
 
-	private ControllerRoot controller;
+	private RootController controller;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		controller = new ControllerRoot();
+		controller = new RootController();
 		
 		primaryStage.setTitle("Virus Game");
 		primaryStage.setScene(new Scene(controller.getView()));

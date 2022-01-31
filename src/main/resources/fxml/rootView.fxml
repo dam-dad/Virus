@@ -22,7 +22,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </VBox.margin>
                   </Rectangle>
-                  <Button id="alternate" fx:id="multiPlayerButton" layoutX="10.0" layoutY="10.0" maxWidth="145.0" mnemonicParsing="false" onAction="#multiPlayerAction" text="Crear Partida" textFill="#f1faee" VBox.vgrow="NEVER">
+                  <Button id="alternate" fx:id="createGameButton" layoutX="10.0" layoutY="10.0" maxWidth="145.0" mnemonicParsing="false" onAction="#onCreateGameAction" text="Crear Partida" textFill="#f1faee" VBox.vgrow="NEVER">
                      <VBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </VBox.margin>
@@ -30,7 +30,7 @@
                         <Font name="Comic Sans MS Bold" size="14.0" />
                      </font>
                   </Button>
-                  <Button id="alternate" fx:id="multiPlayerButton1" maxWidth="145.0" mnemonicParsing="false" onAction="#multiPlayerAction" text="Unirse Partida" textFill="#f1faee">
+                  <Button id="alternate" fx:id="joinGameButton" maxWidth="145.0" mnemonicParsing="false" onAction="#onJoinGameAction" text="Unirse Partida" textFill="#f1faee">
                      <font>
                         <Font name="Comic Sans MS Bold" size="14.0" />
                      </font></Button>

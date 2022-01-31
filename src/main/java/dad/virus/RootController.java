@@ -16,7 +16,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
-import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.ImagePattern;
@@ -24,10 +23,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class ControllerRoot implements Initializable {
+public class RootController implements Initializable {
 
     @FXML
     private Button configButton;
+
+    @FXML
+    private Button createGameButton;
 
     @FXML
     private Button documentationButton;
@@ -36,10 +38,10 @@ public class ControllerRoot implements Initializable {
     private Button exitButton;
 
     @FXML
-    private HBox hbox;
+    private Button joinGameButton;
 
     @FXML
-    private Button multiPlayerButton;
+    private Rectangle rectangleLogo;
 
     @FXML
     private StackPane stack;
@@ -50,9 +52,6 @@ public class ControllerRoot implements Initializable {
     //JavaFX Media
     Media backgroundMusic;
     MediaPlayer mediaPlay;
-
-    @FXML
-    private Rectangle rectangleLogo;
 
     @FXML
     public void configAction(ActionEvent event) throws IOException {
@@ -98,11 +97,16 @@ public class ControllerRoot implements Initializable {
     }
 
     @FXML
-    public void multiPlayerAction(ActionEvent event) {
+    void onCreateGameAction(ActionEvent event) {
 
     }
 
-    public ControllerRoot() throws IOException {
+    @FXML
+    void onJoinGameAction(ActionEvent event) {
+
+    }
+
+    public RootController() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RootView.fxml"));
         loader.setController(this);
         loader.load();
