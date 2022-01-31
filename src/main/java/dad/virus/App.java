@@ -6,12 +6,13 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class App extends Application {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		launch(args);
-		
 	}
 
 	private RootController controller;
