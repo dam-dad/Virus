@@ -6,8 +6,6 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
-
 public class App extends Application {
 
 	public static void main(String[] args) {
@@ -15,12 +13,12 @@ public class App extends Application {
 		launch(args);
 	}
 
-	private RootController controller;
+	private ControllerRoot controller;
 	
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
-		controller = new RootController();
+		controller = new ControllerRoot();
 		
 		primaryStage.setTitle("Virus Game");
 		primaryStage.setScene(new Scene(controller.getView()));

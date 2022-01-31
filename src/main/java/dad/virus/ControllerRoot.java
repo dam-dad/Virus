@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
@@ -16,10 +18,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
-public class RootController implements Initializable {
+public class ControllerRoot implements Initializable {
 
     @FXML
     private Button configButton;
@@ -43,15 +48,43 @@ public class RootController implements Initializable {
     private BorderPane view;
 
     //JavaFX Media
-    AudioClip audioClip;
     Media backgroundMusic;
+    MediaPlayer mediaPlay;
 
     @FXML
     private Rectangle rectangleLogo;
 
     @FXML
-    public void configAction(ActionEvent event) {
+    public void configAction(ActionEvent event) throws IOException {
+        //Carga de la vista de opciones
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/optionsView.fxml"));
 
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+        ControllerOptionsBox controller = loader.getController();
+
+        //Listener para el slider del volumen
+        controller.getVol().addListener((v,ov,nv) -> {
+            mediaPlay.setVolume(Double.parseDouble(String.valueOf(nv.doubleValue()/100).substring(0, 3)));
+        });
+
+        //Boton de reproducir menú de opciones
+        controller.getBtnPlayMusic().setOnAction((eventPlay) -> {
+            playMedia();
+        });
+
+        //Botón de silencio menú de opciones
+        controller.getBtnSilence().setOnAction((eventSilence) -> {
+            pauseMedia();
+        }) ;
+
+        Stage stage = new Stage();
+
+        scene.getStylesheets().add(String.valueOf(App.class.getResource("/css/viewOptions.css")));
+
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 
     @FXML
@@ -69,7 +102,7 @@ public class RootController implements Initializable {
 
     }
 
-    public RootController() throws IOException {
+    public ControllerRoot() throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RootView.fxml"));
         loader.setController(this);
         loader.load();
@@ -89,23 +122,21 @@ public class RootController implements Initializable {
         //Musica de fondo
         try {
             backgroundMusic = new Media(App.class.getResource("/media/background-music.mp3").toURI().toString());
-            audioClip = new AudioClip(backgroundMusic.getSource());
+            mediaPlay = new MediaPlayer(backgroundMusic);
+            mediaPlay.setAutoPlay(true);
+            mediaPlay.setCycleCount(MediaPlayer.INDEFINITE);
 
-            //TODO Realizar listener del slider para el control del volumen
-
-            audioClip.setVolume(0.1f); // Volumen entre 0 y 1
-            audioClip.play();
         } catch (URISyntaxException e) {
             e.printStackTrace();
         }
     }
 
     public void playMedia(){
-        audioClip.play();
+        mediaPlay.play();
     }
 
     public void pauseMedia(){
-        audioClip.stop();
+        mediaPlay.stop();
     }
 
     public void initialize(URL location, ResourceBundle resources) {
