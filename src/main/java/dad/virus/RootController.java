@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -52,6 +53,11 @@ public class RootController implements Initializable {
     //JavaFX Media
     Media backgroundMusic;
     MediaPlayer mediaPlay;
+
+    //Switch view
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @FXML
     public void configAction(ActionEvent event) throws IOException {
@@ -102,8 +108,13 @@ public class RootController implements Initializable {
     }
 
     @FXML
-    void onJoinGameAction(ActionEvent event) {
-
+    void onJoinGameAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/boardView.fxml"));
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        scene.getStylesheets().add(String.valueOf(App.class.getResource("/css/board.css")));
+        stage.setScene(scene);
+        stage.show();
     }
 
     public RootController() throws IOException {
