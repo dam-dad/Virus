@@ -1,10 +1,12 @@
 package dad.virus;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,17 +15,23 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
+import com.dansoftware.pdfdisplayer.PDFDisplayer;
 public class RootController implements Initializable {
 
     @FXML
@@ -49,6 +57,16 @@ public class RootController implements Initializable {
 
     @FXML
     private BorderPane view;
+    
+    @FXML
+    private WebView displayer;
+
+    @FXML
+    private VBox vboxrule;
+
+    @FXML
+    private GridPane viewrule;
+    
 
     //JavaFX Media
     Media backgroundMusic;
@@ -91,15 +109,23 @@ public class RootController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
     }
-
+    	Stage stage ;
+    	Scene scene ;
     @FXML
-    public void documentationAction(ActionEvent event) {
+    public void documentationAction(ActionEvent event) throws IOException {
+  	
+    	Parent root = FXMLLoader.load(getClass().getResource("/fxml/rulesView.fxml"));
+    	stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	scene = new Scene(root);
+    	stage.setScene(scene);
+    	stage.show();
 
     }
 
     @FXML
     public void exitAction(ActionEvent event) {
-
+    	Platform.exit();
+        System.exit(0);
     }
 
     @FXML

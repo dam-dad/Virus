@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.5" codebase="https://www.qoppa.com/files/pdfviewer/demo" href="jPDFViewerFX.jnlp">
+   <information>
+      <title>jPDFViewerFX WebStart Demo</title>
+      <vendor>Qoppa Software, LLC</vendor>
+      <description>jPDFViewerFX WebStart Demo</description>
+      <homepage href="https://www.qoppa.com/pdfviewer/"/>
+      <description kind="short">jPDFViewerFX allows to display PDF files in JavaFX applications.</description>
+      <offline-allowed/>
+   </information>
+   <security>
+      <all-permissions/>
+   </security>
+   <resources>
+      <j2se version="1.8+" href="http://java.sun.com/products/autodl/j2se" max-heap-size="256m"/>
+      <jar href="/files/pdfviewer/jars/jPDFViewerFX.jar"/>
+      <jar href="/files/pdfviewer/jars/fxsamples.jar" main="true"/>
+  	  <jar href="/jarlib/jai_imageio.jar"/>
+	  <jar href="/jarlib/cmaps.jar"/>
+	  <jar href="/jarlib/cmykProfile.jar"/>
+   </resources>
+   <application-desc main-class="jPDFViewerFXSamples.SimpleApplication">
+      <argument>http://www.qoppa.com/demo/sample01.pdf</argument>
+   </application-desc>
+</jnlp>
