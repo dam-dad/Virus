@@ -245,9 +245,9 @@ public class BoardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Player 1
-        try {
+        //try {
             setImagePlayer();
-
+            /*
             Image img = new Image(this.getClass().getResource("/image/Cartas/01.png").toURI().toString());
             card1Stack1J1.setImage(img);
 
@@ -295,10 +295,10 @@ public class BoardController implements Initializable {
             card1Stack4J3.setImage(img12);
 
             Image img13 = new Image(this.getClass().getResource("/image/Cartas/14.png").toString());
-            card2Stack4J2.setImage(img13);
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+            card2Stack4J2.setImage(img13)*/
+        //} catch (URISyntaxException e) {
+          //  e.printStackTrace();
+        //}
     }
 
     public static int randomNumber(int minimo,int maximo){
