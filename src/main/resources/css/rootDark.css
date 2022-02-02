@@ -1,0 +1,19 @@
+@import "viewOptionsDark.css";
+@import "boardDark.css";
+
+#view{
+	-fx-background-color: #162340; /*Blue dark*/
+}
+
+#menuPrimary {
+	-fx-background-color: #033e5f; /*Blue light-dark*/
+	-fx-background-radius:10px;
+}
+
+#menuPrimary > Button {
+	-fx-background-color:#14628c; /* other Blue */
+	-fx-background-radius: 15;
+}
+
+
+

@@ -2,11 +2,13 @@ package dad.virus;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -43,19 +45,50 @@ public class ControllerOptionsBox implements Initializable {
     @FXML
     private VBox viewOptions;
 
-    public DoubleProperty vol = new SimpleDoubleProperty();
+    private DoubleProperty vol = new SimpleDoubleProperty();
+
+    private StringProperty urlCSS = new SimpleStringProperty();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Listener, valores del slider opciones para el volúmen
+        urlCSS.setValue("/css/rootDark.css");
         this.sliderVol.setValue(50f);
         this.sliderVol.valueProperty().addListener((v,ov,nv) -> {
             vol.setValue(nv);
+        });
+
+        ToggleGroup tg = new ToggleGroup();
+        this.rdBtnDark.setToggleGroup(tg);
+        this.rdBtnDark.setSelected(true);
+        this.rdBtnClear.setToggleGroup(tg);
+
+        tg.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
+            @Override
+            public void changed(ObservableValue<? extends Toggle> observableValue, Toggle toggle, Toggle t1) {
+                RadioButton r = (RadioButton) t1;
+                try {
+                    if (r.getText().equals("Tema Oscuro")) {
+                        urlCSS.setValue("/css/rootDark.css");
+                        r.getScene().getStylesheets().remove(String.valueOf(getClass().getResource("/css/viewOptionsClear.css")));
+                        r.getScene().getStylesheets().add(String.valueOf(getClass().getResource("/css/viewOptionsDark.css")));
+
+                    } else {
+                        urlCSS.setValue("/css/rootClear.css");
+                        r.getScene().getStylesheets().remove(String.valueOf(getClass().getResource("/css/viewOptionsDark.css")));
+                        r.getScene().getStylesheets().add(String.valueOf(getClass().getResource("/css/viewOptionsClear.css")));
+                    }
+                }catch (NullPointerException ignored){}
+            }
         });
     }
 
     public DoubleProperty getVol() {
         return vol;
+    }
+
+    public StringProperty getURLcss(){
+        return urlCSS;
     }
 
     public Button getBtnPlayMusic() {

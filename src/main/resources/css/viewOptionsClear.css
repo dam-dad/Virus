@@ -1,0 +1,20 @@
+#viewOptions {
+    -fx-background-color: #1a7cb6; /*Blue lighter*/
+}
+
+Button {
+    -fx-background-color: #20dad8; /* other Blue */
+    -fx-opacity: 50;
+}
+
+#paneTitle {
+    -fx-background-color: #20bfd8;
+    -fx-background-radius: 15;
+}
+
+#sliderVol {
+    -fx-background-color:#20bfd8; /*Blue dark*/
+    -fx-background-radius: 10;
+    -fx-pref-height: 50;
+}
+

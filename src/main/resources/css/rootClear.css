@@ -1,0 +1,16 @@
+@import "viewOptionsClear.css";
+@import "boardClear.css";
+
+#view{
+	-fx-background-color: #1a7cb6; /*Blue dark*/
+}
+
+#menuPrimary {
+	-fx-background-color:#20bfd8;
+	-fx-background-radius:10px;
+}
+
+#menuPrimary > Button {
+	-fx-background-color: #20dad8; /* other Blue */
+	-fx-background-radius: 15;
+}

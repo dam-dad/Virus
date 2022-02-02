@@ -1,10 +1,13 @@
 package dad.virus;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,7 +18,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -59,6 +61,9 @@ public class RootController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    //Resource CSS Dark ControllerOptionsBox
+    public StringProperty themeCSS = new SimpleStringProperty();
+
     @FXML
     public void configAction(ActionEvent event) throws IOException {
         //Carga de la vista de opciones
@@ -69,8 +74,8 @@ public class RootController implements Initializable {
         ControllerOptionsBox controller = loader.getController();
 
         //Listener para el slider del volumen
-        controller.getVol().addListener((v,ov,nv) -> {
-            mediaPlay.setVolume(Double.parseDouble(String.valueOf(nv.doubleValue()/100).substring(0, 3)));
+        controller.getVol().addListener((v, ov, nv) -> {
+            mediaPlay.setVolume(Double.parseDouble(String.valueOf(nv.doubleValue() / 100).substring(0, 3)));
         });
 
         //Boton de reproducir menú de opciones
@@ -81,15 +86,25 @@ public class RootController implements Initializable {
         //Botón de silencio menú de opciones
         controller.getBtnSilence().setOnAction((eventSilence) -> {
             pauseMedia();
-        }) ;
+        });
 
-        Stage stage = new Stage();
+        //Botón de guardar
+        controller.getBtnSave().setOnAction((eventSave) -> {
+            this.getView().getScene().getStylesheets().remove(this.getClass().getResource(this.themeCSS.getValue()));
+            this.themeCSS.setValue(controller.getURLcss().getValue());
+            App.getPrimaryStage().getScene().getStylesheets().add(String.valueOf(this.getClass().getResource(this.themeCSS.getValue())));
+            this.getView().getScene().getStylesheets().add(String.valueOf(this.getClass().getResource(this.themeCSS.getValue())));
+        });
 
-        scene.getStylesheets().add(String.valueOf(App.class.getResource("/css/viewOptions.css")));
-
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setScene(scene);
-        stage.showAndWait();
+        try {
+            Stage stage = new Stage();
+            scene.getStylesheets().add(String.valueOf(App.class.getResource(themeCSS.getValue())));
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("image/icon.jpg")));
+            stage.setScene(scene);
+            stage.showAndWait();
+            stage.close();
+        }catch (NullPointerException e){}
     }
 
     @FXML
@@ -112,8 +127,9 @@ public class RootController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/boardView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(String.valueOf(App.class.getResource("/css/board.css")));
+        scene.getStylesheets().add(getClass().getResource(themeCSS.getValue()).toString());
         stage.setScene(scene);
+        stage.setMaximized(true);
         stage.show();
     }
 
@@ -127,7 +143,7 @@ public class RootController implements Initializable {
         return view;
     }
 
-    private void setImageLogo(){
+    private void setImageLogo() {
         //Imágen logo
         Image img = new Image(this.getClass().getResource("/image/viruslogo.jpg").toString());
         rectangleLogo.setFill(new ImagePattern(img));
@@ -146,17 +162,20 @@ public class RootController implements Initializable {
         }
     }
 
-    public void playMedia(){
+    public void playMedia() {
         mediaPlay.play();
     }
 
-    public void pauseMedia(){
+    public void pauseMedia() {
         mediaPlay.stop();
     }
 
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
-       setImageLogo();
-       backgroundMusic();
+        setImageLogo();
+        backgroundMusic();
+
+        //Tema por defecto
+        this.themeCSS.setValue("/css/rootDark.css");
     }
 }

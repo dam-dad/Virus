@@ -1,0 +1,29 @@
+GridPane {
+    -fx-background-color:  #162340;
+}
+
+#boardJ1 {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-color: #033e5f;
+    -fx-background-radius: 20;
+}
+#boardJ2 {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-color: #033e5f;
+    -fx-background-radius: 20;
+}
+#boardJ3 {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-color: #033e5f;
+    -fx-background-radius: 20;
+}
+
+#btnBackMenu {
+    -fx-background-color: #00a8a8; /* other Blue */
+}
