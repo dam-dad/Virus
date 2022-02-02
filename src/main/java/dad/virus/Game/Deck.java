@@ -23,11 +23,11 @@ public class Deck {
     }
 
     public void buildDeck() {
-        deck.add(new Organ("Red","organ"));
-        deck.add(new Organ("Red","organ"));
-        deck.add(new Organ("Red","organ"));
-        deck.add(new Organ("Red","organ"));
-        deck.add(new Organ("Red","organ"));
+        deck.add(new Organ("red","organ"));
+        deck.add(new Organ("red","organ"));
+        deck.add(new Organ("red","organ"));
+        deck.add(new Organ("red","organ"));
+        deck.add(new Organ("red","organ"));
 
         deck.add(new Virus("red", "virus"));
         deck.add(new Virus("red", "virus"));
