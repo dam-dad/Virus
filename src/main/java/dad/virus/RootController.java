@@ -109,13 +109,12 @@ public class RootController implements Initializable {
         stage.setScene(scene);
         stage.showAndWait();
     }
-    	Stage stage ;
-    	Scene scene ;
+    	
     @FXML
     public void documentationAction(ActionEvent event) throws IOException {
-  	
+        Stage stage = new Stage();
     	Parent root = FXMLLoader.load(getClass().getResource("/fxml/rulesView.fxml"));
-    	stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+    	stage.initModality(Modality.APPLICATION_MODAL);
     	scene = new Scene(root);
     	stage.setScene(scene);
     	stage.show();
