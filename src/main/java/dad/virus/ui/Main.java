@@ -8,6 +8,9 @@ public class Main {
 
         Deck deck = new Deck();
 
+        System.out.println(deck.getDeck().remove(50));
+
+
     }
 
 }

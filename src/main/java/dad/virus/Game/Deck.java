@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class Deck {
     private ArrayList<Card> deck;
-    Card cards[] = new Card[68];
     private int nextCard;
 
     public Deck() {
@@ -24,24 +23,11 @@ public class Deck {
     }
 
     public void buildDeck() {
-        String color;
-        for(int i=0; i<21; i++){
-            color = "red";
-            if(i>4)
-                color="blue";
-            if(i>9)
-                color="green";
-            if(i>14)
-                color="yellow";
-            cards[i] = new Organ(color, "organ");
-        }
-
-
-/*        cards[0] = new Organ("red", "organ");
-        cards[0] = new Organ("red", "organ");
-        cards[0] = new Organ("red", "organ");
-        cards[0] = new Organ("red", "organ");
-        cards[0] = new Organ("red", "organ");
+        deck.add(new Organ("Red","organ"));
+        deck.add(new Organ("Red","organ"));
+        deck.add(new Organ("Red","organ"));
+        deck.add(new Organ("Red","organ"));
+        deck.add(new Organ("Red","organ"));
 
         deck.add(new Virus("red", "virus"));
         deck.add(new Virus("red", "virus"));
@@ -112,8 +98,7 @@ public class Deck {
         deck.add(new Heal("multicolor", "heal"));
         deck.add(new Heal("multicolor", "heal"));
         deck.add(new Heal("multicolor", "heal"));
-        deck.add(new Heal("multicolor", "heal"));*/
-
+        deck.add(new Heal("multicolor", "heal"));
 
     }
 }
