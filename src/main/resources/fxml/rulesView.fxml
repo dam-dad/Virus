@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane id="viewrule" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dad.virus.RootController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="255.0" minWidth="10.0" prefWidth="49.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="698.0" minWidth="0.0" prefWidth="698.0" />
+      <ColumnConstraints hgrow="ALWAYS" maxWidth="174.0" minWidth="0.0" prefWidth="53.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="595.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="418.0" minHeight="0.0" prefHeight="309.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="418.0" minHeight="10.0" prefHeight="177.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <ImageView fitHeight="223.0" fitWidth="802.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
+         <image>
+            <Image url="@../image/mugocayendo.png" />
+         </image>
+      </ImageView>
+      <VBox id="vboxrule" fx:id="vboxrule" prefHeight="281.0" prefWidth="464.0" style="-fx-background-color: #39B047; -fx-background-radius: 8px;" stylesheets="@../css/root.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="688.0" text="NORMAS DEL JUEGO" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font name="System Bold Italic" size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+            <Separator prefWidth="200.0" style="-fx-background-color: green;" />
+            <fx:include source="/fxml/pdfView.fxml"></fx:include>
+         </children>
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </VBox>
+   </children>
+</GridPane>
