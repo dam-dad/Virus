@@ -1,9 +1,9 @@
-package dad.virus.virus;
+package dad.virus.game;
 
 public class Virus extends Card{
 
-    public Virus(String color, String type) {
-        super(color, type = "virus");
+    public Virus(Color color) {
+        super(color, Type.VIRUS);
     }
 
     public boolean infect(Organ organ){

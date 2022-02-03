@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="viewrule" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dad.virus.RootController">
+<GridPane id="viewrule" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="255.0" minWidth="10.0" prefWidth="49.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="698.0" minWidth="0.0" prefWidth="698.0" />

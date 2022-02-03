@@ -1,7 +1,4 @@
-package dad.virus.Game;
-
-import dad.virus.virus.Card;
-import dad.virus.virus.Organ;
+package dad.virus.game;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,6 @@
 package dad.virus.ui;
 
-import dad.virus.Game.Deck;
+import dad.virus.game.Deck;
 
 public class Main {
 

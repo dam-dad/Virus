@@ -32,7 +32,7 @@ import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import com.dansoftware.pdfdisplayer.PDFDisplayer;
+
 public class RootController implements Initializable {
 
     @FXML

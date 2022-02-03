@@ -1,9 +1,9 @@
-package dad.virus.virus;
+package dad.virus.game;
 
 public class Heal extends Card{
 
-    public Heal(String color, String type) {
-        super(color, type);
+    public Heal(Color color) {
+        super(color, Type.HEAL);
     }
 
     public void heal(Organ organ){
