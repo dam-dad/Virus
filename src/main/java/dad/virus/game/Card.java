@@ -35,7 +35,9 @@ public class Card {
 	}
 
 	public Image getImagen() {
-		imagen = new Image("/image/card/"+ getColor()+".png");
+		String color = getColor().toString();
+		String type = getType().toString();
+		imagen = new Image("/image/card/"+ color + type +".png");
 		return imagen;
 	}
 

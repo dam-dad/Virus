@@ -22,7 +22,7 @@ public class Deck {
     	switch (type) {
     	case HEAL: return new Heal(color);
     	case ORGAN: return new Organ(color);
-    	case TREATMENT: return new Treatment(color);
+    	//case TREATMENT: return new Treatment(color);
     	case VIRUS: return new Virus(color);
     	default: throw new IllegalArgumentException("Invalid card type");
     	}
@@ -48,11 +48,11 @@ public class Deck {
     	addToDeck(1, Type.VIRUS, Color.MULTICOLOR);
     	addToDeck(4, Type.HEAL, Color.MULTICOLOR);
     	
-    	addToDeck(2, Type.TREATMENT, Color.MULTICOLOR);
+    	/*addToDeck(2, Type.TREATMENT, Color.MULTICOLOR);
     	addToDeck(3, Type.TREATMENT, Color.RED);
     	addToDeck(3, Type.TREATMENT, Color.GREEN);
     	addToDeck(1, Type.TREATMENT, Color.BLUE);
-    	addToDeck(1, Type.TREATMENT, Color.YELLOW);
+    	addToDeck(1, Type.TREATMENT, Color.YELLOW);*/
 
     }
     
