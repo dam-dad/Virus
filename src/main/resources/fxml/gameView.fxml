@@ -13,6 +13,7 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="209.0" minWidth="10.0" prefWidth="202.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="207.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="225.0" minWidth="10.0" prefWidth="207.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -39,16 +40,24 @@
                   </ImageView>
                </graphic>
             </Button>
-            <ImageView fx:id="handCard2" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/players/deck.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="handCard3" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/players/deck.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="c2" mnemonicParsing="false" onAction="#onc2action">
+               <graphic>
+                  <ImageView fx:id="handCard2" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/players/deck.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="c3" mnemonicParsing="false" onAction="#onc3action">
+               <graphic>
+                  <ImageView fx:id="handCard3" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/players/deck.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </HBox>
       <ImageView fx:id="discard" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">

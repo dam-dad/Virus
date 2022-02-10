@@ -14,8 +14,10 @@ public class App extends Application {
         launch(args);
     }
 
+/*
     private RootController controller;
-    //private GameController controller;
+*/
+    private GameController controller;
 
     public static Stage getPrimaryStage() {
         return primaryStage;
@@ -25,17 +27,17 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        App.primaryStage = primaryStage;
+/*        App.primaryStage = primaryStage;
         // TODO Auto-generated method stub
         controller = new RootController();
         primaryStage.setTitle("Virus Game");
         primaryStage.setScene(new Scene(controller.getView()));
         //App.getPrimaryStage().getScene().getStylesheets().add(getClass().getResource(controller.themeCSS.getValue()).toString());
         primaryStage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("image/icon.jpg")));
-        primaryStage.show();
-        /*App.primaryStage = primaryStage;
+        primaryStage.show();*/
+        App.primaryStage = primaryStage;
         controller = new GameController();
         primaryStage.setScene(new Scene(controller.getView()));
-        primaryStage.show();*/
+        primaryStage.show();
     }
 }

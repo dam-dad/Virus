@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class GameController implements Initializable {
-	 
+
 	 static Deck deck = new Deck();//Creacion de mazo
 	 static Card[] mano ;
 	 static ArrayList<Card> descartes ;
@@ -31,6 +31,15 @@ public class GameController implements Initializable {
 
     @FXML
     private Button c1;
+
+    @FXML
+    private Button c2;
+
+    @FXML
+    private Button c3;
+
+    @FXML
+    private ImageView discard;
 
     @FXML
     private ImageView greenImate;
@@ -44,9 +53,6 @@ public class GameController implements Initializable {
     @FXML
     private ImageView handCard3;
 
-    @FXML
-    private ImageView discard;
-    
     @FXML
     private ImageView redImage;
 
@@ -97,32 +103,17 @@ public class GameController implements Initializable {
 
     @FXML
     void onc1action(ActionEvent event) {
-        
-        switch(mano[0].getType().toString()) {
-        
-        case "ORGAN":
-        	useOrgan(0);
-        	break;
-        case "HEAL":
-        	useVirusHeal(0);
-        	break;
-        case "VIRUS":
-        	useVirusHeal(0);
-        	break;
-        }
-    	
-        mano[0] = null;
-        mano[0] = deck.getDeck().get(0);
-        deck.getDeck().remove(0);
-        handCard1.setImage(mano[0].getImagen());
-        mostrarmano(mano);
-        System.out.println("Descartes " + descartes);
-        System.out.println("Deck: " + deck.getDeck().size());
-        if(deck.getDeck().size() == 0) {
-        	deck.getDeck().addAll(descartes);
-        	descartes.removeAll(descartes);
-        	Collections.shuffle(deck.getDeck());
-        }
+        buttonAction(0);
+    }
+
+    @FXML
+    void onc2action(ActionEvent event) {
+        buttonAction(1);
+    }
+
+    @FXML
+    void onc3action(ActionEvent event) {
+        buttonAction(2);
     }
     
     public void useOrgan(int aux) {
@@ -179,6 +170,46 @@ public class GameController implements Initializable {
     		System.out.print(mano[i]);
     	}
     	System.out.println();
+    }
+
+    public void buttonAction(int i){
+        switch(mano[i].getType().toString()) {
+
+            case "ORGAN":
+                useOrgan(i);
+                break;
+            case "HEAL":
+                useVirusHeal(i);
+                break;
+            case "VIRUS":
+                useVirusHeal(i);
+                break;
+        }
+
+        mano[i] = null;
+        mano[i] = deck.getDeck().get(0);
+        deck.getDeck().remove(0);
+        
+        switch (i){
+            case 0:
+                handCard1.setImage(mano[i].getImagen());
+                break;
+            case 1:
+                handCard2.setImage(mano[i].getImagen());
+                break;
+            case 2:
+                handCard3.setImage(mano[i].getImagen());
+                break;
+        }
+
+        mostrarmano(mano);
+        System.out.println("Descartes " + descartes);
+        System.out.println("Deck: " + deck.getDeck().size());
+        if(deck.getDeck().size() == 0) {
+            deck.getDeck().addAll(descartes);
+            descartes.removeAll(descartes);
+            Collections.shuffle(deck.getDeck());
+        }
     }
 
 }
