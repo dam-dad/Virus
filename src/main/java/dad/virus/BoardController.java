@@ -215,6 +215,24 @@ public class BoardController implements Initializable {
     @FXML
     private Button btnBackMenu;
 
+    @FXML
+    private ImageView handCard1;
+
+    @FXML
+    private ImageView handCard2;
+
+    @FXML
+    private ImageView handCard3;
+
+    @FXML
+    private Button c1;
+
+    @FXML
+    private Button c2;
+
+    @FXML
+    private Button c3;
+
     private Stage stage;
     private Scene scene;
 
@@ -247,27 +265,36 @@ public class BoardController implements Initializable {
         setImagePlayer();
 
         Image img = null;
-        try {
-            for (int tableroJugador = 1; tableroJugador <= 4; tableroJugador++) {
-                HBox hBox = (HBox) boardView.getChildren().get(tableroJugador);
-                for (int stackPaneJugador = 0; stackPaneJugador < 4; stackPaneJugador++) {
-                    StackPane stackPane = (StackPane) hBox.getChildren().get(stackPaneJugador);
-                    for (int j = 0; j < 3; j++) {
-                        ImageView imageView = (ImageView) stackPane.getChildren().get(j);
-                        img = new Image(this.getClass().getResource("/image/card/blueHeal.png").toURI().toString());
-                        imageView.setImage(img);
-                    }
-
+        for (int tableroJugador = 1; tableroJugador <= 4; tableroJugador++) {
+            HBox hBox = (HBox) boardView.getChildren().get(tableroJugador);
+            for (int stackPaneJugador = 0; stackPaneJugador < 4; stackPaneJugador++) {
+                StackPane stackPane = (StackPane) hBox.getChildren().get(stackPaneJugador);
+                for (int j = 0; j < 3; j++) {
+                    ImageView imageView = (ImageView) stackPane.getChildren().get(j);
                 }
-            }
 
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
+            }
         }
+
     }
 
     public static int randomNumber(int minimo, int maximo) {
         int num = (int) Math.floor(Math.random() * (maximo - minimo + 1) + (minimo));
         return num;
+    }
+
+    @FXML
+    void onc1action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onc2action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onc3action(ActionEvent event) {
+
     }
 }

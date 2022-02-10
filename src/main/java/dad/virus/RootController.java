@@ -77,9 +77,6 @@ public class RootController implements Initializable {
     //Switch view
     private Stage stage;
     private Scene scene;
-    private Parent root;
-    //Resource CSS Dark ControllerOptionsBox
-    public StringProperty themeCSS = new SimpleStringProperty();
 
     @FXML
     public void configAction(ActionEvent event) throws IOException {
@@ -205,20 +202,6 @@ public class RootController implements Initializable {
         setImageLogo();
         //backgroundMusic();
 
-        //Tema por defecto
-        //this.themeCSS.setValue("/css/rootDark.css");
-        view.getStylesheets().add("/css/rootDark.css");
     }
-
-	public StringProperty getThemeCSS() {
-		return themeCSS;
-	}
-
-	public void setThemeCSS(StringProperty themeCSS) {
-		this.themeCSS = themeCSS;
-	}
-
-    
-	
     
 }

@@ -189,7 +189,7 @@ public class GameController implements Initializable {
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
-        
+
         switch (i){
             case 0:
                 handCard1.setImage(mano[i].getImagen());

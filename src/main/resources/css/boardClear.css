@@ -24,6 +24,14 @@ GridPane {
     -fx-background-radius: 20;
 }
 
+#boardJ4 {
+    -fx-border-color: white;
+    -fx-border-width: 2;
+    -fx-border-radius: 20;
+    -fx-background-color: #20bfd8;
+    -fx-background-radius: 20;
+}
+
 #btnBackMenu {
     -fx-background-color: #20dad8; /* other Blue */
 }
