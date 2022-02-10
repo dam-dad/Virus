@@ -88,8 +88,10 @@ public class RootController implements Initializable {
 
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        controller = loader.getController();
-        
+
+        ControllerOptionsBox controller = loader.getController();
+        scene.getStylesheets().add(App.getPrimaryStage().getScene().getStylesheets().get(0));
+
         //Listener para el slider del volumen
         controller.getVol().addListener((v, ov, nv) -> {
             mediaPlay.setVolume(Double.parseDouble(String.valueOf(nv.doubleValue() / 100).substring(0, 3)));
@@ -107,15 +109,16 @@ public class RootController implements Initializable {
 
         //Botón de guardar
         controller.getBtnSave().setOnAction((eventSave) -> {
-        
-            view.getStylesheets().clear();
-        	view.getStylesheets().add(controller.getURLcss().getValue());
-        
+            App.getPrimaryStage().getScene().getStylesheets().remove(
+                    App.getPrimaryStage().getScene().getStylesheets().get(0));
+
+            App.getPrimaryStage().getScene().getStylesheets().add(
+                    String.valueOf(this.getClass().getResource(
+                            controller.getURLcss().getValue())));
         });
 
         try {
             Stage stage = new Stage();
-            scene.getStylesheets().add(String.valueOf(App.class.getResource(themeCSS.getValue())));
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("image/icon.jpg")));
             stage.setScene(scene);
@@ -153,7 +156,7 @@ public class RootController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/boardView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource(themeCSS.getValue()).toString());
+        scene.getStylesheets().add(App.getPrimaryStage().getScene().getStylesheets().get(0));
         stage.setScene(scene);
         stage.setMaximized(true);
         stage.show();

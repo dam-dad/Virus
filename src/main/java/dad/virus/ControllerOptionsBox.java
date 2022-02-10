@@ -49,20 +49,9 @@ public class ControllerOptionsBox implements Initializable {
 
     private StringProperty urlCSS = new SimpleStringProperty();
 
-    private RootController rootcontroller;
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Listener, valores del slider opciones para el volúmen
-    	
-    	
-    	if(getURLcss().getValue() == "/css/rootDark.css") {
-    		rdBtnDark.setSelected(true);
-    		
-        }else {
-        	rdBtnClear.setSelected(true);
-        	
-        }
         this.sliderVol.setValue(50f);
         this.sliderVol.valueProperty().addListener((v,ov,nv) -> {
             vol.setValue(nv);
@@ -70,8 +59,19 @@ public class ControllerOptionsBox implements Initializable {
 
         ToggleGroup tg = new ToggleGroup();
         this.rdBtnDark.setToggleGroup(tg);
-        this.rdBtnDark.setSelected(true);
         this.rdBtnClear.setToggleGroup(tg);
+
+        String urlDarkTheme = "file:/C:/Users/psych/Desktop/virus2/Virus/target/classes/css/rootDark.css";
+
+        String urlStyleSheetApp = App.getPrimaryStage().getScene().getStylesheets().get(0);
+        System.out.println(urlStyleSheetApp);
+        if(urlDarkTheme.equals(urlStyleSheetApp)){
+            this.rdBtnDark.setSelected(true);
+            this.getBtnSave().setDisable(true);
+        }else {
+            this.rdBtnClear.setSelected(true);
+            this.getBtnSave().setDisable(true);
+        }
 
         tg.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
             @Override
@@ -79,19 +79,18 @@ public class ControllerOptionsBox implements Initializable {
                 RadioButton r = (RadioButton) t1;
                 try {
                     if (r.getText().equals("Tema Oscuro")) {
-                    	getURLcss().setValue("/css/rootDark.css");
-                    	viewOptions.getStylesheets().clear();
-                    	viewOptions.getStylesheets().add("/css/viewOptionsDark.css");
-                    	
-                      
+                        urlCSS.setValue("/css/rootDark.css");
+                        btnSave.setDisable(false);
+                        r.getScene().getStylesheets().remove(String.valueOf(getClass().getResource("/css/viewOptionsClear.css")));
+                        r.getScene().getStylesheets().add(String.valueOf(getClass().getResource("/css/viewOptionsDark.css")));
+
                     } else {
-                    	getURLcss().setValue("/css/rootClear.css");
-                    	viewOptions.getStylesheets().clear();
-                    	viewOptions.getStylesheets().add("/css/viewOptionsClear.css");
+                        urlCSS.setValue("/css/rootClear.css");
+                        btnSave.setDisable(false);
+                        r.getScene().getStylesheets().remove(String.valueOf(getClass().getResource("/css/viewOptionsDark.css")));
+                        r.getScene().getStylesheets().add(String.valueOf(getClass().getResource("/css/viewOptionsClear.css")));
                     }
-                }catch (NullPointerException ignored){
-                	
-                }
+                }catch (NullPointerException ignored){}
             }
         });
     }
@@ -115,7 +114,5 @@ public class ControllerOptionsBox implements Initializable {
     public Button getBtnSilence() {
         return btnSilence;
     }
-
-
-    
 }
+

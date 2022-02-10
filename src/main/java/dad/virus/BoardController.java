@@ -228,7 +228,7 @@ public class BoardController implements Initializable {
 
     }
 
-    private void setImagePlayer() throws NullPointerException{
+    private void setImagePlayer() throws NullPointerException {
         boolean continua = true;
         while (continua) {
             try {
@@ -237,72 +237,37 @@ public class BoardController implements Initializable {
                 circleTextPlayer1.setFill(new ImagePattern(new Image(srcImg1)));
                 circleTextPlayer2.setFill(new ImagePattern(new Image(srcImg2)));
                 continua = false;
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
             }
         }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Player 1
-        //try {
-            setImagePlayer();
-            /*
-            Image img = new Image(this.getClass().getResource("/image/Cartas/01.png").toURI().toString());
-            card1Stack1J1.setImage(img);
+        setImagePlayer();
 
-            Image img20 = new Image(this.getClass().getResource("/image/Cartas/09.png").toString());
-            card2Stack1J1.setImage(img20);
-            Image img21 = new Image(this.getClass().getResource("/image/Cartas/18.png").toString());
-            card3Stack1J1.setImage(img21);
+        Image img = null;
+        try {
+            for (int tableroJugador = 1; tableroJugador <= 4; tableroJugador++) {
+                HBox hBox = (HBox) boardView.getChildren().get(tableroJugador);
+                for (int stackPaneJugador = 0; stackPaneJugador < 4; stackPaneJugador++) {
+                    StackPane stackPane = (StackPane) hBox.getChildren().get(stackPaneJugador);
+                    for (int j = 0; j < 3; j++) {
+                        ImageView imageView = (ImageView) stackPane.getChildren().get(j);
+                        img = new Image(this.getClass().getResource("/image/card/blueHeal.png").toURI().toString());
+                        imageView.setImage(img);
+                    }
 
-            Image img2 = new Image(this.getClass().getResource("/image/Cartas/02.png").toString());
-            card1Stack2J1.setImage(img2);
+                }
+            }
 
-            Image img22 = new Image(this.getClass().getResource("/image/Cartas/19.png").toString());
-            card2Stack2J1.setImage(img22);
-
-            Image img3 = new Image(this.getClass().getResource("/image/Cartas/03.png").toString());
-            card1Stack3J1.setImage(img3);
-
-            Image img4 = new Image(this.getClass().getResource("/image/Cartas/04.png").toString());
-            card1Stack4J1.setImage(img4);
-
-            //Player2
-            Image img5 = new Image(this.getClass().getResource("/image/Cartas/05.png").toString());
-            card1Stack1J2.setImage(img5);
-
-            Image img6 = new Image(this.getClass().getResource("/image/Cartas/06.png").toString());
-            card1Stack2J2.setImage(img6);
-
-            Image img7 = new Image(this.getClass().getResource("/image/Cartas/07.png").toString());
-            card1Stack3J2.setImage(img7);
-
-            Image img8 = new Image(this.getClass().getResource("/image/Cartas/08.png").toString());
-            card1Stack4J2.setImage(img8);
-
-            //Player 3
-            Image img9 = new Image(this.getClass().getResource("/image/Cartas/09.png").toString());
-            card1Stack1J3.setImage(img9);
-
-            Image img10 = new Image(this.getClass().getResource("/image/Cartas/10.png").toString());
-            card1Stack2J3.setImage(img10);
-
-            Image img11 = new Image(this.getClass().getResource("/image/Cartas/11.png").toString());
-            card1Stack3J3.setImage(img11);
-
-            Image img12 = new Image(this.getClass().getResource("/image/Cartas/12.png").toString());
-            card1Stack4J3.setImage(img12);
-
-            Image img13 = new Image(this.getClass().getResource("/image/Cartas/14.png").toString());
-            card2Stack4J2.setImage(img13)*/
-        //} catch (URISyntaxException e) {
-          //  e.printStackTrace();
-        //}
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
-    public static int randomNumber(int minimo,int maximo){
-        int num=(int)Math.floor(Math.random()*(maximo-minimo+1)+(minimo));
+    public static int randomNumber(int minimo, int maximo) {
+        int num = (int) Math.floor(Math.random() * (maximo - minimo + 1) + (minimo));
         return num;
     }
 }
