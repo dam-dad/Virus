@@ -61,7 +61,7 @@ public class ControllerOptionsBox implements Initializable {
         this.rdBtnDark.setToggleGroup(tg);
         this.rdBtnClear.setToggleGroup(tg);
 
-        String urlDarkTheme = "file:/C:/Users/psych/Desktop/virus2/Virus/target/classes/css/rootDark.css";
+        String urlDarkTheme = String.valueOf(getClass().getResource("/css/rootDark.css"));
 
         String urlStyleSheetApp = App.getPrimaryStage().getScene().getStylesheets().get(0);
         System.out.println(urlStyleSheetApp);
