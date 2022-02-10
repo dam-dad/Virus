@@ -68,6 +68,7 @@ public class RootController implements Initializable {
     @FXML
     private GridPane viewrule;
     
+    ControllerOptionsBox controller ;
 
     //JavaFX Media
     Media backgroundMusic;
@@ -77,7 +78,6 @@ public class RootController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
-
     //Resource CSS Dark ControllerOptionsBox
     public StringProperty themeCSS = new SimpleStringProperty();
 
@@ -88,8 +88,8 @@ public class RootController implements Initializable {
 
         Parent root = loader.load();
         Scene scene = new Scene(root);
-        ControllerOptionsBox controller = loader.getController();
-
+        controller = loader.getController();
+        
         //Listener para el slider del volumen
         controller.getVol().addListener((v, ov, nv) -> {
             mediaPlay.setVolume(Double.parseDouble(String.valueOf(nv.doubleValue() / 100).substring(0, 3)));
@@ -107,10 +107,10 @@ public class RootController implements Initializable {
 
         //Botón de guardar
         controller.getBtnSave().setOnAction((eventSave) -> {
-            this.getView().getScene().getStylesheets().remove(this.getClass().getResource(this.themeCSS.getValue()));
-            this.themeCSS.setValue(controller.getURLcss().getValue());
-            App.getPrimaryStage().getScene().getStylesheets().add(String.valueOf(this.getClass().getResource(this.themeCSS.getValue())));
-            this.getView().getScene().getStylesheets().add(String.valueOf(this.getClass().getResource(this.themeCSS.getValue())));
+        
+            view.getStylesheets().clear();
+        	view.getStylesheets().add(controller.getURLcss().getValue());
+        
         });
 
         try {
@@ -121,7 +121,9 @@ public class RootController implements Initializable {
             stage.setScene(scene);
             stage.showAndWait();
             stage.close();
-        }catch (NullPointerException e){}
+        }catch (NullPointerException e){
+        	
+        }
     }
     	
     @FXML
@@ -161,6 +163,7 @@ public class RootController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RootView.fxml"));
         loader.setController(this);
         loader.load();
+        
     }
 
     public BorderPane getView() {
@@ -197,9 +200,22 @@ public class RootController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         // TODO Auto-generated method stub
         setImageLogo();
-        backgroundMusic();
+        //backgroundMusic();
 
         //Tema por defecto
-        this.themeCSS.setValue("/css/rootDark.css");
+        //this.themeCSS.setValue("/css/rootDark.css");
+        view.getStylesheets().add("/css/rootDark.css");
     }
+
+	public StringProperty getThemeCSS() {
+		return themeCSS;
+	}
+
+	public void setThemeCSS(StringProperty themeCSS) {
+		this.themeCSS = themeCSS;
+	}
+
+    
+	
+    
 }
