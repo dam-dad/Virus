@@ -387,7 +387,7 @@
       </Text>
       <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="5.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
          <children>
-            <Button fx:id="c1" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onc1action" wrapText="true">
+            <Button fx:id="c1" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onc1action" wrapText="true">
                <graphic>
                   <ImageView fx:id="handCard1" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -396,7 +396,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="c2" mnemonicParsing="false" onAction="#onc2action">
+            <Button fx:id="c2" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onc2action">
                <graphic>
                   <ImageView fx:id="handCard2" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -405,7 +405,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="c3" mnemonicParsing="false" onAction="#onc3action">
+            <Button fx:id="c3" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onc3action">
                <graphic>
                   <ImageView fx:id="handCard3" fitHeight="141.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                      <image>
