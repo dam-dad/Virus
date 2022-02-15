@@ -72,7 +72,7 @@ public class RootController implements Initializable {
 
     //JavaFX Media
     Media backgroundMusic;
-    MediaPlayer mediaPlay;
+    static MediaPlayer mediaPlay;
 
     //Switch view
     private Stage stage;

@@ -256,6 +256,18 @@ public class BoardController implements Initializable {
 
     @FXML
     void actionBackMenu(ActionEvent event) throws IOException {
+        //Carga de la vista de opciones
+        RootController rootController = new RootController();
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/rootView.fxml"));
+        loader.setController(rootController);
+        Parent root = (Parent)loader.load();
+        Scene scene = new Scene(root);
+        Stage thisStage = (Stage)btnBackMenu.getScene().getWindow();
+
+        scene.getStylesheets().add(thisStage.getScene().getStylesheets().get(0));
+        thisStage.setScene(scene);
+
+        thisStage.centerOnScreen();
     }
 
 
@@ -268,10 +280,12 @@ public class BoardController implements Initializable {
         boolean continua = true;
         while (continua) {
             try {
-                String srcImg1 = this.getClass().getResource(("/image/players/p" + randomNumber(5, 7) + ".jpg")).toString();
-                String srcImg2 = this.getClass().getResource(("/image/players/p" + randomNumber(0, 4) + ".jpg")).toString();
+                String srcImg1 = this.getClass().getResource(("/image/players/p" + randomNumber(6, 7) + ".jpg")).toString();
+                String srcImg2 = this.getClass().getResource(("/image/players/p" + randomNumber(3, 5) + ".jpg")).toString();
+                String srcImg3= this.getClass().getResource(("/image/players/p" + randomNumber(0, 2) + ".jpg")).toString();
                 circleTextPlayer1.setFill(new ImagePattern(new Image(srcImg1)));
                 circleTextPlayer2.setFill(new ImagePattern(new Image(srcImg2)));
+                circleTextPlayer3.setFill(new ImagePattern(new Image(srcImg3)));
                 continua = false;
             } catch (NullPointerException e) {
             }
