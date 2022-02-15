@@ -61,11 +61,6 @@
                <children>
                   <ImageView fx:id="card1Stack1J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack1J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack1J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
@@ -75,11 +70,6 @@
                <children>
                   <ImageView fx:id="card1Stack2J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack2J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack2J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -89,11 +79,6 @@
                <children>
                   <ImageView fx:id="card1Stack3J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack3J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack3J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -103,11 +88,6 @@
                <children>
                   <ImageView fx:id="card1Stack4J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack4J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack4J1" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
@@ -121,11 +101,6 @@
                <children>
                   <ImageView fx:id="card1Stack1J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack1J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack1J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
@@ -143,11 +118,6 @@
                         <Insets />
                      </StackPane.margin>
                   </ImageView>
-                  <ImageView fx:id="card3Stack2J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -161,11 +131,6 @@
                      </StackPane.margin>
                   </ImageView>
                   <ImageView fx:id="card2Stack3J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack3J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -175,11 +140,6 @@
                <children>
                   <ImageView fx:id="card1Stack4J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack4J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack4J21" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />
@@ -193,44 +153,24 @@
                <children>
                   <ImageView fx:id="card1Stack1J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack1J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack1J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
             </StackPane>
             <StackPane fx:id="stackPane2J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="120.0">
                <children>
                   <ImageView fx:id="card1Stack2J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack2J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack2J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
             </StackPane>
             <StackPane fx:id="stackPane3J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="120.0">
                <children>
                   <ImageView fx:id="card1Stack3J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack3J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack3J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
             </StackPane>
             <StackPane fx:id="stackPane4J3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="120.0">
                <children>
                   <ImageView fx:id="card1Stack4J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack4J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack4J3" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
             </StackPane>
          </children>
@@ -241,12 +181,6 @@
                <children>
                   <ImageView fx:id="card1Stack1J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack1J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack1J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
@@ -256,11 +190,6 @@
                <children>
                   <ImageView fx:id="card1Stack2J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack2J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack2J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
@@ -270,11 +199,6 @@
                <children>
                   <ImageView fx:id="card1Stack3J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack3J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack3J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -284,11 +208,6 @@
                <children>
                   <ImageView fx:id="card1Stack4J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="card2Stack4J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-                  <ImageView fx:id="card3Stack4J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
-                     <StackPane.margin>
-                        <Insets top="20.0" />
-                     </StackPane.margin>
-                  </ImageView>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="10.0" top="5.0" />

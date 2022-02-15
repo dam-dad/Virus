@@ -165,54 +165,6 @@ public class BoardController implements Initializable {
     private ImageView card2Stack4J4;
 
     @FXML
-    private ImageView card3Stack1J1;
-
-    @FXML
-    private ImageView card3Stack1J2;
-
-    @FXML
-    private ImageView card3Stack1J3;
-
-    @FXML
-    private ImageView card3Stack1J4;
-
-    @FXML
-    private ImageView card3Stack2J1;
-
-    @FXML
-    private ImageView card3Stack2J2;
-
-    @FXML
-    private ImageView card3Stack2J3;
-
-    @FXML
-    private ImageView card3Stack2J4;
-
-    @FXML
-    private ImageView card3Stack3J1;
-
-    @FXML
-    private ImageView card3Stack3J2;
-
-    @FXML
-    private ImageView card3Stack3J3;
-
-    @FXML
-    private ImageView card3Stack3J4;
-
-    @FXML
-    private ImageView card3Stack4J1;
-
-    @FXML
-    private ImageView card3Stack4J21;
-
-    @FXML
-    private ImageView card3Stack4J3;
-
-    @FXML
-    private ImageView card3Stack4J4;
-
-    @FXML
     private Circle circleTextPlayer1;
 
     @FXML
@@ -330,17 +282,7 @@ public class BoardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setImagePlayer();
 
-        Image img = null;
-        for (int tableroJugador = 1; tableroJugador <= 4; tableroJugador++) {
-            HBox hBox = (HBox) boardView.getChildren().get(tableroJugador);
-            for (int stackPaneJugador = 0; stackPaneJugador < 4; stackPaneJugador++) {
-                StackPane stackPane = (StackPane) hBox.getChildren().get(stackPaneJugador);
-                for (int j = 0; j < 3; j++) {
-                    ImageView imageView = (ImageView) stackPane.getChildren().get(j);
-                }
-
-            }
-        }
+        
 
         Collections.shuffle(deck.getDeck());//Baraja de mazo
         mano = new Card[3];//Creacion de mano
@@ -360,17 +302,17 @@ public class BoardController implements Initializable {
         manoBot1[0] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
 
-        System.out.println(manoBot1[0]);
+        //System.out.println(manoBot1[0]);
 
         manoBot1[1] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
 
-        System.out.println(manoBot1[1]);
+        //System.out.println(manoBot1[1]);
 
         manoBot1[2] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
 
-        System.out.println(manoBot1[2]);
+        //System.out.println(manoBot1[2]);
 
         manoBot2[0] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -436,6 +378,12 @@ public class BoardController implements Initializable {
     }
 
     public void buttonAction(int i){
+    	if(deck.getDeck().size() == 0) {
+            deck.getDeck().addAll(descartes);
+            descartes.removeAll(descartes);
+            Collections.shuffle(deck.getDeck());
+        }
+    	
         switch(mano[i].getType().toString()) {
 
             case "ORGAN":
@@ -468,11 +416,7 @@ public class BoardController implements Initializable {
 /*        mostrarmano(mano);
         System.out.println("Descartes " + descartes);
         System.out.println("Deck: " + deck.getDeck().size());*/
-        if(deck.getDeck().size() == 0) {
-            deck.getDeck().addAll(descartes);
-            descartes.removeAll(descartes);
-            Collections.shuffle(deck.getDeck());
-        }
+        
     }
 
     public void useOrgan(int aux) {
@@ -525,9 +469,11 @@ public class BoardController implements Initializable {
     }
 
     public void jueganBots(Card manoBot[],int bot){
+    	
         if(manoBot[0].getType().toString().equals("ORGAN")){
             juegaOrganBot2(0, bot);
             renovarMano(manoBot, 0);
+            
         }else if(manoBot[1].getType().toString().equals("ORGAN")) {
             juegaOrganBot2(1, bot);
             renovarMano(manoBot, 1);
@@ -535,7 +481,7 @@ public class BoardController implements Initializable {
             juegaOrganBot2(2, bot);
             renovarMano(manoBot, 2);
         }else{
-            System.out.println("No había organo");
+            System.out.println("No habia organo");
             useVirusHealBot();
         }
 
@@ -595,9 +541,7 @@ public class BoardController implements Initializable {
         manoX[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
 
-        for(int j=0; j>manoX.length;j++){
-            System.out.println(manoX[j]);
-        }
+       
     }
 
     public void juegaOrganBot2(int aux, int bot){
