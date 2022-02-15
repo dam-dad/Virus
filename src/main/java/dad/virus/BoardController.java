@@ -469,7 +469,13 @@ public class BoardController implements Initializable {
     }
 
     public void jueganBots(Card manoBot[],int bot){
-    	
+
+        if(deck.getDeck().size() == 0) {
+            deck.getDeck().addAll(descartes);
+            descartes.removeAll(descartes);
+            Collections.shuffle(deck.getDeck());
+        }
+
         if(manoBot[0].getType().toString().equals("ORGAN")){
             juegaOrganBot2(0, bot);
             renovarMano(manoBot, 0);
@@ -485,11 +491,7 @@ public class BoardController implements Initializable {
             useVirusHealBot();
         }
 
-        if(deck.getDeck().size() == 0) {
-            deck.getDeck().addAll(descartes);
-            descartes.removeAll(descartes);
-            Collections.shuffle(deck.getDeck());
-        }
+        
     }
     public void juegaOrganBot(int aux){
         switch (manoBot1[aux].getColor().toString()){
