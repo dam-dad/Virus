@@ -407,19 +407,25 @@ public class BoardController implements Initializable {
     @FXML
     void onc1action(ActionEvent event) {
         buttonAction(0);
-        jueganBots();
+        jueganBots(manoBot1,1);
+        jueganBots(manoBot2,2);
+        jueganBots(manoBot3,3);
     }
 
     @FXML
     void onc2action(ActionEvent event) {
         buttonAction(1);
-        jueganBots();
+        jueganBots(manoBot1,1);
+        jueganBots(manoBot2,2);
+        jueganBots(manoBot3,3);
     }
 
     @FXML
     void onc3action(ActionEvent event) {
         buttonAction(2);
-        jueganBots();
+        jueganBots(manoBot1,1);
+        jueganBots(manoBot2,2);
+        jueganBots(manoBot3,3);
     }
 
     public void mostrarmano(Card[] mano) {
@@ -518,16 +524,16 @@ public class BoardController implements Initializable {
         discardDeck.setImage(mano[aux].getImagen());
     }
 
-    public void jueganBots(){
-        if(manoBot1[0].getType().toString().equals("ORGAN")){
-            juegaOrganBot(0);
-            renovarMano(manoBot1, 0);
-        }else if(manoBot1[1].getType().toString().equals("ORGAN")) {
-            juegaOrganBot(1);
-            renovarMano(manoBot1, 1);
-        }else if(manoBot1[2].getType().toString().equals("ORGAN")) {
-            juegaOrganBot(2);
-            renovarMano(manoBot1, 2);
+    public void jueganBots(Card manoBot[],int bot){
+        if(manoBot[0].getType().toString().equals("ORGAN")){
+            juegaOrganBot2(0, bot);
+            renovarMano(manoBot, 0);
+        }else if(manoBot[1].getType().toString().equals("ORGAN")) {
+            juegaOrganBot2(1, bot);
+            renovarMano(manoBot, 1);
+        }else if(manoBot[2].getType().toString().equals("ORGAN")) {
+            juegaOrganBot2(2, bot);
+            renovarMano(manoBot, 2);
         }else{
             System.out.println("No había organo");
             useVirusHealBot();
@@ -591,6 +597,128 @@ public class BoardController implements Initializable {
 
         for(int j=0; j>manoX.length;j++){
             System.out.println(manoX[j]);
+        }
+    }
+
+    public void juegaOrganBot2(int aux, int bot){
+        if(bot==1) {
+            switch (manoBot1[aux].getColor().toString()) {
+                case "RED":
+                    if (card1Stack1J1.getImage() == null) {
+                        card1Stack1J1.setImage(manoBot1[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot1[aux]);
+                        discardDeck.setImage(manoBot1[aux].getImagen());
+                    }
+                    break;
+                case "BLUE":
+                    if (card1Stack2J1.getImage() == null) {
+                        card1Stack2J1.setImage(manoBot1[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot1[aux]);
+                        discardDeck.setImage(manoBot1[aux].getImagen());
+                    }
+                    break;
+                case "GREEN":
+                    if (card1Stack3J1.getImage() == null) {
+                        card1Stack3J1.setImage(manoBot1[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot1[aux]);
+                        discardDeck.setImage(manoBot1[aux].getImagen());
+                    }
+                    break;
+                case "YELLOW":
+                    if (card1Stack4J1.getImage() == null) {
+                        card1Stack4J1.setImage(manoBot1[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot1[aux]);
+                        discardDeck.setImage(manoBot1[aux].getImagen());
+                    }
+                    break;
+                default:
+                    discardDeck.setImage(new Image("/image/card/swapBody.png"));
+                    break;
+            }
+            renovarMano(manoBot1, aux);
+        }else if(bot == 2){
+            switch (manoBot2[aux].getColor().toString()) {
+                case "RED":
+                    if (card1Stack1J2.getImage() == null) {
+                        card1Stack1J2.setImage(manoBot2[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot2[aux]);
+                        discardDeck.setImage(manoBot2[aux].getImagen());
+                    }
+                    break;
+                case "BLUE":
+                    if (card1Stack2J2.getImage() == null) {
+                        card1Stack2J2.setImage(manoBot2[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot2[aux]);
+                        discardDeck.setImage(manoBot2[aux].getImagen());
+                    }
+                    break;
+                case "GREEN":
+                    if (card1Stack3J2.getImage() == null) {
+                        card1Stack3J2.setImage(manoBot2[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot2[aux]);
+                        discardDeck.setImage(manoBot2[aux].getImagen());
+                    }
+                    break;
+                case "YELLOW":
+                    if (card1Stack4J2.getImage() == null) {
+                        card1Stack4J2.setImage(manoBot2[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot2[aux]);
+                        discardDeck.setImage(manoBot2[aux].getImagen());
+                    }
+                    break;
+                default:
+                    discardDeck.setImage(new Image("/image/card/swapBody.png"));
+                    break;
+            }
+            renovarMano(manoBot2, aux);
+
+        }else if(bot == 3){
+            switch (manoBot3[aux].getColor().toString()) {
+                case "RED":
+                    if (card1Stack1J3.getImage() == null) {
+                        card1Stack1J3.setImage(manoBot3[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot3[aux]);
+                        discardDeck.setImage(manoBot3[aux].getImagen());
+                    }
+                    break;
+                case "BLUE":
+                    if (card1Stack2J3.getImage() == null) {
+                        card1Stack2J3.setImage(manoBot3[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot3[aux]);
+                        discardDeck.setImage(manoBot3[aux].getImagen());
+                    }
+                    break;
+                case "GREEN":
+                    if (card1Stack3J3.getImage() == null) {
+                        card1Stack3J3.setImage(manoBot3[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot3[aux]);
+                        discardDeck.setImage(manoBot3[aux].getImagen());
+                    }
+                    break;
+                case "YELLOW":
+                    if (card1Stack4J3.getImage() == null) {
+                        card1Stack4J3.setImage(manoBot3[aux].getImagen());
+                    } else {
+                        descartes.add(manoBot3[aux]);
+                        discardDeck.setImage(manoBot3[aux].getImagen());
+                    }
+                    break;
+                default:
+                    discardDeck.setImage(new Image("/image/card/swapBody.png"));
+                    break;
+            }
+            renovarMano(manoBot3, aux);
         }
     }
 }
