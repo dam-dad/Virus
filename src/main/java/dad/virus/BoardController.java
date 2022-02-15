@@ -525,6 +525,11 @@ public class BoardController implements Initializable {
     }
 
     public void jueganBots(Card manoBot[],int bot){
+        if(deck.getDeck().size() == 0) {
+            deck.getDeck().addAll(descartes);
+            descartes.removeAll(descartes);
+            Collections.shuffle(deck.getDeck());
+        }
         if(manoBot[0].getType().toString().equals("ORGAN")){
             juegaOrganBot2(0, bot);
             renovarMano(manoBot, 0);
