@@ -36,6 +36,15 @@ GridPane {
     -fx-background-color: #00a8a8; /* other Blue */
 }
 
-.button:hover{
+#c1:hover{
     -fx-background-color: green;
+    -fx-scale-y:1.1;
+}
+#c2:hover{
+    -fx-background-color: green;
+    -fx-scale-y:1.1;
+}
+#c3:hover{
+    -fx-background-color: green;
+    -fx-scale-y:1.1;
 }
