@@ -3,33 +3,26 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="viewrule" prefHeight="600.0" prefWidth="800.0" stylesheets="@../css/root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane id="viewrule" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(&quot;image/bkrules.jpg&quot;);" stylesheets="@../css/root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="255.0" minWidth="10.0" prefWidth="49.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="698.0" minWidth="0.0" prefWidth="698.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="174.0" minWidth="0.0" prefWidth="53.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="595.0" minHeight="10.0" prefHeight="90.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="418.0" minHeight="0.0" prefHeight="309.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="595.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="418.0" minHeight="0.0" prefHeight="397.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="418.0" minHeight="10.0" prefHeight="177.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
-      <ImageView fitHeight="223.0" fitWidth="802.0" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2">
-         <image>
-            <Image url="@../image/mugocayendo.png" />
-         </image>
-      </ImageView>
-      <VBox id="vboxrule" fx:id="vboxrule" prefHeight="281.0" prefWidth="464.0" style="-fx-background-color: #39B047; -fx-background-radius: 8px;" stylesheets="@../css/root.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+      
+      <VBox id="vboxrule" fx:id="vboxrule" prefHeight="501.0" prefWidth="688.0" style="-fx-background-color: #39B047; -fx-background-radius: 8px;" stylesheets="@../css/root.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="688.0" text="NORMAS DEL JUEGO" VBox.vgrow="ALWAYS">
                <font>

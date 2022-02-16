@@ -260,6 +260,7 @@ public class BoardController implements Initializable {
     @FXML
     void actionBackMenu(ActionEvent event) throws IOException {
         //Carga de la vista de opciones
+    	
         RootController rootController = new RootController();
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/rootView.fxml"));
         loader.setController(rootController);
@@ -372,6 +373,13 @@ public class BoardController implements Initializable {
         jueganBots(manoBot1, 1);
         jueganBots(manoBot2, 2);
         jueganBots(manoBot3, 3);
+    }
+    public void esperar() {
+    	try {
+    		Thread.sleep(2000);
+    	}catch(Exception e) {
+    		e.printStackTrace();
+    	}
     }
 
     @FXML
