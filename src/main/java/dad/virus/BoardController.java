@@ -42,257 +42,31 @@ public class BoardController implements Initializable {
     private static ArrayList<Card> descartes;
 
     @FXML
-    public BorderPane borderPaneView;
+    private HBox boardJ1,boardJ2,boardJ3,boardJ4;
 
     @FXML
-    private VBox boardJ1;
+    private GridPane boardView;
 
     @FXML
-    private HBox boardJ2;
+    private Button btnBackMenu,c1,c2,c3,o1j1Button,o1j2Button,o1j3Button,o1j4Button,o2j1Button,o2j2Button,o2j3Button,o2j4Button,o3j1Button,
+    o3j3Button,o3j4Button,o4j1Button,o4j3Button,o4j4Button;
 
     @FXML
-    private VBox boardJ3;
+    private ImageView card1Stack1J1,card1Stack1J2,card1Stack1J3,card1Stack1J4,card1Stack2J1,card1Stack2J2,card1Stack2J3,card1Stack2J4,
+    card1Stack3J1,card1Stack3J2,card1Stack3J3,card1Stack3J4,card1Stack4J1,card1Stack4J2,card1Stack4J3,card1Stack4J4,card2Stack1J1,card2Stack1J2,
+    card2Stack1J3,card2Stack1J4,card2Stack2J1,card2Stack2J2,card2Stack2J3,card2Stack2J4,card2Stack3J1,card2Stack3J2,card2Stack3J3,card2Stack3J4,
+    card2Stack4J1,card2Stack4J2,card2Stack4J3,card2Stack4J4,deckOfCards,discardDeck,handCard1,handCard2,handCard3,j1image,j2image,j3image;
 
     @FXML
-    private HBox boardJ4;
+    private Circle circleTextPlayer1,circleTextPlayer2,circleTextPlayer3;
 
-    @FXML
-    private Button c1;
-
-    @FXML
-    private Button c2;
-
-    @FXML
-    private Button c3;
-
-    @FXML
-    private ImageView card1Stack1J1;
-
-    @FXML
-    private ImageView card1Stack1J2;
-
-    @FXML
-    private ImageView card1Stack1J3;
-
-    @FXML
-    private ImageView card1Stack1J4;
-
-    @FXML
-    private ImageView card1Stack2J1;
-
-    @FXML
-    private ImageView card1Stack2J2;
-
-    @FXML
-    private ImageView card1Stack2J3;
-
-    @FXML
-    private ImageView card1Stack2J4;
-
-    @FXML
-    private ImageView card1Stack3J1;
-
-    @FXML
-    private ImageView card1Stack3J2;
-
-    @FXML
-    private ImageView card1Stack3J3;
-
-    @FXML
-    private ImageView card1Stack3J4;
-
-    @FXML
-    private ImageView card1Stack4J1;
-
-    @FXML
-    private ImageView card1Stack4J2;
-
-    @FXML
-    private ImageView card1Stack4J3;
-
-    @FXML
-    private ImageView card1Stack4J4;
-
-    @FXML
-    private ImageView card2Stack1J1;
-
-    @FXML
-    private ImageView card2Stack1J2;
-
-    @FXML
-    private ImageView card2Stack1J3;
-
-    @FXML
-    private ImageView card2Stack1J4;
-
-    @FXML
-    private ImageView card2Stack2J1;
-
-    @FXML
-    private ImageView card2Stack2J2;
-
-    @FXML
-    private ImageView card2Stack2J3;
-
-    @FXML
-    private ImageView card2Stack2J4;
-
-    @FXML
-    private ImageView card2Stack3J1;
-
-    @FXML
-    private ImageView card2Stack3J2;
-
-    @FXML
-    private ImageView card2Stack3J3;
-
-    @FXML
-    private ImageView card2Stack3J4;
-
-    @FXML
-    private ImageView card2Stack4J1;
-
-    @FXML
-    private ImageView card2Stack4J2;
-
-    @FXML
-    private ImageView card2Stack4J3;
-
-    @FXML
-    private ImageView card2Stack4J4;
-
-    @FXML
-    private Circle circleTextPlayer1;
-
-    @FXML
-    private Circle circleTextPlayer2;
-
-    @FXML
-    private Circle circleTextPlayer3;
-
-    @FXML
-    private ImageView deckOfCards;
-
-    @FXML
-    private ImageView discardDeck;
-
-    @FXML
-    private ImageView handCard1;
-
-    @FXML
-    private ImageView handCard2;
-
-    @FXML
-    private ImageView handCard3;
-
-    @FXML
-    private ImageView j1image;
-
-    @FXML
-    private ImageView j2image;
-
-    @FXML
-    private ImageView j3image;
-
-    @FXML
-    private Button o1j1Button;
-
-    @FXML
-    private Button o1j2Button;
-
-    @FXML
-    private Button o1j3Button;
-
-    @FXML
-    private Button o1j4Button;
-
-    @FXML
-    private Button o2j1Button;
-
-    @FXML
-    private Button o2j2Button;
-
-    @FXML
-    private Button o2j3Button;
-
-    @FXML
-    private Button o2j4Button;
-
-    @FXML
-    private Button o3j1Button;
-
-    @FXML
-    private Button o3j3Button;
-
-    @FXML
-    private Button o3j4Button;
-
-    @FXML
-    private Button o4j1Button;
-
-    @FXML
-    private Button o4j3Button;
-
-    @FXML
-    private Button o4j4Button;
-
-    @FXML
-    private StackPane stackPane1J1;
-
-    @FXML
-    private StackPane stackPane1J2;
-
-    @FXML
-    private StackPane stackPane1J3;
-
-    @FXML
-    private StackPane stackPane1J4;
-
-    @FXML
-    private StackPane stackPane2J1;
-
-    @FXML
-    private StackPane stackPane2J2;
-
-    @FXML
-    private StackPane stackPane2J3;
-
-    @FXML
-    private StackPane stackPane2J4;
-
-    @FXML
-    private StackPane stackPane3J1;
-
-    @FXML
-    private StackPane stackPane3J2;
-
-
-    @FXML
-    private StackPane stackPane3J3;
-
-    @FXML
-    private StackPane stackPane4J2;
-
-    @FXML
-    private StackPane stackPane3J4;
-
-    @FXML
-    private StackPane stackPane4J1;
-
-    @FXML
-    private StackPane stackPane4J3;
-
-    @FXML
-    private StackPane stackPane4J4;
-
-    @FXML
-    private Text txtJ1;
 
     @FXML
-    private Text txtJ2;
+    private StackPane stackPane1J1,stackPane1J2,stackPane1J3,stackPane1J4,stackPane2J1,stackPane2J2,stackPane2J3,stackPane2J4
+    ,stackPane3J1,stackPane3J2,stackPane3J3,stackPane4J2,stackPane3J4,stackPane4J1,stackPane4J3,stackPane4J4;
 
     @FXML
-    private Text txtJ3;
+    private Text txtJ1,txtJ2,txtJ3;
 
     private Stage stage;
     private Scene scene;
@@ -466,7 +240,52 @@ public class BoardController implements Initializable {
 
 
     }
+
+
+    public void juegaOrganBot(int aux) {
+    	
+        switch (manoBot1[aux].getColor().toString()) {
+            case "RED":
+                if (card1Stack1J1.getImage() == null) {
+                    card1Stack1J1.setImage(manoBot1[aux].getImagen());
+                } else {
+                    descartes.add(manoBot1[aux]);
+                    discardDeck.setImage(manoBot1[aux].getImagen());
+                }
+                break;
+            case "BLUE":
+                if (card1Stack2J1.getImage() == null) {
+                    card1Stack2J1.setImage(manoBot1[aux].getImagen());
+                } else {
+                    descartes.add(manoBot1[aux]);
+                    discardDeck.setImage(manoBot1[aux].getImagen());
+                }
+                break;
+            case "GREEN":
+                if (card1Stack3J1.getImage() == null) {
+                    card1Stack3J1.setImage(manoBot1[aux].getImagen());
+                } else {
+                    descartes.add(manoBot1[aux]);
+                    discardDeck.setImage(manoBot1[aux].getImagen());
+                }
+                break;
+            case "YELLOW":
+                if (card1Stack4J1.getImage() == null) {
+                    card1Stack4J1.setImage(manoBot1[aux].getImagen());
+                } else {
+                    descartes.add(manoBot1[aux]);
+                    discardDeck.setImage(manoBot1[aux].getImagen());
+                }
+                break;
+            default:
+                discardDeck.setImage(new Image("/image/card/swapBody.png"));
+                break;
+        }
+        renovarMano(manoBot1, aux);
+    }
+
     public void useVirusHealBot() {
+    	
         descartes.add(manoBot1[0]);
         renovarMano(manoBot1, 0);
         discardDeck.setImage(manoBot1[0].getImagen());
