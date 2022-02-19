@@ -18,4 +18,22 @@ VirusFX Game ha sido desarrollado por un grupo de estudiantes del Ciclo Superior
 
   
 
-**README EN DESARROLLO**
+<h5>¿ Como podemos instalar VirusFX Game ? </h5>
+
+Desarrollar esta parte**
+
+<h5> ¿ Con que tecnologías se ha desarrollado VirusFX Game ? </h5>
+
+VirusFX Game se ha desarrollado con Java FX , se ha seguido el estilo MVC ( Modelo - Vista - Controlador ) visto en clase , desarrollándose buenas prácticas sobre dicho modelo . No se usan librerias externas ya que no han hecho falta para el proyecto . 
+
+Por otra parte se ha implementado comentarios tipo JavaDoc , con la finalidad de facilitar el entendimiento del código usado.
+
+<h5>¿ Donde puedo observar las normas de juego ? </h5>
+
+Nuestro equipo de desarrollo ha implementado una guía de juego para facilitar su uso , para verla haz click en el siguiente enlace :
+
+<h6><a href="https://github.com/dam-dad/Virus/blob/main/GuiaUsuario.md">Guia de juego para usuario</a></h6>
+
+
+
+**Desde el equipo de desarrollo de VirusFX Game le damos las gracias por hacer uso de nuestro juego y esperamos que disfruten de una buena experiencia **

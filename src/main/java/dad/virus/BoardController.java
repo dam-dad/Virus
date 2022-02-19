@@ -198,13 +198,43 @@ public class BoardController implements Initializable {
     private Button o1j1Button;
 
     @FXML
+    private Button o1j2Button;
+
+    @FXML
+    private Button o1j3Button;
+
+    @FXML
+    private Button o1j4Button;
+
+    @FXML
     private Button o2j1Button;
+
+    @FXML
+    private Button o2j2Button;
+
+    @FXML
+    private Button o2j3Button;
+
+    @FXML
+    private Button o2j4Button;
 
     @FXML
     private Button o3j1Button;
 
     @FXML
+    private Button o3j3Button;
+
+    @FXML
+    private Button o3j4Button;
+
+    @FXML
     private Button o4j1Button;
+
+    @FXML
+    private Button o4j3Button;
+
+    @FXML
+    private Button o4j4Button;
 
     @FXML
     private StackPane stackPane1J1;
@@ -236,8 +266,12 @@ public class BoardController implements Initializable {
     @FXML
     private StackPane stackPane3J2;
 
+
     @FXML
     private StackPane stackPane3J3;
+
+    @FXML
+    private StackPane stackPane4J2;
 
     @FXML
     private StackPane stackPane3J4;
@@ -263,18 +297,13 @@ public class BoardController implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    @FXML
-    void actionShowDeck(MouseEvent event) {
-
-    }
-
     private void setImagePlayer() throws NullPointerException {
         boolean continua = true;
         while (continua) {
             try {
                 String srcImg1 = this.getClass().getResource(("/image/players/p" + randomNumber(6, 7) + ".jpg")).toString();
                 String srcImg2 = this.getClass().getResource(("/image/players/p" + randomNumber(3, 5) + ".jpg")).toString();
-                String srcImg3= this.getClass().getResource(("/image/players/p" + randomNumber(0, 2) + ".jpg")).toString();
+                String srcImg3 = this.getClass().getResource(("/image/players/p" + randomNumber(0, 2) + ".jpg")).toString();
                 circleTextPlayer1.setFill(new ImagePattern(new Image(srcImg1)));
                 circleTextPlayer2.setFill(new ImagePattern(new Image(srcImg2)));
                 circleTextPlayer3.setFill(new ImagePattern(new Image(srcImg3)));
@@ -362,13 +391,6 @@ public class BoardController implements Initializable {
         jueganBots(manoBot2, 2);
         jueganBots(manoBot3, 3);
     }
-    public void esperar() {
-    	try {
-    		Thread.sleep(2000);
-    	}catch(Exception e) {
-    		e.printStackTrace();
-    	}
-    }
 
     @FXML
     void onc2action(ActionEvent event) {
@@ -386,33 +408,23 @@ public class BoardController implements Initializable {
         jueganBots(manoBot3, 3);
     }
 
-    public void mostrarmano(Card[] mano) {
-        for (int i = 0; i < mano.length; i++) {
-            System.out.print(mano[i]);
-        }
-        System.out.println();
-    }
-
-    public void buttonAction(int i) {
+    public void checkDeck() {
         if (deck.getDeck().size() == 0) {
             deck.getDeck().addAll(descartes);
             descartes.removeAll(descartes);
             Collections.shuffle(deck.getDeck());
         }
+    }
 
-        switch (mano[i].getType().toString()) {
+    public void juegatodosBot() {
+        checkDeck();
+        jueganBots(manoBot1, 1);
+        jueganBots(manoBot2, 2);
+        jueganBots(manoBot3, 3);
+    }
 
-            case "ORGAN":
-                useOrgan(i);
-                break;
-            case "HEAL":
-                useHeal(i);
-                break;
-            case "VIRUS":
-                useVirusHeal(i);
-                break;
-        }
-
+    public void buttonAction(int i) {
+        checkDeck();
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -428,62 +440,7 @@ public class BoardController implements Initializable {
                 handCard3.setImage(mano[i].getImagen());
                 break;
         }
-
-/*        mostrarmano(mano);
-        System.out.println("Descartes " + descartes);
-        System.out.println("Deck: " + deck.getDeck().size());*/
-
     }
-
-    public void useOrgan(int aux) {
-/*        mostrarmano(mano);
-        System.out.println(descartes);*/
-        switch (mano[aux].getColor().toString()) {
-            case "RED":
-                if (card1Stack1J4.getImage() == null) {
-                    card1Stack1J4.setImage(mano[aux].getImagen());
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            case "BLUE":
-                if (card1Stack2J4.getImage() == null) {
-                    card1Stack2J4.setImage(mano[aux].getImagen());
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            case "GREEN":
-                if (card1Stack3J4.getImage() == null) {
-                    card1Stack3J4.setImage(mano[aux].getImagen());
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            case "YELLOW":
-                if (card1Stack4J4.getImage() == null) {
-                    card1Stack4J4.setImage(mano[aux].getImagen());
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            default:
-                discardDeck.setImage(new Image("/image/card/swapBody.png"));
-                break;
-        }
-    }
-
-    public void useVirusHeal(int aux) {
-        //mostrarmano(mano);
-
-        descartes.add(mano[aux]);
-        discardDeck.setImage(mano[aux].getImagen());
-    }
-
     public void jueganBots(Card manoBot[], int bot) {
 
         if (deck.getDeck().size() == 0) {
@@ -493,14 +450,14 @@ public class BoardController implements Initializable {
         }
 
         if (manoBot[0].getType().toString().equals("ORGAN")) {
-            juegaOrganBot2(0, bot);
+            juegaOrganBot(0, bot);
             renovarMano(manoBot, 0);
 
         } else if (manoBot[1].getType().toString().equals("ORGAN")) {
-            juegaOrganBot2(1, bot);
+            juegaOrganBot(1, bot);
             renovarMano(manoBot, 1);
         } else if (manoBot[2].getType().toString().equals("ORGAN")) {
-            juegaOrganBot2(2, bot);
+            juegaOrganBot(2, bot);
             renovarMano(manoBot, 2);
         } else {
             System.out.println("No habia organo");
@@ -509,63 +466,34 @@ public class BoardController implements Initializable {
 
 
     }
-
-    public void juegaOrganBot(int aux) {
-        switch (manoBot1[aux].getColor().toString()) {
-            case "RED":
-                if (card1Stack1J1.getImage() == null) {
-                    card1Stack1J1.setImage(manoBot1[aux].getImagen());
-                } else {
-                    descartes.add(manoBot1[aux]);
-                    discardDeck.setImage(manoBot1[aux].getImagen());
-                }
-                break;
-            case "BLUE":
-                if (card1Stack2J1.getImage() == null) {
-                    card1Stack2J1.setImage(manoBot1[aux].getImagen());
-                } else {
-                    descartes.add(manoBot1[aux]);
-                    discardDeck.setImage(manoBot1[aux].getImagen());
-                }
-                break;
-            case "GREEN":
-                if (card1Stack3J1.getImage() == null) {
-                    card1Stack3J1.setImage(manoBot1[aux].getImagen());
-                } else {
-                    descartes.add(manoBot1[aux]);
-                    discardDeck.setImage(manoBot1[aux].getImagen());
-                }
-                break;
-            case "YELLOW":
-                if (card1Stack4J1.getImage() == null) {
-                    card1Stack4J1.setImage(manoBot1[aux].getImagen());
-                } else {
-                    descartes.add(manoBot1[aux]);
-                    discardDeck.setImage(manoBot1[aux].getImagen());
-                }
-                break;
-            default:
-                discardDeck.setImage(new Image("/image/card/swapBody.png"));
-                break;
-        }
-        renovarMano(manoBot1, aux);
-    }
-
     public void useVirusHealBot() {
         descartes.add(manoBot1[0]);
         renovarMano(manoBot1, 0);
         discardDeck.setImage(manoBot1[0].getImagen());
     }
-
     public void renovarMano(Card manoX[], int i) {
         manoX[i] = null;
         manoX[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
-
-
     }
+    public void renovarMiMano(int i) {
+        mano[i] = null;
+        mano[i] = deck.getDeck().get(0);
+        deck.getDeck().remove(0);
 
-    public void juegaOrganBot2(int aux, int bot) {
+        switch (i) {
+            case 0:
+                handCard1.setImage(mano[i].getImagen());
+                break;
+            case 1:
+                handCard2.setImage(mano[i].getImagen());
+                break;
+            case 2:
+                handCard3.setImage(mano[i].getImagen());
+                break;
+        }
+    }
+    public void juegaOrganBot(int aux, int bot) {
         if (bot == 1) {
             switch (manoBot1[aux].getColor().toString()) {
                 case "RED":
@@ -644,7 +572,6 @@ public class BoardController implements Initializable {
                     break;
             }
             renovarMano(manoBot2, aux);
-
         } else if (bot == 3) {
             switch (manoBot3[aux].getColor().toString()) {
                 case "RED":
@@ -687,93 +614,183 @@ public class BoardController implements Initializable {
         }
     }
 
-    public void useHeal(int aux) {
-/*        mostrarmano(mano);
-        System.out.println(descartes);*/
-        switch (mano[aux].getColor().toString()) {
-            case "RED":
-                if (card1Stack1J4.getImage() != null) {
-                    new Heal(RED).heal(playerBody[0]);
-                    if (playerBody[0].isInmune()) {
-                        card2Stack1J4.setImage(playerBody[0].getImagen());
-                    } else if (playerBody[0].isHealthy()) {
-                        card2Stack1J4.setImage(mano[aux].getImagen());
-                    } else {
-                        card2Stack1J4.setImage(new Image("/image/card/swapBody.png"));
-                    }
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            case "BLUE":
-                if (card1Stack2J4.getImage()  != null) {
-                    new Heal(BLUE).heal(playerBody[1]);
-                    if (playerBody[1].isInmune()) {
-                        card2Stack2J4.setImage(playerBody[1].getImagen());
-                    } else if (playerBody[1].isHealthy()) {
-                        card2Stack2J4.setImage(mano[aux].getImagen());
-                    } else {
-                        card2Stack2J4.setImage(new Image("/image/card/swapBody.png"));
-                    }
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            case "GREEN":
-                if (card1Stack3J4.getImage() != null) {
-                    new Heal(GREEN).heal(playerBody[2]);
-                    if (playerBody[2].isInmune()) {
-                        card2Stack3J4.setImage(playerBody[2].getImagen());
-                    } else if (playerBody[2].isHealthy()) {
-                        card2Stack3J4.setImage(mano[aux].getImagen());
-                    } else {
-                        card2Stack3J4.setImage(new Image("/image/card/swapBody.png"));
-                    }
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            case "YELLOW":
-                if (card1Stack4J4.getImage()  != null) {
-                    new Heal(YELLOW).heal(playerBody[3]);
-                    if (playerBody[3].isInmune()) {
-                        card2Stack4J4.setImage(playerBody[3].getImagen());
-                    } else if (playerBody[3].isHealthy()) {
-                        card2Stack4J4.setImage(mano[aux].getImagen());
-                    } else {
-                        card2Stack4J4.setImage(new Image("/image/card/swapBody.png"));
-                    }
-                } else {
-                    descartes.add(mano[aux]);
-                    discardDeck.setImage(mano[aux].getImagen());
-                }
-                break;
-            default:
-                discardDeck.setImage(new Image("/image/card/swapBody.png"));
-                break;
-        }
+    @FXML
+    void onO1j4Action(ActionEvent event) {
+        checkDeck();
+        useOrgan(RED, stackPane1J4);
+        juegatodosBot();
+    }
+
+    @FXML
+    void onO2j4Action(ActionEvent event) {
+        checkDeck();
+        useOrgan(BLUE, stackPane2J4);
+        juegatodosBot();
+    }
+
+    @FXML
+    void onO3j4Acton(ActionEvent event) {
+        checkDeck();
+        useOrgan(GREEN, stackPane3J4);
+        juegatodosBot();
+    }
+
+    @FXML
+    void onO4j4Action(ActionEvent event) {
+        checkDeck();
+        useOrgan(YELLOW, stackPane4J4);
+        juegatodosBot();
     }
 
     @FXML
     void onO1j1Action(ActionEvent event) {
+        useVirus(RED, stackPane1J1);
+        juegatodosBot();
+    }
 
+    @FXML
+    void onO1j2Action(ActionEvent event) {
+        useVirus(RED, stackPane1J2);
+        juegatodosBot();
+    }
+
+    @FXML
+    void onO1j3Action(ActionEvent event) {
+        useVirus(RED, stackPane1J3);
+        juegatodosBot();
+    }
+
+
+    @FXML
+    void onO2j2Action(ActionEvent event) {
+        useVirus(BLUE, stackPane2J2);
+        juegatodosBot();
     }
 
     @FXML
     void onO2j1Action(ActionEvent event) {
+        useVirus(BLUE, stackPane2J1);
+        juegatodosBot();
+    }
 
+    @FXML
+    void onO2j3Action(ActionEvent event) {
+        useVirus(BLUE, stackPane2J3);
+        juegatodosBot();
     }
 
     @FXML
     void onO3j1Action(ActionEvent event) {
+        useVirus(GREEN, stackPane3J1);
+        juegatodosBot();
+    }
 
+    @FXML
+    void onO3j2Action(ActionEvent event) {
+        useVirus(GREEN, stackPane3J2);
+        juegatodosBot();
+    }
+
+    @FXML
+    void onO3j3Action(ActionEvent event) {
+        useVirus(GREEN, stackPane3J3);
+        juegatodosBot();
     }
 
     @FXML
     void onO4j1Action(ActionEvent event) {
+        useVirus(YELLOW, stackPane4J1);
+        juegatodosBot();
+    }
 
+    @FXML
+    void onO4j2Action(ActionEvent event) {
+        useVirus(YELLOW, stackPane4J2);
+        juegatodosBot();
+    }
+
+    @FXML
+    void onO4j3Action(ActionEvent event) {
+        useVirus(YELLOW, stackPane4J3);
+        juegatodosBot();
+    }
+
+    public boolean isOrgan(Card manoX) {
+        boolean isOrgan = false;
+        if (manoX.getType() == Type.ORGAN)
+            isOrgan = true;
+        return isOrgan;
+    }
+
+    public boolean isColor(Card manoX, Color color) {
+        boolean isColor = false;
+        if (manoX.getColor() == color)
+            isColor = true;
+        return isColor;
+    }
+
+    public void useVirus(Color color, StackPane stack) {
+        Button button = (Button) stack.getChildren().get(0);
+        ImageView image = (ImageView) button.getGraphic();
+        ImageView imageVirus = (ImageView) stack.getChildren().get(1);
+        if (image.getImage() != null) {
+            if (mano[0].getColor() == color && mano[0].getType() == Type.VIRUS) {
+                imageVirus.setImage(mano[0].getImagen());
+                renovarMiMano(0);
+            } else if (mano[1].getColor() == color && mano[1].getType() == Type.VIRUS) {
+                imageVirus.setImage(mano[1].getImagen());
+                renovarMiMano(1);
+            } else if (mano[2].getColor() == color && mano[2].getType() == Type.VIRUS) {
+                imageVirus.setImage(mano[2].getImagen());
+                renovarMiMano(2);
+            }
+        }
+    }
+
+    public void useOrgan(Color color, StackPane stack) {
+        Boolean healthy = false;
+        Button button = (Button) stack.getChildren().get(0);
+        ImageView image = (ImageView) button.getGraphic();
+        ImageView imageHeal = (ImageView) stack.getChildren().get(1);
+        if (image.getImage() == null) {
+            if (mano[0].getColor() == color && mano[0].getType() == Type.ORGAN) {
+                image.setImage(mano[0].getImagen());
+                renovarMiMano(0);
+            } else if (mano[1].getColor() == color && mano[1].getType() == Type.ORGAN) {
+                image.setImage(mano[1].getImagen());
+                renovarMiMano(1);
+            } else if (mano[2].getColor() == color && mano[2].getType() == Type.ORGAN) {
+                image.setImage(mano[2].getImagen());
+                renovarMiMano(2);
+            }
+        } else {
+            if (imageHeal.getImage() == null && healthy==false) {
+                if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
+                    imageHeal.setImage(mano[0].getImagen());
+                    renovarMiMano(0);
+                    healthy = true;
+                } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
+                    imageHeal.setImage(mano[1].getImagen());
+                    renovarMiMano(1);
+                    healthy = true;
+                } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
+                    imageHeal.setImage(mano[2].getImagen());
+                    renovarMiMano(2);
+                    healthy = true;
+                }
+            } else {
+                String url = "/image/players/inmune.png";
+                if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
+                    imageHeal.setImage(new Image(url));
+                    renovarMiMano(0);
+                } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
+                    imageHeal.setImage(new Image(url));
+                    renovarMiMano(1);
+                } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
+                    imageHeal.setImage(new Image(url));
+                    renovarMiMano(2);
+                }
+            }
+        }
     }
 }
