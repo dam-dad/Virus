@@ -447,7 +447,7 @@ public class BoardController implements Initializable {
     }
 
     @FXML
-    void onO3j4Acton(ActionEvent event) {
+    void onO3j4Action(ActionEvent event) {
         checkDeck();
         useOrgan(GREEN, stackPane3J4);
         juegatodosBot();
