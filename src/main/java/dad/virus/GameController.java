@@ -81,7 +81,6 @@ public class GameController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-    	
         Collections.shuffle(deck.getDeck());//Baraja de mazo
         mano = new Card[3];//Creacion de mano
         

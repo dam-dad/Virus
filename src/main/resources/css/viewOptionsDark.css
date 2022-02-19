@@ -2,7 +2,7 @@
     -fx-background-color: #162340;
 }
 
-Button {
+#viewOptions > Button {
     -fx-background-color: #14628c; /* other Blue */
 }
 

@@ -3,11 +3,6 @@
     -fx-text-fill: white;
 }
 
-Button {
-	-fx-background-color: #00a8a8; /* other Blue */
-	-fx-background-radius: 15;
-}
-
 Label{
 	-fx-text-fill: white;
   	-fx-font-weight: bold;

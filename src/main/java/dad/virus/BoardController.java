@@ -14,10 +14,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
@@ -45,22 +42,19 @@ public class BoardController implements Initializable {
     private static ArrayList<Card> descartes;
 
     @FXML
-    private HBox boardJ1;
+    public BorderPane borderPaneView;
+
+    @FXML
+    private VBox boardJ1;
 
     @FXML
     private HBox boardJ2;
 
     @FXML
-    private HBox boardJ3;
+    private VBox boardJ3;
 
     @FXML
     private HBox boardJ4;
-
-    @FXML
-    private GridPane boardView;
-
-    @FXML
-    private Button btnBackMenu;
 
     @FXML
     private Button c1;
@@ -268,24 +262,6 @@ public class BoardController implements Initializable {
 
     private Stage stage;
     private Scene scene;
-
-    @FXML
-    void actionBackMenu(ActionEvent event) throws IOException {
-        //Carga de la vista de opciones
-    	
-        RootController rootController = new RootController();
-        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("/fxml/rootView.fxml"));
-        loader.setController(rootController);
-        Parent root = (Parent)loader.load();
-        Scene scene = new Scene(root);
-        Stage thisStage = (Stage)btnBackMenu.getScene().getWindow();
-
-        scene.getStylesheets().add(thisStage.getScene().getStylesheets().get(0));
-        thisStage.setScene(scene);
-
-        thisStage.centerOnScreen();
-    }
-
 
     @FXML
     void actionShowDeck(MouseEvent event) {
