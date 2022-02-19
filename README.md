@@ -34,3 +34,6 @@ Nuestro equipo de desarrollo ha implementado una guía de juego para facilitar s
 
 <h6><a href="https://github.com/dam-dad/Virus/blob/main/GuiaUsuario.md">Guia de juego para usuario</a></h6>
 
+
+
+**Desde el equipo de desarrollo de VirusFX Game le damos las gracias por hacer uso de nuestro juego y esperamos que disfruten de una buena experiencia **
