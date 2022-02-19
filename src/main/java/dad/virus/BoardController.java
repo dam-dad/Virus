@@ -42,31 +42,33 @@ public class BoardController implements Initializable {
     private static ArrayList<Card> descartes;
 
     @FXML
-    private HBox boardJ1,boardJ2,boardJ3,boardJ4;
+    private HBox boardJ2, boardJ4;
+
+    @FXML
+    private VBox boardJ1, boardJ3;
 
     @FXML
     private GridPane boardView;
 
     @FXML
-    private Button btnBackMenu,c1,c2,c3,o1j1Button,o1j2Button,o1j3Button,o1j4Button,o2j1Button,o2j2Button,o2j3Button,o2j4Button,o3j1Button,
-    o3j3Button,o3j4Button,o4j1Button,o4j3Button,o4j4Button;
+    private Button btnBackMenu, c1, c2, c3, o1j1Button, o1j2Button, o1j3Button, o1j4Button, o2j1Button, o2j2Button, o2j3Button, o2j4Button, o3j1Button,
+            o3j3Button, o3j4Button, o4j1Button, o4j3Button, o4j4Button;
 
     @FXML
-    private ImageView card1Stack1J1,card1Stack1J2,card1Stack1J3,card1Stack1J4,card1Stack2J1,card1Stack2J2,card1Stack2J3,card1Stack2J4,
-    card1Stack3J1,card1Stack3J2,card1Stack3J3,card1Stack3J4,card1Stack4J1,card1Stack4J2,card1Stack4J3,card1Stack4J4,card2Stack1J1,card2Stack1J2,
-    card2Stack1J3,card2Stack1J4,card2Stack2J1,card2Stack2J2,card2Stack2J3,card2Stack2J4,card2Stack3J1,card2Stack3J2,card2Stack3J3,card2Stack3J4,
-    card2Stack4J1,card2Stack4J2,card2Stack4J3,card2Stack4J4,deckOfCards,discardDeck,handCard1,handCard2,handCard3,j1image,j2image,j3image;
+    private ImageView card1Stack1J1, card1Stack1J2, card1Stack1J3, card1Stack1J4, card1Stack2J1, card1Stack2J2, card1Stack2J3, card1Stack2J4,
+            card1Stack3J1, card1Stack3J2, card1Stack3J3, card1Stack3J4, card1Stack4J1, card1Stack4J2, card1Stack4J3, card1Stack4J4, card2Stack1J1, card2Stack1J2,
+            card2Stack1J3, card2Stack1J4, card2Stack2J1, card2Stack2J2, card2Stack2J3, card2Stack2J4, card2Stack3J1, card2Stack3J2, card2Stack3J3, card2Stack3J4,
+            card2Stack4J1, card2Stack4J2, card2Stack4J3, card2Stack4J4, deckOfCards, discardDeck, handCard1, handCard2, handCard3, j1image, j2image, j3image;
 
     @FXML
-    private Circle circleTextPlayer1,circleTextPlayer2,circleTextPlayer3;
+    private Circle circleTextPlayer1, circleTextPlayer2, circleTextPlayer3;
 
 
     @FXML
-    private StackPane stackPane1J1,stackPane1J2,stackPane1J3,stackPane1J4,stackPane2J1,stackPane2J2,stackPane2J3,stackPane2J4
-    ,stackPane3J1,stackPane3J2,stackPane3J3,stackPane4J2,stackPane3J4,stackPane4J1,stackPane4J3,stackPane4J4;
+    private StackPane stackPane1J1, stackPane1J2, stackPane1J3, stackPane1J4, stackPane2J1, stackPane2J2, stackPane2J3, stackPane2J4, stackPane3J1, stackPane3J2, stackPane3J3, stackPane4J2, stackPane3J4, stackPane4J1, stackPane4J3, stackPane4J4;
 
     @FXML
-    private Text txtJ1,txtJ2,txtJ3;
+    private Text txtJ1, txtJ2, txtJ3;
 
     private Stage stage;
     private Scene scene;
@@ -215,14 +217,9 @@ public class BoardController implements Initializable {
                 break;
         }
     }
+
     public void jueganBots(Card manoBot[], int bot) {
-
-        if (deck.getDeck().size() == 0) {
-            deck.getDeck().addAll(descartes);
-            descartes.removeAll(descartes);
-            Collections.shuffle(deck.getDeck());
-        }
-
+        checkDeck();
         if (manoBot[0].getType().toString().equals("ORGAN")) {
             juegaOrganBot(0, bot);
             renovarMano(manoBot, 0);
@@ -237,13 +234,10 @@ public class BoardController implements Initializable {
             System.out.println("No habia organo");
             useVirusHealBot();
         }
-
-
     }
 
 
     public void juegaOrganBot(int aux) {
-    	
         switch (manoBot1[aux].getColor().toString()) {
             case "RED":
                 if (card1Stack1J1.getImage() == null) {
@@ -285,17 +279,21 @@ public class BoardController implements Initializable {
     }
 
     public void useVirusHealBot() {
-    	
+
         descartes.add(manoBot1[0]);
         renovarMano(manoBot1, 0);
         discardDeck.setImage(manoBot1[0].getImagen());
     }
+
     public void renovarMano(Card manoX[], int i) {
+        checkDeck();
         manoX[i] = null;
         manoX[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
     }
+
     public void renovarMiMano(int i) {
+        checkDeck();
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -312,6 +310,7 @@ public class BoardController implements Initializable {
                 break;
         }
     }
+
     public void juegaOrganBot(int aux, int bot) {
         if (bot == 1) {
             switch (manoBot1[aux].getColor().toString()) {
@@ -567,7 +566,6 @@ public class BoardController implements Initializable {
     }
 
     public void useOrgan(Color color, StackPane stack) {
-        Boolean healthy = false;
         Button button = (Button) stack.getChildren().get(0);
         ImageView image = (ImageView) button.getGraphic();
         ImageView imageHeal = (ImageView) stack.getChildren().get(1);
@@ -583,19 +581,16 @@ public class BoardController implements Initializable {
                 renovarMiMano(2);
             }
         } else {
-            if (imageHeal.getImage() == null && healthy==false) {
+            if (imageHeal.getImage() == null) {
                 if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
                     imageHeal.setImage(mano[0].getImagen());
                     renovarMiMano(0);
-                    healthy = true;
                 } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
                     imageHeal.setImage(mano[1].getImagen());
                     renovarMiMano(1);
-                    healthy = true;
                 } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
                     imageHeal.setImage(mano[2].getImagen());
                     renovarMiMano(2);
-                    healthy = true;
                 }
             } else {
                 String url = "/image/players/inmune.png";
