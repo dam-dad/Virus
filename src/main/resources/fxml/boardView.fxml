@@ -252,7 +252,7 @@
             </StackPane>
             <StackPane fx:id="stackPane3J4" prefHeight="120.0" prefWidth="120.0">
                <children>
-                  <Button fx:id="o3j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO3j1Action">
+                  <Button fx:id="o3j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO3j4Acton">
                      <graphic>
                         <ImageView fx:id="card1Stack3J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
