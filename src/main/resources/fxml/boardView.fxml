@@ -19,38 +19,54 @@
    <bottom>
       <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="480.0" prefHeight="95.0" BorderPane.alignment="TOP_CENTER">
          <children>
-            <HBox fx:id="boardJ4" alignment="CENTER" maxHeight="135.0" maxWidth="480.0" prefHeight="135.0" prefWidth="480.0">
+            <HBox fx:id="boardJ4" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="135.0" minWidth="480.0" prefHeight="135.0" prefWidth="480.0">
                <children>
-                  <StackPane fx:id="stackPane1J4" prefWidth="105.0">
+                  <StackPane fx:id="stackPane1J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <ImageView fx:id="card1Stack1J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="o1j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO1j4Action" prefHeight="100.0" prefWidth="65.0">
+                           <graphic>
+                              <ImageView fx:id="card1Stack1J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
                         <ImageView fx:id="card2Stack1J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                      </HBox.margin>
                   </StackPane>
-                  <StackPane fx:id="stackPane2J4" prefHeight="105.0" prefWidth="105.0">
+                  <StackPane fx:id="stackPane2J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <ImageView fx:id="card1Stack2J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="card2Stack2J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+                        <Button fx:id="o2j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO2j4Action" prefHeight="100.0" prefWidth="65.0">
+                           <graphic>
+                              <ImageView fx:id="card1Stack2J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <ImageView fx:id="card2Stack2J4" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                      </HBox.margin>
                   </StackPane>
-                  <StackPane fx:id="stackPane3J4" prefHeight="105.0" prefWidth="105.0">
+                  <StackPane fx:id="stackPane3J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <ImageView fx:id="card1Stack3J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="o3j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO3j1Action" prefHeight="100.0" prefWidth="65.0">
+                           <graphic>
+                              <ImageView fx:id="card1Stack3J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
                         <ImageView fx:id="card2Stack3J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </StackPane>
-                  <StackPane fx:id="stackPane4J4" prefHeight="105.0" prefWidth="105.0">
+                  <StackPane fx:id="stackPane4J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <ImageView fx:id="card1Stack4J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="o4j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO4j4Action" prefHeight="100.0" prefWidth="65.0">
+                           <graphic>
+                              <ImageView fx:id="card1Stack4J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
                         <ImageView fx:id="card2Stack4J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                      </children>
                      <HBox.margin>
@@ -58,9 +74,6 @@
                      </HBox.margin>
                   </StackPane>
                </children>
-               <VBox.margin>
-                  <Insets bottom="5.0" top="-100.0" />
-               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="80.0" minWidth="50.0" spacing="5.0">
                <children>
@@ -98,7 +111,7 @@
             <Insets />
          </opaqueInsets>
          <BorderPane.margin>
-            <Insets top="20.0" />
+            <Insets top="-100.0" />
          </BorderPane.margin>
       </VBox>
    </bottom>
@@ -179,13 +192,20 @@
                      </GridPane.margin>
                   </Circle>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </GridPane>
-            <HBox fx:id="boardJ2" alignment="CENTER" maxHeight="135.0" maxWidth="480.0" minHeight="135.0" minWidth="480.0" prefHeight="135.0" prefWidth="480.0">
+            <HBox fx:id="boardJ2" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="135.0" minWidth="480.0" prefHeight="135.0" prefWidth="480.0">
                <children>
-                  <StackPane fx:id="stackPane1J2" prefHeight="120.0" prefWidth="105.0">
+                  <StackPane fx:id="stackPane1J2" prefHeight="105.0" prefWidth="105.0">
                      <children>
-                        <ImageView fx:id="card1Stack1J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                        <ImageView fx:id="card2Stack1J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+                        <Button fx:id="o1j2Button" contentDisplay="GRAPHIC_ONLY" maxHeight="105.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO1j2Action">
+                           <graphic>
+                              <ImageView fx:id="card1Stack1J2" fitHeight="105.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <ImageView fx:id="card2Stack1J2" fitHeight="105.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                      </children>
                      <HBox.margin>
                         <Insets bottom="5.0" left="10.0" right="5.0" top="5.0" />
@@ -193,12 +213,12 @@
                   </StackPane>
                   <StackPane fx:id="stackPane2J2" prefHeight="105.0" prefWidth="105.0">
                      <children>
-                        <ImageView fx:id="card1Stack2J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                        </ImageView>
-                        <ImageView fx:id="card2Stack2J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                        <Button fx:id="o2j2Button" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO2Action">
+                           <graphic>
+                              <ImageView fx:id="card1Stack2J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
+                        <ImageView fx:id="card2Stack2J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                            <StackPane.margin>
                               <Insets />
                            </StackPane.margin>
@@ -210,11 +230,11 @@
                   </StackPane>
                   <StackPane fx:id="stackPane3J2" prefHeight="105.0" prefWidth="105.0">
                      <children>
-                        <ImageView fx:id="card1Stack3J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
-                           <StackPane.margin>
-                              <Insets />
-                           </StackPane.margin>
-                        </ImageView>
+                        <Button fx:id="o3j3Button" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO3j2Action">
+                           <graphic>
+                              <ImageView fx:id="card1Stack3J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
                         <ImageView fx:id="card2Stack3J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                      </children>
                      <HBox.margin>
@@ -223,7 +243,11 @@
                   </StackPane>
                   <StackPane fx:id="stackPane3J2" prefHeight="105.0" prefWidth="105.0">
                      <children>
-                        <ImageView fx:id="card1Stack4J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                        <Button fx:id="o4j4Button1" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO4j2Action">
+                           <graphic>
+                              <ImageView fx:id="card1Stack4J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                           </graphic>
+                        </Button>
                         <ImageView fx:id="card2Stack4J2" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                      </children>
                      <HBox.margin>
@@ -231,9 +255,6 @@
                      </HBox.margin>
                   </StackPane>
                </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
             </HBox>
          </children>
       </VBox>
@@ -283,7 +304,7 @@
             </StackPane>
          </children>
          <BorderPane.margin>
-            <Insets top="-120.0" />
+            <Insets top="-130.0" />
          </BorderPane.margin>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -292,38 +313,54 @@
    </left>
    <right>
       <VBox fx:id="boardJ3" alignment="CENTER" maxHeight="480.0" maxWidth="135.0" minHeight="480.0" minWidth="135.0" BorderPane.alignment="CENTER">
-         <children>
-            <StackPane fx:id="stackPane1J3" prefHeight="105.0" prefWidth="105.0">
-               <children>
-                  <ImageView fx:id="card1Stack1J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="card2Stack1J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-               </children>
-            </StackPane>
-            <StackPane fx:id="stackPane2J3" maxHeight="105.0" maxWidth="105.0">
-               <children>
-                  <ImageView fx:id="card1Stack2J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="card2Stack2J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-               </children>
-            </StackPane>
-            <StackPane fx:id="stackPane3J3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-               <children>
-                  <ImageView fx:id="card1Stack3J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="card2Stack3J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-               </children>
-            </StackPane>
-            <StackPane fx:id="stackPane4J3" maxHeight="105.0" maxWidth="105.0" minHeight="105.0" minWidth="105.0" prefHeight="105.0" prefWidth="105.0">
-               <children>
-                  <ImageView fx:id="card1Stack4J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="card2Stack4J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
-               </children>
-            </StackPane>
-         </children>
          <BorderPane.margin>
-            <Insets top="-120.0" />
+            <Insets top="-130.0" />
          </BorderPane.margin>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
+         <children>
+            <StackPane fx:id="stackPane1J3" prefHeight="105.0" prefWidth="105.0">
+               <children>
+                  <Button fx:id="o1j3Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO1j3Action">
+                     <graphic>
+                        <ImageView fx:id="card1Stack1J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="card2Stack1J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="stackPane2J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="120.0">
+               <children>
+                  <Button fx:id="o2j3Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO2j3Action">
+                     <graphic>
+                        <ImageView fx:id="card1Stack2J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="card2Stack2J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="stackPane3J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="120.0">
+               <children>
+                  <Button fx:id="o3j3Button1" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO3j3Action" prefHeight="100.0" prefWidth="65.0">
+                     <graphic>
+                        <ImageView fx:id="card1Stack3J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="card2Stack3J3" fitHeight="105.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="stackPane4J3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="120.0">
+               <children>
+                  <Button fx:id="o4j3Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO4j3Action" prefHeight="100.0" prefWidth="65.0">
+                     <graphic>
+                        <ImageView fx:id="card1Stack4J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <ImageView fx:id="card2Stack4J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
+               </children>
+            </StackPane>
+         </children>
       </VBox>
    </right>
    <opaqueInsets>
