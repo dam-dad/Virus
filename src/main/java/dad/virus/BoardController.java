@@ -204,13 +204,43 @@ public class BoardController implements Initializable {
     private Button o1j1Button;
 
     @FXML
+    private Button o1j2Button;
+
+    @FXML
+    private Button o1j3Button;
+
+    @FXML
+    private Button o1j4Button;
+
+    @FXML
     private Button o2j1Button;
+
+    @FXML
+    private Button o2j2Button;
+
+    @FXML
+    private Button o2j3Button;
+
+    @FXML
+    private Button o2j4Button;
 
     @FXML
     private Button o3j1Button;
 
     @FXML
+    private Button o3j3Button;
+
+    @FXML
+    private Button o3j4Button;
+
+    @FXML
     private Button o4j1Button;
+
+    @FXML
+    private Button o4j3Button;
+
+    @FXML
+    private Button o4j4Button;
 
     @FXML
     private StackPane stackPane1J1;
@@ -780,9 +810,28 @@ public class BoardController implements Initializable {
                 break;
         }
     }
-
     @FXML
     void onO1j1Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO1j2Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO1j3Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO1j4Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO2Action(ActionEvent event) {
 
     }
 
@@ -792,12 +841,47 @@ public class BoardController implements Initializable {
     }
 
     @FXML
+    void onO2j3Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO2j4Action(ActionEvent event) {
+
+    }
+
+    @FXML
     void onO3j1Action(ActionEvent event) {
 
     }
 
     @FXML
+    void onO3j2Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO3j3Action(ActionEvent event) {
+
+    }
+
+    @FXML
     void onO4j1Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO4j2Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO4j3Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO4j4Action(ActionEvent event) {
 
     }
 }
