@@ -32,5 +32,5 @@ Por otra parte se ha implementado comentarios tipo JavaDoc , con la finalidad de
 
 Nuestro equipo de desarrollo ha implementado una guía de juego para facilitar su uso , para verla haz click en el siguiente enlace :
 
-<h6><a href="">Guia de juego para usuario</a></h6>
+<h6><a href="https://github.com/dam-dad/Virus/blob/main/GuiaUsuario.md">Guia de juego para usuario</a></h6>
 
