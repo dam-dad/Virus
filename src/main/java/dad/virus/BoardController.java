@@ -201,6 +201,18 @@ public class BoardController implements Initializable {
     private ImageView j3image;
 
     @FXML
+    private Button o1j1Button;
+
+    @FXML
+    private Button o2j1Button;
+
+    @FXML
+    private Button o3j1Button;
+
+    @FXML
+    private Button o4j1Button;
+
+    @FXML
     private StackPane stackPane1J1;
 
     @FXML
@@ -767,5 +779,25 @@ public class BoardController implements Initializable {
                 discardDeck.setImage(new Image("/image/card/swapBody.png"));
                 break;
         }
+    }
+
+    @FXML
+    void onO1j1Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO2j1Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO3j1Action(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onO4j1Action(ActionEvent event) {
+
     }
 }
