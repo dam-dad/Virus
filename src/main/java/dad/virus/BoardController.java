@@ -271,9 +271,13 @@ public class BoardController implements Initializable {
 
     @FXML
     private StackPane stackPane3J2;
+    
 
     @FXML
     private StackPane stackPane3J3;
+    
+    @FXML
+    private StackPane stackPane4J2;
 
     @FXML
     private StackPane stackPane3J4;
@@ -446,6 +450,12 @@ public class BoardController implements Initializable {
             System.out.print(mano[i]);
         }
         System.out.println();
+    }
+    
+    public void juegatodosBot() {
+    	jueganBots(manoBot1, 1);
+        jueganBots(manoBot2, 2);
+        jueganBots(manoBot3, 3);
     }
 
     public void buttonAction(int i) {
@@ -789,82 +799,98 @@ public class BoardController implements Initializable {
     @FXML
     void onO1j4Action(ActionEvent event) {
         useOrgan(RED, stackPane1J4);
+        juegatodosBot();
     }
 
     @FXML
     void onO2j4Action(ActionEvent event) {
         useOrgan(BLUE, stackPane2J4);
+        juegatodosBot();
     }
 
     @FXML
     void onO3j4Acton(ActionEvent event) {
         useOrgan(GREEN, stackPane3J4);
+        juegatodosBot();
     }
 
     @FXML
     void onO4j4Action(ActionEvent event) {
         useOrgan(YELLOW, stackPane4J4);
+        juegatodosBot();
     }
 
     @FXML
     void onO1j1Action(ActionEvent event) {
-
+    	useVirus(RED,stackPane1J1);
+    	juegatodosBot();
     }
 
     @FXML
     void onO1j2Action(ActionEvent event) {
-
+    	useVirus(RED,stackPane1J2);
+    	juegatodosBot();
     }
 
     @FXML
     void onO1j3Action(ActionEvent event) {
-
+    	useVirus(RED,stackPane1J3);
+    	juegatodosBot();
     }
 
 
     @FXML
-    void onO2Action(ActionEvent event) {
-
+    void onO2j2Action(ActionEvent event) {
+    	useVirus(BLUE,stackPane2J2);
+    	juegatodosBot();
     }
 
     @FXML
     void onO2j1Action(ActionEvent event) {
-
+    	useVirus(BLUE,stackPane2J1);
+    	juegatodosBot();
     }
 
     @FXML
     void onO2j3Action(ActionEvent event) {
-
+    	useVirus(BLUE,stackPane2J3);
+    	juegatodosBot();
     }
 
     @FXML
     void onO3j1Action(ActionEvent event) {
-
+    	useVirus(GREEN,stackPane3J1);
+    	juegatodosBot();
     }
 
     @FXML
     void onO3j2Action(ActionEvent event) {
-
+    	useVirus(GREEN,stackPane3J2);
+    	juegatodosBot();
     }
 
     @FXML
     void onO3j3Action(ActionEvent event) {
-
+    	useVirus(GREEN,stackPane3J3);
+    	juegatodosBot();
     }
 
     @FXML
     void onO4j1Action(ActionEvent event) {
-
+    	useVirus(YELLOW,stackPane4J1);
+    	juegatodosBot();
     }
 
     @FXML
     void onO4j2Action(ActionEvent event) {
-
+    	useVirus(YELLOW,stackPane4J2);
+    	juegatodosBot();
     }
 
     @FXML
     void onO4j3Action(ActionEvent event) {
-
+    	useVirus(YELLOW,stackPane4J3);
+    	juegatodosBot();
     }
 
     public boolean isOrgan(Card manoX) {
@@ -879,6 +905,23 @@ public class BoardController implements Initializable {
         if (manoX.getColor() == color)
             isColor = true;
         return isColor;
+    }
+    public void useVirus(Color color , StackPane stack) {
+    	Button button = (Button) stack.getChildren().get(0);
+        ImageView image = (ImageView) button.getGraphic();
+        ImageView imageVirus = (ImageView) stack.getChildren().get(1);
+        if (image.getImage() != null) {
+            if (mano[0].getColor() == color && mano[0].getType() == Type.VIRUS) {
+            	imageVirus.setImage(mano[0].getImagen());
+                renovarMiMano(0);
+            } else if (mano[1].getColor() == color && mano[1].getType() == Type.VIRUS) {
+            	imageVirus.setImage(mano[1].getImagen());
+                renovarMiMano(1);
+            } else if (mano[2].getColor() == color && mano[2].getType() == Type.VIRUS) {
+            	imageVirus.setImage(mano[2].getImagen());
+                renovarMiMano(2);
+            }
+        }
     }
 
     public void useOrgan(Color color, StackPane stack) {

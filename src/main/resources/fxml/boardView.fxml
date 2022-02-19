@@ -129,7 +129,7 @@
             </StackPane>
             <StackPane fx:id="stackPane2J2" prefHeight="120.0" prefWidth="120.0">
                <children>
-                  <Button fx:id="o2j2Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO2Action">
+                  <Button fx:id="o2j2Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO2j2Action">
                      <graphic>
                         <ImageView fx:id="card1Stack2J2" fitHeight="120.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
@@ -157,7 +157,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </StackPane>
-            <StackPane fx:id="stackPane3J2" prefHeight="120.0" prefWidth="120.0">
+            <StackPane fx:id="stackPane4J2" prefHeight="120.0" prefWidth="120.0">
                <children>
                   <Button fx:id="o4j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO4j2Action">
                      <graphic>
