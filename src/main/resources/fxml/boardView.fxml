@@ -111,7 +111,7 @@
             <Insets />
          </opaqueInsets>
          <BorderPane.margin>
-            <Insets top="-100.0" />
+            <Insets />
          </BorderPane.margin>
       </VBox>
    </bottom>
@@ -260,9 +260,9 @@
       </VBox>
    </top>
    <left>
-      <VBox fx:id="boardJ1" alignment="CENTER" maxHeight="480.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="135.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="boardJ1" alignment="CENTER" maxHeight="480.0" maxWidth="135.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="135.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="stackPane1J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="65.0">
+            <StackPane fx:id="stackPane1J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="100.0" prefWidth="65.0" rotate="90.0">
                <children>
                   <Button fx:id="o1j1Button" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO1j1Action">
                      <graphic>
@@ -272,7 +272,7 @@
                   <ImageView fx:id="card2Stack1J1" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                </children>
             </StackPane>
-            <StackPane fx:id="stackPane2J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0">
+            <StackPane fx:id="stackPane2J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0" rotate="90.0">
                <children>
                   <Button fx:id="o2j1Button" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO2j1Action">
                      <graphic>
@@ -282,7 +282,7 @@
                   <ImageView fx:id="card2Stack2J1" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                </children>
             </StackPane>
-            <StackPane fx:id="stackPane3J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0">
+            <StackPane fx:id="stackPane3J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0" rotate="90.0">
                <children>
                   <Button fx:id="o3j1Button" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO3j1Action">
                      <graphic>
@@ -292,7 +292,7 @@
                   <ImageView fx:id="card2Stack3J1" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                </children>
             </StackPane>
-            <StackPane fx:id="stackPane4J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0">
+            <StackPane fx:id="stackPane4J1" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0" rotate="90.0">
                <children>
                   <Button fx:id="o4j1Button" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO4j1Action">
                      <graphic>
@@ -304,23 +304,20 @@
             </StackPane>
          </children>
          <BorderPane.margin>
-            <Insets top="-130.0" />
+            <Insets bottom="-135.0" top="-135.0" />
          </BorderPane.margin>
-         <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </padding>
       </VBox>
    </left>
    <right>
       <VBox fx:id="boardJ3" alignment="CENTER" maxHeight="480.0" maxWidth="135.0" minHeight="480.0" minWidth="135.0" BorderPane.alignment="CENTER">
          <BorderPane.margin>
-            <Insets top="-130.0" />
+            <Insets bottom="-135.0" top="-135.0" />
          </BorderPane.margin>
          <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets bottom="5.0" left="5.0" right="5.0" />
          </padding>
          <children>
-            <StackPane fx:id="stackPane1J3" prefHeight="105.0" prefWidth="105.0">
+            <StackPane fx:id="stackPane1J3" prefHeight="105.0" prefWidth="105.0" rotate="-90.0">
                <children>
                   <Button fx:id="o1j3Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO1j3Action">
                      <graphic>
@@ -330,7 +327,7 @@
                   <ImageView fx:id="card2Stack1J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                </children>
             </StackPane>
-            <StackPane fx:id="stackPane2J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="120.0">
+            <StackPane fx:id="stackPane2J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0" rotate="-90.0">
                <children>
                   <Button fx:id="o2j3Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO2j3Action">
                      <graphic>
@@ -340,7 +337,7 @@
                   <ImageView fx:id="card2Stack2J3" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                </children>
             </StackPane>
-            <StackPane fx:id="stackPane3J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="120.0" prefWidth="120.0">
+            <StackPane fx:id="stackPane3J3" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="105.0" prefWidth="105.0" rotate="-90.0">
                <children>
                   <Button fx:id="o3j3Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO3j3Action" prefHeight="100.0" prefWidth="65.0">
                      <graphic>
@@ -350,7 +347,7 @@
                   <ImageView fx:id="card2Stack3J3" fitHeight="105.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" />
                </children>
             </StackPane>
-            <StackPane fx:id="stackPane4J3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="120.0" prefWidth="120.0">
+            <StackPane fx:id="stackPane4J3" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="105.0" prefWidth="105.0" rotate="-90.0">
                <children>
                   <Button fx:id="o4j3Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO4j3Action" prefHeight="100.0" prefWidth="65.0">
                      <graphic>
