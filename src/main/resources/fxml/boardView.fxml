@@ -23,7 +23,7 @@
                <children>
                   <StackPane fx:id="stackPane1J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <Button fx:id="o1j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO1j4Action" prefHeight="100.0" prefWidth="65.0">
+                        <Button fx:id="o1j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO1j4Action" prefHeight="100.0" prefWidth="65.0" style="-fx-border-color: red;">
                            <graphic>
                               <ImageView fx:id="card1Stack1J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
@@ -36,7 +36,7 @@
                   </StackPane>
                   <StackPane fx:id="stackPane2J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <Button fx:id="o2j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO2j4Action" prefHeight="100.0" prefWidth="65.0">
+                        <Button fx:id="o2j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO2j4Action" prefHeight="100.0" prefWidth="65.0" style="-fx-border-color: blue;">
                            <graphic>
                               <ImageView fx:id="card1Stack2J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
@@ -49,7 +49,7 @@
                   </StackPane>
                   <StackPane fx:id="stackPane3J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <Button fx:id="o3j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO3j4Action" prefHeight="100.0" prefWidth="65.0">
+                        <Button fx:id="o3j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO3j4Action" prefHeight="100.0" prefWidth="65.0" style="-fx-border-color: green;">
                            <graphic>
                               <ImageView fx:id="card1Stack3J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
@@ -62,7 +62,7 @@
                   </StackPane>
                   <StackPane fx:id="stackPane4J4" prefHeight="120.0" prefWidth="120.0">
                      <children>
-                        <Button fx:id="o4j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO4j4Action" prefHeight="100.0" prefWidth="65.0">
+                        <Button fx:id="o4j4Button" contentDisplay="GRAPHIC_ONLY" mnemonicParsing="false" onAction="#onO4j4Action" prefHeight="100.0" prefWidth="65.0" style="-fx-border-color: yellow;">
                            <graphic>
                               <ImageView fx:id="card1Stack4J4" fitHeight="100.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" />
                            </graphic>
