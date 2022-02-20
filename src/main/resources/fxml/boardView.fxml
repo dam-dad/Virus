@@ -250,7 +250,7 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </HBox.margin>
                   </StackPane>
-                  <StackPane fx:id="stackPane3J2" prefHeight="105.0" prefWidth="105.0">
+                  <StackPane fx:id="stackPane4J2" prefHeight="105.0" prefWidth="105.0">
                      <children>
                         <Button fx:id="o4j2Button" contentDisplay="GRAPHIC_ONLY" maxHeight="100.0" maxWidth="65.0" mnemonicParsing="false" onAction="#onO4j2Action">
                            <graphic>
