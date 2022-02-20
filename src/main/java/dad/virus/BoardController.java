@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 import static dad.virus.game.Color.*;
+import static dad.virus.game.Type.HEAL;
+import static dad.virus.game.Type.VIRUS;
 
 public class BoardController implements Initializable {
 
@@ -33,6 +35,7 @@ public class BoardController implements Initializable {
     private static Organ[] bot2Body;
     private static Organ[] bot3Body;
     private static ArrayList<Card> descartes;
+    private static String url = "/image/players/inmune.png";
 
     @FXML
     private HBox boardJ2, boardJ4;
@@ -333,55 +336,89 @@ public class BoardController implements Initializable {
             renovarMano(manoBot, 2);
             haJugado = true;
         } else {
-            useVirusHealBot(manoBot);
-            haJugado = true;
+            if(!useHealBot(manoBot)){
+                useVirusHealBot(manoBot);
+                haJugado = true;
+            }
         }
         return haJugado;
     }
 
-    /*public boolean useHealBot(Card manoBot[]){
+    public boolean useHealBot(Card manoBot[]){
         boolean haJugado = false;
-        StackPane stack = new StackPane();
-        Button button = (Button) stack.getChildren().get(0);
-        ImageView image = (ImageView) button.getGraphic();
-        ImageView imageHeal = (ImageView) stack.getChildren().get(1);
-        if (imageHeal.getImage() == null) {
-            if (manoBot[0].getColor() == color && manoBot[0].getType() == Type.HEAL) {
-                imageHeal.setImage(mano[0].getImagen());
-                renovarMano(manoBot,0);
-                haJugado = true;
-            } else if (manoBot[1].getColor() == color && manoBot[1].getType() == Type.HEAL) {
-                imageHeal.setImage(manoBot[1].getImagen());
-                renovarMano(manoBot,1);
-                haJugado = true;
-            } else if (manoBot[2].getColor() == color && manoBot[2].getType() == Type.HEAL) {
-                imageHeal.setImage(manoBot[2].getImagen());
-                renovarMano(manoBot,2);
-                haJugado = true;
-            }
-        } else {
-            if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'L') {
-                String url = "/image/players/inmune.png";
-                if (manoBot[0].getColor() == color && manoBot[0].getType() == Type.HEAL) {
-                    imageHeal.setImage(new Image(url));
-                    renovarMano(manoBot,0);
-                    haJugado = true;
-                } else if (manoBot[1].getColor() == color && mano[1].getType() == Type.HEAL) {
-                    imageHeal.setImage(new Image(url));
-                    renovarMano(manoBot,1);
-                    haJugado = true;
-                } else if (manoBot[2].getColor() == color && manoBot[2].getType() == Type.HEAL) {
-                    imageHeal.setImage(new Image(url));
-                    renovarMano(manoBot,2);
-                    haJugado = true;
+        StackPane o1 = new StackPane();
+        StackPane o2 = new StackPane();
+        StackPane o3 = new StackPane();
+        StackPane o4 = new StackPane();
+        ImageView temporal = new ImageView();
+
+        if(manoBot.equals(manoBot1)){
+            o1 = stackPane1J1;
+            o2 = stackPane2J1;
+            o3 = stackPane3J1;
+            o4 = stackPane4J1;
+        }else if(manoBot.equals(manoBot2)){
+            o1 = stackPane1J2;
+            o2 = stackPane2J2;
+            o3 = stackPane3J2;
+            o4 = stackPane4J2;
+        }else if(manoBot.equals(manoBot3)){
+            o1 = stackPane1J3;
+            o2 = stackPane2J3;
+            o3 = stackPane3J3;
+            o4 = stackPane4J3;
+        }
+        Button button = (Button) o1.getChildren().get(0);
+        temporal = (ImageView) button.getGraphic();
+        ImageView imageHeal = (ImageView) o1.getChildren().get(1);
+        if(temporal.getImage()!=null){
+            if(getIndex(manoBot,HEAL, RED)!=-1){
+                imageHeal.setImage(manoBot[getIndex(manoBot,HEAL, RED)].getImagen());
+                haJugado=true;
+            }else{
+                button = (Button) o2.getChildren().get(0);
+                temporal = (ImageView) button.getGraphic();
+                imageHeal = (ImageView) o2.getChildren().get(1);
+                if(temporal.getImage()!=null) {
+                    if (getIndex(manoBot, HEAL, BLUE) != -1) {
+                        imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, BLUE)].getImagen());
+                        haJugado = true;
+                    }
+                }else{
+                    button = (Button) o3.getChildren().get(0);
+                    temporal = (ImageView) button.getGraphic();
+                    imageHeal = (ImageView) o3.getChildren().get(1);
+                    if(temporal.getImage()!=null) {
+                        if (getIndex(manoBot, HEAL, GREEN) != -1) {
+                            imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, GREEN)].getImagen());
+                            haJugado = true;
+                        }
+                    }else{
+                        button = (Button) o4.getChildren().get(0);
+                        temporal = (ImageView) button.getGraphic();
+                        imageHeal = (ImageView) o4.getChildren().get(1);
+                        if(temporal.getImage()!=null) {
+                            if (getIndex(manoBot, HEAL, YELLOW) != -1) {
+                                imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, YELLOW)].getImagen());
+                                haJugado = true;
+                            }
+                        }
+                    }
                 }
-            } else if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'S') {
-                imageHeal.setImage(null);
-                haJugado = true;
             }
         }
         return haJugado;
-    }*/
+    }
+
+    public int getIndex(Card manoX[], Type type, Color color){
+        int index = -1;
+        for (int i = 0; i < manoX.length; i++) {
+            if(manoX[i].getType()==type && manoX[i].getColor()==color){
+                index = i;
+            }
+        }
+        return index;
+    }
 
     public void useVirusHealBot(Card manoBot[]) {
         descartes.add(manoBot[0]);
@@ -398,6 +435,7 @@ public class BoardController implements Initializable {
 
     public void renovarMiMano(int i) {
         checkDeck();
+        descartes.add(mano[i]);
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -489,7 +527,11 @@ public class BoardController implements Initializable {
                     haJugado=true;
                     descartes.add(new Organ(color));
                     descartes.add(new Virus(color));
-                    descartes.add(new Virus(color));
+                    renovarMiMano(getIndex(mano,VIRUS, color));
+                }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
+                    imageVirus.setImage(null);
+                    descartes.add(new Heal(color));
+                    renovarMiMano(getIndex(mano,VIRUS, color));
                 }
             }catch (NullPointerException e){
                 if (mano[0].getColor() == color && mano[0].getType() == Type.VIRUS) {
@@ -531,31 +573,30 @@ public class BoardController implements Initializable {
             }
         } else {
             if (imageHeal.getImage() == null) {
-                if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
+                if (mano[0].getColor() == color && mano[0].getType() == HEAL) {
                     imageHeal.setImage(mano[0].getImagen());
                     renovarMiMano(0);
                     haJugado = true;
-                } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
+                } else if (mano[1].getColor() == color && mano[1].getType() == HEAL) {
                     imageHeal.setImage(mano[1].getImagen());
                     renovarMiMano(1);
                     haJugado = true;
-                } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
+                } else if (mano[2].getColor() == color && mano[2].getType() == HEAL) {
                     imageHeal.setImage(mano[2].getImagen());
                     renovarMiMano(2);
                     haJugado = true;
                 }
             } else {
                 if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'L') {
-                    String url = "/image/players/inmune.png";
-                    if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
+                    if (mano[0].getColor() == color && mano[0].getType() == HEAL) {
                         imageHeal.setImage(new Image(url));
                         renovarMiMano(0);
                         haJugado = true;
-                    } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
+                    } else if (mano[1].getColor() == color && mano[1].getType() == HEAL) {
                         imageHeal.setImage(new Image(url));
                         renovarMiMano(1);
                         haJugado = true;
-                    } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
+                    } else if (mano[2].getColor() == color && mano[2].getType() == HEAL) {
                         imageHeal.setImage(new Image(url));
                         renovarMiMano(2);
                         haJugado = true;
