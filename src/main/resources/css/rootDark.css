@@ -2,6 +2,7 @@
 @import "boardDark.css";
 
 #view{
+	-fx-background-image: url("../image/virusbackground.jpg");
 	-fx-background-color: #162340; /*Blue dark*/
 }
 

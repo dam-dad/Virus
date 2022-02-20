@@ -101,6 +101,7 @@ public class BoardController implements Initializable {
         manoBot2 = new Card[3];
         manoBot3 = new Card[3];
 
+
         mano[0] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
 
@@ -148,8 +149,6 @@ public class BoardController implements Initializable {
         handCard1.setImage(mano[0].getImagen());
         handCard2.setImage(mano[1].getImagen());
         handCard3.setImage(mano[2].getImagen());
-
-
     }
 
     public static int randomNumber(int minimo, int maximo) {
@@ -243,6 +242,7 @@ public class BoardController implements Initializable {
                     descartes.add(manoBot1[aux]);
                     discardDeck.setImage(manoBot1[aux].getImagen());
                 }
+
                 break;
             case "BLUE":
                 if (card1Stack2J1.getImage() == null) {
@@ -309,6 +309,8 @@ public class BoardController implements Initializable {
     }
 
     public void juegaOrganBot(int aux, int bot) {
+        String [] colores = {"RED", "BLUE", "GREEN", "YELLOW"};
+
         if (bot == 1) {
             switch (manoBot1[aux].getColor().toString()) {
                 case "RED":
