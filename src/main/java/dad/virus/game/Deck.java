@@ -44,9 +44,9 @@ public class Deck {
     	    	addToDeck(4, Type.HEAL, color);
     		});
     	
-    	addToDeck(1, Type.ORGAN, Color.MULTICOLOR);
+/*    	addToDeck(1, Type.ORGAN, Color.MULTICOLOR);
     	addToDeck(1, Type.VIRUS, Color.MULTICOLOR);
-    	addToDeck(4, Type.HEAL, Color.MULTICOLOR);
+    	addToDeck(4, Type.HEAL, Color.MULTICOLOR);*/
     	
     	/*addToDeck(2, Type.TREATMENT, Color.MULTICOLOR);
     	addToDeck(3, Type.TREATMENT, Color.RED);
