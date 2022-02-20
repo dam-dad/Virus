@@ -74,6 +74,9 @@
                      </HBox.margin>
                   </StackPane>
                </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </HBox>
             <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="80.0" minWidth="50.0" spacing="5.0">
                <children>
@@ -105,6 +108,12 @@
                      </graphic>
                   </Button>
                </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
             </HBox>
          </children>
          <opaqueInsets>
