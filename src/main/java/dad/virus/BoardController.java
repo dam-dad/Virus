@@ -113,17 +113,12 @@ public class BoardController implements Initializable {
         manoBot1[0] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
 
-        //System.out.println(manoBot1[0]);
 
         manoBot1[1] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
 
-        //System.out.println(manoBot1[1]);
-
         manoBot1[2] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
-
-        //System.out.println(manoBot1[2]);
 
         manoBot2[0] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -149,6 +144,8 @@ public class BoardController implements Initializable {
         handCard2.setImage(mano[1].getImagen());
         handCard3.setImage(mano[2].getImagen());
 
+        System.out.println(descartes.size());
+
 
     }
 
@@ -163,6 +160,7 @@ public class BoardController implements Initializable {
         jueganBots(manoBot1, 1);
         jueganBots(manoBot2, 2);
         jueganBots(manoBot3, 3);
+        System.out.println(descartes.size());
     }
 
     @FXML
@@ -182,9 +180,11 @@ public class BoardController implements Initializable {
     }
 
     public void checkDeck() {
+        System.out.println(deck.getDeck());
+        System.out.println(deck.getDeck().size());
         if (deck.getDeck().size() == 0) {
             deck.getDeck().addAll(descartes);
-            descartes.removeAll(descartes);
+            descartes.clear();
             Collections.shuffle(deck.getDeck());
         }
     }
@@ -231,7 +231,6 @@ public class BoardController implements Initializable {
             renovarMano(manoBot, 2);
             haJugado = true;
         } else {
-            System.out.println("No habia organo");
             useVirusHealBot();
             haJugado = true;
         }
@@ -352,7 +351,6 @@ public class BoardController implements Initializable {
                     discardDeck.setImage(new Image("/image/card/swapBody.png"));
                     break;
             }
-            renovarMano(manoBot1, aux);
         } else if (bot == 2) {
             switch (manoBot2[aux].getColor().toString()) {
                 case "RED":
@@ -391,7 +389,6 @@ public class BoardController implements Initializable {
                     discardDeck.setImage(new Image("/image/card/swapBody.png"));
                     break;
             }
-            renovarMano(manoBot2, aux);
         } else if (bot == 3) {
             switch (manoBot3[aux].getColor().toString()) {
                 case "RED":
@@ -430,7 +427,6 @@ public class BoardController implements Initializable {
                     discardDeck.setImage(new Image("/image/card/swapBody.png"));
                     break;
             }
-            renovarMano(manoBot3, aux);
         }
     }
 
@@ -560,6 +556,9 @@ public class BoardController implements Initializable {
                     imageVirus.setImage(null);
                     image.setImage(null);
                     haJugado=true;
+                    descartes.add(new Organ(color));
+                    descartes.add(new Virus(color));
+                    descartes.add(new Virus(color));
                 }
             }catch (NullPointerException e){
                 if (mano[0].getColor() == color && mano[0].getType() == Type.VIRUS) {
