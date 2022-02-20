@@ -191,9 +191,9 @@ public class BoardController implements Initializable {
 
     public void juegatodosBot() {
         checkDeck();
-        jueganBots(manoBot1, 1);
-        jueganBots(manoBot2, 2);
-        jueganBots(manoBot3, 3);
+        if (jueganBots(manoBot1, 1))
+            if (jueganBots(manoBot2, 2))
+                jueganBots(manoBot3, 3);
     }
 
     public void buttonAction(int i) {
@@ -215,22 +215,27 @@ public class BoardController implements Initializable {
         }
     }
 
-    public void jueganBots(Card manoBot[], int bot) {
+    public boolean jueganBots(Card manoBot[], int bot) {
+        boolean haJugado = false;
         checkDeck();
         if (manoBot[0].getType().toString().equals("ORGAN")) {
             juegaOrganBot(0, bot);
             renovarMano(manoBot, 0);
-
+            haJugado = true;
         } else if (manoBot[1].getType().toString().equals("ORGAN")) {
             juegaOrganBot(1, bot);
             renovarMano(manoBot, 1);
+            haJugado = true;
         } else if (manoBot[2].getType().toString().equals("ORGAN")) {
             juegaOrganBot(2, bot);
             renovarMano(manoBot, 2);
+            haJugado = true;
         } else {
             System.out.println("No habia organo");
             useVirusHealBot();
+            haJugado = true;
         }
+        return haJugado;
     }
 
 
@@ -432,101 +437,101 @@ public class BoardController implements Initializable {
     @FXML
     void onO1j4Action(ActionEvent event) {
         checkDeck();
-        if(juegaPlayer(RED, stackPane1J4))
+        if (juegaPlayer(RED, stackPane1J4))
             juegatodosBot();
     }
 
     @FXML
     void onO2j4Action(ActionEvent event) {
         checkDeck();
-        if(juegaPlayer(BLUE, stackPane2J4))
+        if (juegaPlayer(BLUE, stackPane2J4))
             juegatodosBot();
     }
 
     @FXML
     void onO3j4Action(ActionEvent event) {
         checkDeck();
-        if(juegaPlayer(GREEN, stackPane3J4))
+        if (juegaPlayer(GREEN, stackPane3J4))
             juegatodosBot();
     }
 
     @FXML
     void onO4j4Action(ActionEvent event) {
         checkDeck();
-        if(juegaPlayer(YELLOW, stackPane4J4))
+        if (juegaPlayer(YELLOW, stackPane4J4))
             juegatodosBot();
     }
 
     @FXML
     void onO1j1Action(ActionEvent event) {
-        if(useVirus(RED, stackPane1J1))
+        if (useVirus(RED, stackPane1J1))
             juegatodosBot();
     }
 
     @FXML
     void onO1j2Action(ActionEvent event) {
-        if(useVirus(RED, stackPane1J2))
+        if (useVirus(RED, stackPane1J2))
             juegatodosBot();
     }
 
     @FXML
     void onO1j3Action(ActionEvent event) {
-        if(useVirus(RED, stackPane1J3))
+        if (useVirus(RED, stackPane1J3))
             juegatodosBot();
     }
 
 
     @FXML
     void onO2j2Action(ActionEvent event) {
-        if(useVirus(BLUE, stackPane2J2))
+        if (useVirus(BLUE, stackPane2J2))
             juegatodosBot();
     }
 
     @FXML
     void onO2j1Action(ActionEvent event) {
-        if(useVirus(BLUE, stackPane2J1))
+        if (useVirus(BLUE, stackPane2J1))
             juegatodosBot();
     }
 
     @FXML
     void onO2j3Action(ActionEvent event) {
-        if(useVirus(BLUE, stackPane2J3))
+        if (useVirus(BLUE, stackPane2J3))
             juegatodosBot();
     }
 
     @FXML
     void onO3j1Action(ActionEvent event) {
-        if(useVirus(GREEN, stackPane3J1))
+        if (useVirus(GREEN, stackPane3J1))
             juegatodosBot();
     }
 
     @FXML
     void onO3j2Action(ActionEvent event) {
-        if(useVirus(GREEN, stackPane3J2))
+        if (useVirus(GREEN, stackPane3J2))
             juegatodosBot();
     }
 
     @FXML
     void onO3j3Action(ActionEvent event) {
-        if(useVirus(GREEN, stackPane3J3))
+        if (useVirus(GREEN, stackPane3J3))
             juegatodosBot();
     }
 
     @FXML
     void onO4j1Action(ActionEvent event) {
-        if(useVirus(YELLOW, stackPane4J1))
+        if (useVirus(YELLOW, stackPane4J1))
             juegatodosBot();
     }
 
     @FXML
     void onO4j2Action(ActionEvent event) {
-        if(useVirus(YELLOW, stackPane4J2))
+        if (useVirus(YELLOW, stackPane4J2))
             juegatodosBot();
     }
 
     @FXML
     void onO4j3Action(ActionEvent event) {
-        if(useVirus(YELLOW, stackPane4J3))
+        if (useVirus(YELLOW, stackPane4J3))
             juegatodosBot();
     }
 
@@ -550,18 +555,26 @@ public class BoardController implements Initializable {
         ImageView image = (ImageView) button.getGraphic();
         ImageView imageVirus = (ImageView) stack.getChildren().get(1);
         if (image.getImage() != null) {
-            if (mano[0].getColor() == color && mano[0].getType() == Type.VIRUS) {
-                imageVirus.setImage(mano[0].getImagen());
-                renovarMiMano(0);
-                haJugado=true;
-            } else if (mano[1].getColor() == color && mano[1].getType() == Type.VIRUS) {
-                imageVirus.setImage(mano[1].getImagen());
-                renovarMiMano(1);
-                haJugado=true;
-            } else if (mano[2].getColor() == color && mano[2].getType() == Type.VIRUS) {
-                imageVirus.setImage(mano[2].getImagen());
-                renovarMiMano(2);
-                haJugado=true;
+            try{
+                if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
+                    imageVirus.setImage(null);
+                    image.setImage(null);
+                    haJugado=true;
+                }
+            }catch (NullPointerException e){
+                if (mano[0].getColor() == color && mano[0].getType() == Type.VIRUS) {
+                    imageVirus.setImage(mano[0].getImagen());
+                    renovarMiMano(0);
+                    haJugado = true;
+                } else if (mano[1].getColor() == color && mano[1].getType() == Type.VIRUS) {
+                    imageVirus.setImage(mano[1].getImagen());
+                    renovarMiMano(1);
+                    haJugado = true;
+                } else if (mano[2].getColor() == color && mano[2].getType() == Type.VIRUS) {
+                    imageVirus.setImage(mano[2].getImagen());
+                    renovarMiMano(2);
+                    haJugado = true;
+                }
             }
         }
         return haJugado;
@@ -576,45 +589,50 @@ public class BoardController implements Initializable {
             if (mano[0].getColor() == color && mano[0].getType() == Type.ORGAN) {
                 image.setImage(mano[0].getImagen());
                 renovarMiMano(0);
-                haJugado=true;
+                haJugado = true;
             } else if (mano[1].getColor() == color && mano[1].getType() == Type.ORGAN) {
                 image.setImage(mano[1].getImagen());
                 renovarMiMano(1);
-                haJugado=true;
+                haJugado = true;
             } else if (mano[2].getColor() == color && mano[2].getType() == Type.ORGAN) {
                 image.setImage(mano[2].getImagen());
                 renovarMiMano(2);
-                haJugado=true;
+                haJugado = true;
             }
         } else {
             if (imageHeal.getImage() == null) {
                 if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
                     imageHeal.setImage(mano[0].getImagen());
                     renovarMiMano(0);
-                    haJugado=true;
+                    haJugado = true;
                 } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
                     imageHeal.setImage(mano[1].getImagen());
                     renovarMiMano(1);
-                    haJugado=true;
+                    haJugado = true;
                 } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
                     imageHeal.setImage(mano[2].getImagen());
                     renovarMiMano(2);
-                    haJugado=true;
+                    haJugado = true;
                 }
             } else {
-                String url = "/image/players/inmune.png";
-                if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
-                    imageHeal.setImage(new Image(url));
-                    renovarMiMano(0);
-                    haJugado=true;
-                } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
-                    imageHeal.setImage(new Image(url));
-                    renovarMiMano(1);
-                    haJugado=true;
-                } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
-                    imageHeal.setImage(new Image(url));
-                    renovarMiMano(2);
-                    haJugado=true;
+                if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'L') {
+                    String url = "/image/players/inmune.png";
+                    if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
+                        imageHeal.setImage(new Image(url));
+                        renovarMiMano(0);
+                        haJugado = true;
+                    } else if (mano[1].getColor() == color && mano[1].getType() == Type.HEAL) {
+                        imageHeal.setImage(new Image(url));
+                        renovarMiMano(1);
+                        haJugado = true;
+                    } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
+                        imageHeal.setImage(new Image(url));
+                        renovarMiMano(2);
+                        haJugado = true;
+                    }
+                } else if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'S') {
+                    imageHeal.setImage(null);
+                    haJugado = true;
                 }
             }
         }
