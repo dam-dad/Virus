@@ -3,30 +3,20 @@ package dad.virus;
 import dad.virus.game.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
-import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static dad.virus.game.Color.*;
@@ -39,6 +29,9 @@ public class BoardController implements Initializable {
     private static Card[] manoBot2;
     private static Card[] manoBot3;
     private static Organ[] playerBody;
+    private static Organ[] bot1Body;
+    private static Organ[] bot2Body;
+    private static Organ[] bot3Body;
     private static ArrayList<Card> descartes;
 
     @FXML
@@ -93,6 +86,10 @@ public class BoardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setImagePlayer();
         playerBody = new Organ[4];
+        bot1Body = new Organ[4];
+        bot2Body = new Organ[4];
+        bot3Body = new Organ[4];
+
         playerBody[0] = new Organ(RED);
         playerBody[1] = new Organ(BLUE);
         playerBody[2] = new Organ(GREEN);
@@ -435,28 +432,28 @@ public class BoardController implements Initializable {
     @FXML
     void onO1j4Action(ActionEvent event) {
         checkDeck();
-        useOrgan(RED, stackPane1J4);
+        juegaPlayer(RED, stackPane1J4);
         juegatodosBot();
     }
 
     @FXML
     void onO2j4Action(ActionEvent event) {
         checkDeck();
-        useOrgan(BLUE, stackPane2J4);
+        juegaPlayer(BLUE, stackPane2J4);
         juegatodosBot();
     }
 
     @FXML
     void onO3j4Action(ActionEvent event) {
         checkDeck();
-        useOrgan(GREEN, stackPane3J4);
+        juegaPlayer(GREEN, stackPane3J4);
         juegatodosBot();
     }
 
     @FXML
     void onO4j4Action(ActionEvent event) {
         checkDeck();
-        useOrgan(YELLOW, stackPane4J4);
+        juegaPlayer(YELLOW, stackPane4J4);
         juegatodosBot();
     }
 
@@ -565,7 +562,7 @@ public class BoardController implements Initializable {
         }
     }
 
-    public void useOrgan(Color color, StackPane stack) {
+    public void juegaPlayer(Color color, StackPane stack) {
         Button button = (Button) stack.getChildren().get(0);
         ImageView image = (ImageView) button.getGraphic();
         ImageView imageHeal = (ImageView) stack.getChildren().get(1);
@@ -580,6 +577,20 @@ public class BoardController implements Initializable {
                 image.setImage(mano[2].getImagen());
                 renovarMiMano(2);
             }
+            switch (color) {
+                case RED:
+                    playerBody[0] = new Organ(color);
+                    break;
+                case BLUE:
+                    playerBody[1] = new Organ(color);
+                    break;
+                case GREEN:
+                    playerBody[2] = new Organ(color);
+                    break;
+                case YELLOW:
+                    playerBody[3] = new Organ(color);
+                    break;
+            }
         } else {
             if (imageHeal.getImage() == null) {
                 if (mano[0].getColor() == color && mano[0].getType() == Type.HEAL) {
@@ -591,6 +602,20 @@ public class BoardController implements Initializable {
                 } else if (mano[2].getColor() == color && mano[2].getType() == Type.HEAL) {
                     imageHeal.setImage(mano[2].getImagen());
                     renovarMiMano(2);
+                }
+                switch (color) {
+                    case RED:
+                        playerBody[0].setCount(1);
+                        break;
+                    case BLUE:
+                        playerBody[1].setCount(1);
+                        break;
+                    case GREEN:
+                        playerBody[2].setCount(1);
+                        break;
+                    case YELLOW:
+                        playerBody[3].setCount(1);
+                        break;
                 }
             } else {
                 String url = "/image/players/inmune.png";
