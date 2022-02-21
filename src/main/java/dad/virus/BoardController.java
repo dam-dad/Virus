@@ -5,6 +5,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -12,6 +13,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -31,9 +33,6 @@ public class BoardController implements Initializable {
     private static Card[] manoBot2;
     private static Card[] manoBot3;
     private static Organ[] playerBody;
-    private static Organ[] bot1Body;
-    private static Organ[] bot2Body;
-    private static Organ[] bot3Body;
     private static ArrayList<Card> descartes;
     private static String url = "/image/players/inmune.png";
 
@@ -89,9 +88,6 @@ public class BoardController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         setImagePlayer();
         playerBody = new Organ[4];
-        bot1Body = new Organ[4];
-        bot2Body = new Organ[4];
-        bot3Body = new Organ[4];
 
         playerBody[0] = new Organ(RED);
         playerBody[1] = new Organ(BLUE);
@@ -147,8 +143,6 @@ public class BoardController implements Initializable {
         handCard2.setImage(mano[1].getImagen());
         handCard3.setImage(mano[2].getImagen());
 
-        System.out.println(descartes.size());
-
 
     }
 
@@ -163,7 +157,7 @@ public class BoardController implements Initializable {
         jueganBots(manoBot1);
         jueganBots(manoBot2);
         jueganBots(manoBot3);
-        System.out.println(descartes.size());
+        esGanador(4);
     }
 
     @FXML
@@ -284,8 +278,8 @@ public class BoardController implements Initializable {
     }
 
     /*
-    *  METODOS
-    * */
+     *  METODOS
+     * */
 
     /*  USUARIO  */
 
@@ -372,20 +366,20 @@ public class BoardController implements Initializable {
         ImageView image = (ImageView) button.getGraphic();
         ImageView imageVirus = (ImageView) stack.getChildren().get(1);
         if (image.getImage() != null) {
-            try{
-                if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
+            try {
+                if (imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length() - 5) == 'S') {
                     imageVirus.setImage(null);
                     image.setImage(null);
-                    haJugado=true;
+                    haJugado = true;
                     descartes.add(new Organ(color));
                     descartes.add(new Virus(color));
-                    renovarMiMano(getIndex(mano,VIRUS, color));
-                }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
+                    renovarMiMano(getIndex(mano, VIRUS, color));
+                } else if (imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length() - 5) == 'L') {
                     imageVirus.setImage(null);
                     descartes.add(new Heal(color));
-                    renovarMiMano(getIndex(mano,VIRUS, color));
+                    renovarMiMano(getIndex(mano, VIRUS, color));
                 }
-            }catch (NullPointerException e){
+            } catch (NullPointerException e) {
                 if (mano[0].getColor() == color && mano[0].getType() == Type.VIRUS) {
                     imageVirus.setImage(mano[0].getImagen());
                     renovarMiMano(0);
@@ -417,19 +411,19 @@ public class BoardController implements Initializable {
         boolean haJugado = false;
         checkDeck();
         if (manoBot[0].getType().toString().equals("ORGAN")) {
-            juegaOrganBot(manoBot,0);
+            juegaOrganBot(manoBot, 0);
             renovarMano(manoBot, 0);
             haJugado = true;
         } else if (manoBot[1].getType().toString().equals("ORGAN")) {
-            juegaOrganBot(manoBot,1);
+            juegaOrganBot(manoBot, 1);
             renovarMano(manoBot, 1);
             haJugado = true;
         } else if (manoBot[2].getType().toString().equals("ORGAN")) {
-            juegaOrganBot(manoBot,2);
+            juegaOrganBot(manoBot, 2);
             renovarMano(manoBot, 2);
             haJugado = true;
         } else {
-            if(!useHealBot(manoBot)){
+            if (!useHealBot(manoBot)) {
                 useVirusHealBot(manoBot);
                 haJugado = true;
             }
@@ -443,17 +437,17 @@ public class BoardController implements Initializable {
         ImageView o3 = new ImageView();
         ImageView o4 = new ImageView();
 
-        if(manoBot.equals(manoBot1)){
+        if (manoBot.equals(manoBot1)) {
             o1 = card1Stack1J1;
             o2 = card1Stack2J1;
             o3 = card1Stack3J1;
             o4 = card1Stack4J1;
-        }else if(manoBot.equals(manoBot2)){
+        } else if (manoBot.equals(manoBot2)) {
             o1 = card1Stack1J2;
             o2 = card1Stack2J2;
             o3 = card1Stack3J2;
             o4 = card1Stack4J2;
-        }else if(manoBot.equals(manoBot3)){
+        } else if (manoBot.equals(manoBot3)) {
             o1 = card1Stack1J3;
             o2 = card1Stack2J3;
             o3 = card1Stack3J3;
@@ -498,7 +492,7 @@ public class BoardController implements Initializable {
         }
     }//juegaOrganBot
 
-    public boolean useHealBot(Card manoBot[]){
+    public boolean useHealBot(Card manoBot[]) {
         boolean haJugado = false;
         StackPane o1 = new StackPane();
         StackPane o2 = new StackPane();
@@ -506,17 +500,17 @@ public class BoardController implements Initializable {
         StackPane o4 = new StackPane();
         ImageView temporal = new ImageView();
 
-        if(manoBot.equals(manoBot1)){
+        if (manoBot.equals(manoBot1)) {
             o1 = stackPane1J1;
             o2 = stackPane2J1;
             o3 = stackPane3J1;
             o4 = stackPane4J1;
-        }else if(manoBot.equals(manoBot2)){
+        } else if (manoBot.equals(manoBot2)) {
             o1 = stackPane1J2;
             o2 = stackPane2J2;
             o3 = stackPane3J2;
             o4 = stackPane4J2;
-        }else if(manoBot.equals(manoBot3)){
+        } else if (manoBot.equals(manoBot3)) {
             o1 = stackPane1J3;
             o2 = stackPane2J3;
             o3 = stackPane3J3;
@@ -525,36 +519,84 @@ public class BoardController implements Initializable {
         Button button = (Button) o1.getChildren().get(0);
         temporal = (ImageView) button.getGraphic();
         ImageView imageHeal = (ImageView) o1.getChildren().get(1);
-        if(temporal.getImage()!=null){
-            if(getIndex(manoBot,HEAL, RED)!=-1){
-                imageHeal.setImage(manoBot[getIndex(manoBot,HEAL, RED)].getImagen());
-                haJugado=true;
-            }else{
+        if (temporal.getImage() != null) {
+            if (getIndex(manoBot, HEAL, RED) != -1) {
+                try {
+                    if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                        imageHeal.setImage(null);
+                        haJugado = true;
+                        descartes.add(new Virus(RED));
+                        renovarMano(manoBot, getIndex(manoBot, HEAL, RED));
+                    }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                        imageHeal.setImage(new Image(url));
+                        haJugado = true;
+                    }
+                } catch (NullPointerException e) {
+                    imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, RED)].getImagen());
+                    haJugado = true;
+                }
+            } else {
                 button = (Button) o2.getChildren().get(0);
                 temporal = (ImageView) button.getGraphic();
                 imageHeal = (ImageView) o2.getChildren().get(1);
-                if(temporal.getImage()!=null) {
+                if (temporal.getImage() != null) {
                     if (getIndex(manoBot, HEAL, BLUE) != -1) {
-                        imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, BLUE)].getImagen());
-                        haJugado = true;
+                        try {
+                            if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                                imageHeal.setImage(null);
+                                haJugado = true;
+                                descartes.add(new Virus(BLUE));
+                                renovarMano(manoBot, getIndex(manoBot, HEAL, BLUE));
+                            }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                                imageHeal.setImage(new Image(url));
+                                haJugado = true;
+                            }
+                        } catch (NullPointerException e) {
+                            imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, BLUE)].getImagen());
+                            haJugado = true;
+                        }
                     }
-                }else{
+                } else {
                     button = (Button) o3.getChildren().get(0);
                     temporal = (ImageView) button.getGraphic();
                     imageHeal = (ImageView) o3.getChildren().get(1);
-                    if(temporal.getImage()!=null) {
+                    if (temporal.getImage() != null) {
                         if (getIndex(manoBot, HEAL, GREEN) != -1) {
-                            imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, GREEN)].getImagen());
-                            haJugado = true;
+                            try {
+                                if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                                    imageHeal.setImage(null);
+                                    haJugado = true;
+                                    descartes.add(new Virus(GREEN));
+                                    renovarMano(manoBot, getIndex(manoBot, HEAL, GREEN));
+                                }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                                    imageHeal.setImage(new Image(url));
+                                    haJugado = true;
+                                }
+                            }catch (NullPointerException e) {
+                                imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, GREEN)].getImagen());
+                                haJugado = true;
+                            }
                         }
-                    }else{
+                    } else {
                         button = (Button) o4.getChildren().get(0);
                         temporal = (ImageView) button.getGraphic();
                         imageHeal = (ImageView) o4.getChildren().get(1);
-                        if(temporal.getImage()!=null) {
+                        if (temporal.getImage() != null) {
                             if (getIndex(manoBot, HEAL, YELLOW) != -1) {
-                                imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, YELLOW)].getImagen());
-                                haJugado = true;
+                                try {
+                                    if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                                        imageHeal.setImage(null);
+                                        haJugado = true;
+                                        descartes.add(new Virus(YELLOW));
+                                        renovarMano(manoBot, getIndex(manoBot, HEAL, YELLOW));
+                                    }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                                        imageHeal.setImage(new Image(url));
+                                        haJugado = true;
+                                    }
+                                }catch (NullPointerException e) {
+                                    imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, YELLOW)].getImagen());
+                                    haJugado = true;
+                                }
                             }
                         }
                     }
@@ -572,9 +614,8 @@ public class BoardController implements Initializable {
     }
 
     /* UTILES */
+
     public void checkDeck() {
-        System.out.println(deck.getDeck());
-        System.out.println(deck.getDeck().size());
         if (deck.getDeck().size() == 0) {
             deck.getDeck().addAll(descartes);
             descartes.clear();
@@ -582,15 +623,16 @@ public class BoardController implements Initializable {
         }
     }//checkDeck
 
-    public int getIndex(Card manoX[], Type type, Color color){
+    public int getIndex(Card manoX[], Type type, Color color) {
         int index = -1;
         for (int i = 0; i < manoX.length; i++) {
-            if(manoX[i].getType()==type && manoX[i].getColor()==color){
+            if (manoX[i].getType() == type && manoX[i].getColor() == color) {
                 index = i;
             }
         }
         return index;
     } //getIndex
+
     public void renovarMiMano(int i) {
         checkDeck();
         descartes.add(mano[i]);
@@ -613,8 +655,97 @@ public class BoardController implements Initializable {
 
     public void renovarMano(Card manoX[], int i) {
         checkDeck();
+        descartes.add(manoX[i]);
         manoX[i] = null;
         manoX[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
     }//renovarMano
+
+    /* GANADOR */
+
+    public boolean esGanador(int jugador){
+        boolean ganador = false;
+        StackPane o1 = new StackPane();
+        StackPane o2 = new StackPane();
+        StackPane o3 = new StackPane();
+        StackPane o4 = new StackPane();
+        switch (jugador){
+            case 1:
+                o1 = stackPane1J1;
+                o2 = stackPane2J1;
+                o3 = stackPane3J1;
+                o4 = stackPane4J1;
+                comprobarCuerpo(o1,o2,o3,o4);
+                break;
+            case 2:
+                o1 = stackPane1J2;
+                o2 = stackPane2J2;
+                o3 = stackPane3J2;
+                o4 = stackPane4J2;
+                comprobarCuerpo(o1,o2,o3,o4);
+                break;
+            case 3:
+                o1 = stackPane1J3;
+                o2 = stackPane2J3;
+                o3 = stackPane3J3;
+                o4 = stackPane4J3;
+                comprobarCuerpo(o1,o2,o3,o4);
+                break;
+            case 4:
+                o1 = stackPane1J4;
+                o2 = stackPane2J4;
+                o3 = stackPane3J4;
+                o4 = stackPane4J4;
+                comprobarCuerpo(o1,o2,o3,o4);
+                break;
+        }
+
+        return ganador;
+    }
+
+    public boolean comprobarCuerpo(StackPane o1, StackPane o2, StackPane o3, StackPane o4){
+        boolean sano = false, sano1=false, sano2=false, sano3=false, sano4=false;
+        ImageView imageHeal1,imageHeal2,imageHeal3,imageHeal4;
+        try{
+            imageHeal1 = (ImageView) o1.getChildren().get(1);
+            int pos1 = imageHeal1.getImage().getUrl().charAt(imageHeal1.getImage().getUrl().length() - 5);
+
+            imageHeal2 = (ImageView) o2.getChildren().get(1);
+            int pos2 = imageHeal2.getImage().getUrl().charAt(imageHeal2.getImage().getUrl().length() - 5);
+
+            imageHeal3 = (ImageView) o3.getChildren().get(1);
+            int pos3 = imageHeal3.getImage().getUrl().charAt(imageHeal3.getImage().getUrl().length() - 5);
+
+            imageHeal4 = (ImageView) o4.getChildren().get(1);
+            int pos4 = imageHeal1.getImage().getUrl().charAt(imageHeal4.getImage().getUrl().length() - 5);
+
+
+            if(imageHeal1.getImage().getUrl().charAt(pos1) == 'L' || imageHeal1.getImage().getUrl().charAt(pos1) == 'E')
+                sano1 = true;
+            if(imageHeal2.getImage().getUrl().charAt(pos2) == 'L' || imageHeal2.getImage().getUrl().charAt(pos2) == 'E')
+                sano2 = true;
+            if(imageHeal3.getImage().getUrl().charAt(pos3) == 'L' || imageHeal3.getImage().getUrl().charAt(pos3) == 'E')
+                sano3 = true;
+            if(imageHeal4.getImage().getUrl().charAt(pos4) == 'L' || imageHeal4.getImage().getUrl().charAt(pos4) == 'E')
+                sano4 = true;
+            if(sano1 && sano2 && sano3 && sano4)
+                sano = true;
+                alertInformation(stage,"GANADOR", "TENEMOS UN GANADOR", "HA GANADO EL JUGADOR ").showAndWait();
+
+        }catch (NullPointerException e){
+
+        }
+        return sano;
+    }
+
+    public Alert alertInformation(Stage stage, String title, String headerText, String contentText) {
+
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle(title);
+        alert.setHeaderText(headerText);
+        alert.setContentText(contentText);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initOwner(stage);
+        return alert;
+    }
 }
