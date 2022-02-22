@@ -25,6 +25,10 @@ import static dad.virus.game.Color.*;
 import static dad.virus.game.Type.HEAL;
 import static dad.virus.game.Type.VIRUS;
 
+/**
+ * Board controller.
+ * Controlador de toda la ventana de juego, incluída su lógica
+ */
 public class BoardController implements Initializable {
 
     private static Deck deck = new Deck();//Creacion de mazo
@@ -146,29 +150,56 @@ public class BoardController implements Initializable {
 
     }
 
+    /**
+     * Random number int. Encargado de generar un número aleatorio entre un máximo y un mínimo dados como parámetro
+     *
+     * @param minimo the minimo
+     * @param maximo the maximo
+     * @return the int
+     */
     public static int randomNumber(int minimo, int maximo) {
         int num = (int) Math.floor(Math.random() * (maximo - minimo + 1) + (minimo));
         return num;
     }
 
+    /**
+     * Onc 1 action.
+     * Carta izquierda de la mano del jugador. Llama a buttonAction con parámetro 0 y continúa con la acción de los bots
+     * @param event the event
+     */
     @FXML
     void onc1action(ActionEvent event) {
         buttonAction(0);
         juegatodosBot();
     }
 
+    /**
+     * Onc 2 action.
+     * Carta central de la mano del jugador. Llama a buttonAction con parámetro 1 y continúa con la acción de los bots
+     * @param event the event
+     */
     @FXML
     void onc2action(ActionEvent event) {
         buttonAction(1);
         juegatodosBot();
     }
 
+    /**
+     * Onc 3 action.
+     * Carta derecha de la mano del jugador. Llama a buttonAction con parámetro 2 y continúa con la acción de los bots
+     * @param event the event
+     */
     @FXML
     void onc3action(ActionEvent event) {
         buttonAction(2);
         juegatodosBot();
     }
 
+    /**
+     * On o 1 j 4 action.
+     * Donde está situado el lado rojo del cuerpo del jugador
+     * @param event the event
+     */
     @FXML
     void onO1j4Action(ActionEvent event) {
         checkDeck();
@@ -176,6 +207,11 @@ public class BoardController implements Initializable {
             juegatodosBot();
     }
 
+    /**
+     * On o 2 j 4 action.
+     * Donde está situado el lado azul del cuerpo del jugador
+     * @param event the event
+     */
     @FXML
     void onO2j4Action(ActionEvent event) {
         checkDeck();
@@ -183,6 +219,11 @@ public class BoardController implements Initializable {
             juegatodosBot();
     }
 
+    /**
+     * On o 3 j 4 action.
+     * Donde está situado el lado verde del cuerpo del jugador
+     * @param event the event
+     */
     @FXML
     void onO3j4Action(ActionEvent event) {
         checkDeck();
@@ -190,6 +231,11 @@ public class BoardController implements Initializable {
             juegatodosBot();
     }
 
+    /**
+     * On o 4 j 4 action.
+     * Donde está situado el lado amarillo del cuerpo del jugador
+     * @param event the event
+     */
     @FXML
     void onO4j4Action(ActionEvent event) {
         checkDeck();
@@ -197,18 +243,33 @@ public class BoardController implements Initializable {
             juegatodosBot();
     }
 
+    /**
+     * On o 1 j 1 action.
+     * Donde está situado el lado rojo del cuerpo del bot 1
+     * @param event the event
+     */
     @FXML
     void onO1j1Action(ActionEvent event) {
         if (useVirus(RED, stackPane1J1))
             juegatodosBot();
     }
 
+    /**
+     * On o 1 j 2 action.
+     * Donde está situado el lado rojo del cuerpo del bot 2
+     * @param event the event
+     */
     @FXML
     void onO1j2Action(ActionEvent event) {
         if (useVirus(RED, stackPane1J2))
             juegatodosBot();
     }
 
+    /**
+     * On o 1 j 3 action.
+     *  Donde está situado el lado rojo del cuerpo del bot 3
+     * @param event the event
+     */
     @FXML
     void onO1j3Action(ActionEvent event) {
         if (useVirus(RED, stackPane1J3))
@@ -216,68 +277,120 @@ public class BoardController implements Initializable {
     }
 
 
+    /**
+     * On o 2 j 2 action.
+     * Donde está situado el lado azul del cuerpo del bot 2
+     * @param event the event
+     */
     @FXML
     void onO2j2Action(ActionEvent event) {
         if (useVirus(BLUE, stackPane2J2))
             juegatodosBot();
     }
 
+    /**
+     * On o 2 j 1 action.
+     * Donde está situado el lado azul del cuerpo del bot 1
+     * @param event the event
+     */
     @FXML
     void onO2j1Action(ActionEvent event) {
         if (useVirus(BLUE, stackPane2J1))
             juegatodosBot();
     }
 
+    /**
+     * On o 2 j 3 action.
+     * Donde está situado el lado azul del cuerpo del bot 3
+     * @param event the event
+     */
     @FXML
     void onO2j3Action(ActionEvent event) {
         if (useVirus(BLUE, stackPane2J3))
             juegatodosBot();
     }
 
+    /**
+     * On o 3 j 1 action.
+     * Donde está situado el lado verde del cuerpo del bot 1
+     * @param event the event
+     */
     @FXML
     void onO3j1Action(ActionEvent event) {
         if (useVirus(GREEN, stackPane3J1))
             juegatodosBot();
     }
 
+    /**
+     * On o 3 j 2 action.
+     * Donde está situado el lado verde del cuerpo del bot 2
+     * @param event the event
+     */
     @FXML
     void onO3j2Action(ActionEvent event) {
         if (useVirus(GREEN, stackPane3J2))
             juegatodosBot();
     }
 
+    /**
+     * On o 3 j 3 action.
+     * Donde está situado el lado verde del cuerpo del bot 3
+     * @param event the event
+     */
     @FXML
     void onO3j3Action(ActionEvent event) {
         if (useVirus(GREEN, stackPane3J3))
             juegatodosBot();
     }
 
+    /**
+     * On o 4 j 1 action.
+     * Donde está situado el lado amarillo del cuerpo del bot 1
+     * @param event the event
+     */
     @FXML
     void onO4j1Action(ActionEvent event) {
         if (useVirus(YELLOW, stackPane4J1))
             juegatodosBot();
     }
 
+    /**
+     * On o 4 j 2 action.
+     * Donde está situado el lado amarillo del cuerpo del bot 2
+     * @param event the event
+     */
     @FXML
     void onO4j2Action(ActionEvent event) {
         if (useVirus(YELLOW, stackPane4J2))
             juegatodosBot();
     }
 
+    /**
+     * On o 4 j 3 action.
+     * Donde está situado el lado amarillo del cuerpo del bot 3
+     * @param event the event
+     */
     @FXML
     void onO4j3Action(ActionEvent event) {
         if (useVirus(YELLOW, stackPane4J3))
             juegatodosBot();
     }
 
-    /*
+    /**
      *  METODOS
-     * */
+     **/
 
     /*  USUARIO  */
 
+    /**
+     * Button action.
+     * Descarta la carta de la mano del botón seleccionado
+     * @param i the
+     */
     public void buttonAction(int i) {
         checkDeck();
+        descartes.add(mano[i]);
+        discardDeck.setImage(mano[i].getImagen());
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -295,6 +408,14 @@ public class BoardController implements Initializable {
         }
     }//buttonAction
 
+    /**
+     * Juega player boolean.
+     * Inserta el órgano del color y el stack introducidos por parametro. Si existe órgano, hace lo propio con la cura
+     * en caso de tenerla en mano
+     * @param color the color
+     * @param stack the stack
+     * @return the boolean
+     */
     public boolean juegaPlayer(Color color, StackPane stack) {
         Boolean haJugado = false;
         Button button = (Button) stack.getChildren().get(0);
@@ -353,6 +474,13 @@ public class BoardController implements Initializable {
         return haJugado;
     }//juegaPlayer
 
+    /**
+     * Use virus boolean.
+     * Usa una carta de virus sobre el órgano seleccionado, con condicionales para añadir virus, quitar cura o quitar órgano;
+     * @param color the color
+     * @param stack the stack
+     * @return the boolean
+     */
     public boolean useVirus(Color color, StackPane stack) {
         boolean haJugado = false;
         Button button = (Button) stack.getChildren().get(0);
@@ -393,6 +521,10 @@ public class BoardController implements Initializable {
 
     /* BOTS */
 
+    /**
+     * Juegatodos bot.
+     * Comprueba antes de jugar cada bot si el jugador anterior ha ganado
+     */
     public void juegatodosBot() {
         checkDeck();
         if (!comprobarCuerpo(4))
@@ -404,6 +536,14 @@ public class BoardController implements Initializable {
         comprobarCuerpo(3);
     }//juegatodosBot
 
+    /**
+     * Juegan bots boolean.
+     * El bot llama a los métodos correspondientes con esta prioridad: intenta usar órgano, si no puede intenta curar órgano,
+     * si no puede intenta infectar a un jugador aleatorio, en caso de que no pueda hacer nada de esto, descarta una carta
+     * aleatoria
+     * @param manoBot the mano bot
+     * @return the boolean
+     */
     public boolean jueganBots(Card manoBot[]) {
         boolean haJugado = false;
         checkDeck();
@@ -428,6 +568,13 @@ public class BoardController implements Initializable {
         return haJugado;
     }//jueganBots
 
+    /**
+     * Juega organ bot.
+     * Método para insertar un órgano, pasando por parámetro la mano de cartas del bot correspondiente, un int aux para
+     * recorrer la mano en busca de la carta oportuna
+     * @param manoBot the mano bot
+     * @param aux     the aux
+     */
     public void juegaOrganBot(Card manoBot[], int aux) {
         ImageView o1 = new ImageView();
         ImageView o2 = new ImageView();
@@ -489,6 +636,14 @@ public class BoardController implements Initializable {
         }
     }//juegaOrganBot
 
+    /**
+     * Use heal bot boolean.
+     * Método que introduce una cura en caso de poder, en función de la mano del bot que se pase por parámetro.
+     * Da valor a 4 stackPane auxiliares en función de qué bot juegue. Intentará curar siguiendo la lógica de que si está
+     * infectado, retira el virus y la cura, si no lo está, colocará una cura. Si ya tiene cura, lo hace inmune.
+     * @param manoBot the mano bot
+     * @return the boolean
+     */
     public boolean useHealBot(Card manoBot[]) {
         boolean haJugado = false;
         StackPane o1 = new StackPane();
@@ -603,6 +758,13 @@ public class BoardController implements Initializable {
         return haJugado;
     }//useHealBot
 
+    /**
+     * Use virus bot boolean.
+     * Método que introduce un virus en caso de poder, en función de la mano del bot que se pase por parámetro.
+     * Este condicionará un int descarte que se pasa por parámetro al siguiente método que infecta
+     * @param manoBot the mano bot
+     * @return the boolean
+     */
     public boolean useVirusBot(Card manoBot[]) {
         boolean haJugado = false;
         int descarte;
@@ -622,6 +784,14 @@ public class BoardController implements Initializable {
         return haJugado;
     }
 
+    /**
+     * Método que da valor a 4 StackPAne auxiliares en función de la mano insertada por parámetro. Simulamos aleatoriedad
+     * generando un número entre 1 y 4. Si coincide con el jugador que está jugando (param descarte) se descarta de una carta
+     * aleatoria. Si no, tratará de infectar al jugador que le tocara, priorizando en este orden los órganos:
+     * rojo, azul, verde, amarillo
+     * @param descarte
+     * @param manoBot
+     */
     private void infecta(int descarte, Card manoBot[]) {
         StackPane o1 = new StackPane();
         StackPane o2 = new StackPane();
@@ -742,6 +912,11 @@ public class BoardController implements Initializable {
         }
     }
 
+    /**
+     * Use virus heal bot.
+     * Comodín para descartarse un bot en caso de no poder jugar
+     * @param manoBot the mano bot
+     */
     /* comodin */
     public void useVirusHealBot(Card manoBot[]) {
         descartes.add(manoBot[0]);
@@ -751,6 +926,10 @@ public class BoardController implements Initializable {
 
     /* UTILES */
 
+    /**
+     * Check deck.
+     * Para comprobar si el deck está vacío, en ese caso cogerá el montón de descartes y lo convierte en el nuevo mazo.
+     */
     public void checkDeck() {
         if (deck.getDeck().size() == 0) {
             deck.getDeck().addAll(descartes);
@@ -759,6 +938,15 @@ public class BoardController implements Initializable {
         }
     }//checkDeck
 
+    /**
+     * Gets index.
+     * Método que dará la posición de una carta específica que estemos buscando, pasando por parámetro la mano, el tipo
+     * de carta y el color de esta
+     * @param manoX the mano x
+     * @param type  the type
+     * @param color the color
+     * @return the index
+     */
     public int getIndex(Card manoX[], Type type, Color color) {
         int index = -1;
         for (int i = 0; i < manoX.length; i++) {
@@ -769,6 +957,11 @@ public class BoardController implements Initializable {
         return index;
     } //getIndex
 
+    /**
+     * Renovar mi mano.
+     *
+     * @param i the
+     */
     public void renovarMiMano(int i) {
         checkDeck();
         descartes.add(mano[i]);
@@ -790,6 +983,12 @@ public class BoardController implements Initializable {
         }
     }//renovarMiMano
 
+    /**
+     * Renovar mano. (del bot)
+     *
+     * @param manoX the mano x
+     * @param i     the
+     */
     public void renovarMano(Card manoX[], int i) {
         checkDeck();
         descartes.add(manoX[i]);
@@ -801,6 +1000,12 @@ public class BoardController implements Initializable {
 
     /* GANADOR */
 
+    /**
+     * Comprueba si tiene todos organos.
+     *
+     * @param jugador the jugador
+     * @return the boolean
+     */
     public boolean tieneTodosOrganos(int jugador) {
         boolean tiene = false;
         StackPane o1 = new StackPane();
@@ -854,6 +1059,12 @@ public class BoardController implements Initializable {
         return tiene;
     }
 
+    /**
+     * Comprobar cuerpo boolean.
+     * Verifica que todos los órganos están sanos (sin carta de virus encima)
+     * @param jugador the jugador
+     * @return the boolean
+     */
     public boolean comprobarCuerpo(int jugador) {
         boolean ganador = false;
         int contador = 0;
@@ -940,6 +1151,15 @@ public class BoardController implements Initializable {
         return ganador;
     }
 
+    /**
+     * Alert information alert.
+     *
+     * @param stage       the stage
+     * @param title       the title
+     * @param headerText  the header text
+     * @param contentText the content text
+     * @return the alert
+     */
     public Alert alertInformation(Stage stage, String title, String headerText, String contentText) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
