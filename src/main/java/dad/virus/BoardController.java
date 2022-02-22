@@ -772,6 +772,7 @@ public class BoardController implements Initializable {
     public void renovarMiMano(int i) {
         checkDeck();
         descartes.add(mano[i]);
+        discardDeck.setImage(descartes.get(0).getImagen());
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -792,6 +793,7 @@ public class BoardController implements Initializable {
     public void renovarMano(Card manoX[], int i) {
         checkDeck();
         descartes.add(manoX[i]);
+        discardDeck.setImage(descartes.get(0).getImagen());
         manoX[i] = null;
         manoX[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
