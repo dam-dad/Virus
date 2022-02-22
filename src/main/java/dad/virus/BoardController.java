@@ -154,26 +154,19 @@ public class BoardController implements Initializable {
     @FXML
     void onc1action(ActionEvent event) {
         buttonAction(0);
-        jueganBots(manoBot1);
-        jueganBots(manoBot2);
-        jueganBots(manoBot3);
-        esGanador(4);
+        juegatodosBot();
     }
 
     @FXML
     void onc2action(ActionEvent event) {
         buttonAction(1);
-        jueganBots(manoBot1);
-        jueganBots(manoBot2);
-        jueganBots(manoBot3);
+        juegatodosBot();
     }
 
     @FXML
     void onc3action(ActionEvent event) {
         buttonAction(2);
-        jueganBots(manoBot1);
-        jueganBots(manoBot2);
-        jueganBots(manoBot3);
+        juegatodosBot();
     }
 
     @FXML
@@ -402,9 +395,13 @@ public class BoardController implements Initializable {
 
     public void juegatodosBot() {
         checkDeck();
-        if (jueganBots(manoBot1))
-            if (jueganBots(manoBot2))
-                jueganBots(manoBot3);
+        if (!comprobarCuerpo(4))
+            if (jueganBots(manoBot1))
+                if (!comprobarCuerpo(1)) ;
+        if (jueganBots(manoBot2))
+            if (!comprobarCuerpo(2)) ;
+        jueganBots(manoBot3);
+        comprobarCuerpo(3);
     }//juegatodosBot
 
     public boolean jueganBots(Card manoBot[]) {
@@ -527,7 +524,7 @@ public class BoardController implements Initializable {
                         haJugado = true;
                         descartes.add(new Virus(RED));
                         renovarMano(manoBot, getIndex(manoBot, HEAL, RED));
-                    }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                    } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
                         imageHeal.setImage(new Image(url));
                         haJugado = true;
                     }
@@ -547,7 +544,7 @@ public class BoardController implements Initializable {
                                 haJugado = true;
                                 descartes.add(new Virus(BLUE));
                                 renovarMano(manoBot, getIndex(manoBot, HEAL, BLUE));
-                            }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                            } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
                                 imageHeal.setImage(new Image(url));
                                 haJugado = true;
                             }
@@ -568,11 +565,11 @@ public class BoardController implements Initializable {
                                     haJugado = true;
                                     descartes.add(new Virus(GREEN));
                                     renovarMano(manoBot, getIndex(manoBot, HEAL, GREEN));
-                                }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                                } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
                                     imageHeal.setImage(new Image(url));
                                     haJugado = true;
                                 }
-                            }catch (NullPointerException e) {
+                            } catch (NullPointerException e) {
                                 imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, GREEN)].getImagen());
                                 haJugado = true;
                             }
@@ -589,11 +586,11 @@ public class BoardController implements Initializable {
                                         haJugado = true;
                                         descartes.add(new Virus(YELLOW));
                                         renovarMano(manoBot, getIndex(manoBot, HEAL, YELLOW));
-                                    }else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L'){
+                                    } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
                                         imageHeal.setImage(new Image(url));
                                         haJugado = true;
                                     }
-                                }catch (NullPointerException e) {
+                                } catch (NullPointerException e) {
                                     imageHeal.setImage(manoBot[getIndex(manoBot, HEAL, YELLOW)].getImagen());
                                     haJugado = true;
                                 }
@@ -663,83 +660,147 @@ public class BoardController implements Initializable {
 
     /* GANADOR */
 
-    public boolean esGanador(int jugador){
-        boolean ganador = false;
+    public boolean tieneTodosOrganos(int jugador) {
+        boolean tiene = false;
         StackPane o1 = new StackPane();
         StackPane o2 = new StackPane();
         StackPane o3 = new StackPane();
         StackPane o4 = new StackPane();
-        switch (jugador){
+        switch (jugador) {
             case 1:
                 o1 = stackPane1J1;
                 o2 = stackPane2J1;
                 o3 = stackPane3J1;
                 o4 = stackPane4J1;
-                comprobarCuerpo(o1,o2,o3,o4);
                 break;
             case 2:
                 o1 = stackPane1J2;
                 o2 = stackPane2J2;
                 o3 = stackPane3J2;
                 o4 = stackPane4J2;
-                comprobarCuerpo(o1,o2,o3,o4);
                 break;
             case 3:
                 o1 = stackPane1J3;
                 o2 = stackPane2J3;
                 o3 = stackPane3J3;
                 o4 = stackPane4J3;
-                comprobarCuerpo(o1,o2,o3,o4);
                 break;
             case 4:
                 o1 = stackPane1J4;
                 o2 = stackPane2J4;
                 o3 = stackPane3J4;
                 o4 = stackPane4J4;
-                comprobarCuerpo(o1,o2,o3,o4);
                 break;
         }
+        Button button = (Button) o1.getChildren().get(0);
+        ImageView imageView = (ImageView) button.getGraphic();
+        Button button2 = (Button) o2.getChildren().get(0);
+        ImageView imageView2 = (ImageView) button2.getGraphic();
+        Button button3 = (Button) o3.getChildren().get(0);
+        ImageView imageView3 = (ImageView) button3.getGraphic();
+        Button button4 = (Button) o4.getChildren().get(0);
+        ImageView imageView4 = (ImageView) button4.getGraphic();
+        try {
+            if (imageView.getImage().getUrl() != null
+                    && imageView2.getImage().getUrl() != null
+                    && imageView3.getImage().getUrl() != null
+                    && imageView4.getImage().getUrl() != null) {
+                tiene = true;
+            }
+        } catch (NullPointerException e) {
 
+        }
+        return tiene;
+    }
+
+    public boolean comprobarCuerpo(int jugador) {
+        boolean ganador = false;
+        int contador = 0;
+        String context;
+        if (jugador == 4) {
+            context = "¡¡ Felicidades !! Has ganado a estos bots.\nNo olvides recoger tu certificado CoVirus en PDF.";
+        } else {
+            context = "¡¡ Lástima !!\nHa ganado el jugador " + jugador;
+        }
+
+        if (tieneTodosOrganos(jugador)) {
+            StackPane o1 = new StackPane();
+            StackPane o2 = new StackPane();
+            StackPane o3 = new StackPane();
+            StackPane o4 = new StackPane();
+            switch (jugador) {
+                case 1:
+                    o1 = stackPane1J1;
+                    o2 = stackPane2J1;
+                    o3 = stackPane3J1;
+                    o4 = stackPane4J1;
+                    break;
+                case 2:
+                    o1 = stackPane1J2;
+                    o2 = stackPane2J2;
+                    o3 = stackPane3J2;
+                    o4 = stackPane4J2;
+                    break;
+                case 3:
+                    o1 = stackPane1J3;
+                    o2 = stackPane2J3;
+                    o3 = stackPane3J3;
+                    o4 = stackPane4J3;
+                    break;
+                case 4:
+                    o1 = stackPane1J4;
+                    o2 = stackPane2J4;
+                    o3 = stackPane3J4;
+                    o4 = stackPane4J4;
+                    break;
+            }
+
+            try {
+                ImageView imageHeal = (ImageView) o1.getChildren().get(1);
+                String url1 = imageHeal.getImage().getUrl();
+                if (url1.charAt(url1.length()-5) != 'S') {
+                    System.out.println(url1);
+                    contador++;
+                }
+            } catch (NullPointerException e) {
+                contador++;
+            }
+            try {
+                ImageView imageHeal = (ImageView) o2.getChildren().get(1);
+                String url1 = imageHeal.getImage().getUrl();
+                if (url1.charAt(url1.length()-5) != 'S') {
+                    contador++;
+                }
+            } catch (NullPointerException e) {
+                contador++;
+            }
+            try {
+                ImageView imageHeal = (ImageView) o3.getChildren().get(1);
+                String url1 = imageHeal.getImage().getUrl();
+                if (url1.charAt(url1.length()-5) != 'S') {
+                    contador++;
+                }
+            } catch (NullPointerException e) {
+                contador++;
+            }
+            try {
+                ImageView imageHeal = (ImageView) o4.getChildren().get(1);
+                String url1 = imageHeal.getImage().getUrl();
+                if (url1.charAt(url1.length()-5) != 'S') {
+                    contador++;
+                }
+            } catch (NullPointerException e) {
+                contador++;
+            }
+            if (contador == 4) {
+                ganador = true;
+                alertInformation(stage, "Virus", "¡¡ Tenemos ganador !!", context).showAndWait();
+            }
+        }
         return ganador;
     }
 
-    public boolean comprobarCuerpo(StackPane o1, StackPane o2, StackPane o3, StackPane o4){
-        boolean sano = false, sano1=false, sano2=false, sano3=false, sano4=false;
-        ImageView imageHeal1,imageHeal2,imageHeal3,imageHeal4;
-        try{
-            imageHeal1 = (ImageView) o1.getChildren().get(1);
-            int pos1 = imageHeal1.getImage().getUrl().charAt(imageHeal1.getImage().getUrl().length() - 5);
-
-            imageHeal2 = (ImageView) o2.getChildren().get(1);
-            int pos2 = imageHeal2.getImage().getUrl().charAt(imageHeal2.getImage().getUrl().length() - 5);
-
-            imageHeal3 = (ImageView) o3.getChildren().get(1);
-            int pos3 = imageHeal3.getImage().getUrl().charAt(imageHeal3.getImage().getUrl().length() - 5);
-
-            imageHeal4 = (ImageView) o4.getChildren().get(1);
-            int pos4 = imageHeal1.getImage().getUrl().charAt(imageHeal4.getImage().getUrl().length() - 5);
-
-
-            if(imageHeal1.getImage().getUrl().charAt(pos1) == 'L' || imageHeal1.getImage().getUrl().charAt(pos1) == 'E')
-                sano1 = true;
-            if(imageHeal2.getImage().getUrl().charAt(pos2) == 'L' || imageHeal2.getImage().getUrl().charAt(pos2) == 'E')
-                sano2 = true;
-            if(imageHeal3.getImage().getUrl().charAt(pos3) == 'L' || imageHeal3.getImage().getUrl().charAt(pos3) == 'E')
-                sano3 = true;
-            if(imageHeal4.getImage().getUrl().charAt(pos4) == 'L' || imageHeal4.getImage().getUrl().charAt(pos4) == 'E')
-                sano4 = true;
-            if(sano1 && sano2 && sano3 && sano4)
-                sano = true;
-                alertInformation(stage,"GANADOR", "TENEMOS UN GANADOR", "HA GANADO EL JUGADOR ").showAndWait();
-
-        }catch (NullPointerException e){
-
-        }
-        return sano;
-    }
-
     public Alert alertInformation(Stage stage, String title, String headerText, String contentText) {
-
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle(title);
         alert.setHeaderText(headerText);
