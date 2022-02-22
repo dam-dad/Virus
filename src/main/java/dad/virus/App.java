@@ -31,7 +31,7 @@ public class App extends Application {
         // TODO Auto-generated method stub
         RootController controller = new RootController();
         primaryStage.setTitle("Virus Game");
-        primaryStage.setScene(new Scene(controller.getView()));
+        primaryStage.setScene(new Scene(controller.getView(),1024,768));
         App.getPrimaryStage().getScene().getStylesheets().add(getClass().getResource("/css/rootDark.css").toString());
         primaryStage.getIcons().add(new Image(ClassLoader.getSystemResourceAsStream("image/icon.jpg")));
         primaryStage.show();

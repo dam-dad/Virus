@@ -152,10 +152,10 @@ public class RootController implements Initializable {
     void onJoinGameAction(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/boardView.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
+        scene = new Scene(root,1024,768);
         scene.getStylesheets().add(App.getPrimaryStage().getScene().getStylesheets().get(0));
         stage.setScene(scene);
-        stage.setMaximized(true);
+        //stage.setMaximized(false);
         stage.show();
     }
 
