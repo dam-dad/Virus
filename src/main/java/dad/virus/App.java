@@ -17,7 +17,6 @@ public class App extends Application {
     /*
         private RootController controller;
     */
-    private GameController controller;
 
     public static Stage getPrimaryStage() {
         return primaryStage;
