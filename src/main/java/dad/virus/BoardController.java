@@ -421,7 +421,7 @@ public class BoardController implements Initializable {
             haJugado = true;
         } else {
             if (!useHealBot(manoBot)) {
-                useVirusHealBot(manoBot);
+                useVirusBot(manoBot);
                 haJugado = true;
             }
         }
@@ -603,6 +603,145 @@ public class BoardController implements Initializable {
         return haJugado;
     }//useHealBot
 
+    public boolean useVirusBot(Card manoBot[]) {
+        boolean haJugado = false;
+        int descarte;
+        if (manoBot.equals(manoBot1)) {
+            descarte = 1;
+            infecta(descarte, manoBot1);
+            haJugado = true;
+        } else if (manoBot.equals(manoBot2)) {
+            descarte = 2;
+            infecta(descarte, manoBot2);
+            haJugado = true;
+        } else if (manoBot.equals(manoBot3)) {
+            descarte = 3;
+            infecta(descarte, manoBot3);
+            haJugado = true;
+        }
+        return haJugado;
+    }
+
+    private void infecta(int descarte, Card manoBot[]) {
+        StackPane o1 = new StackPane();
+        StackPane o2 = new StackPane();
+        StackPane o3 = new StackPane();
+        StackPane o4 = new StackPane();
+        int random = randomNumber(1, 4);
+        if (random == descarte) {
+            useVirusHealBot(manoBot);
+        } else {
+            switch (random) {
+                case 1:
+                    o1 = stackPane1J1;
+                    o2 = stackPane2J1;
+                    o3 = stackPane3J1;
+                    o4 = stackPane4J1;
+                    break;
+                case 2:
+                    o1 = stackPane1J2;
+                    o2 = stackPane2J2;
+                    o3 = stackPane3J2;
+                    o4 = stackPane4J2;
+                    break;
+                case 3:
+                    o1 = stackPane1J3;
+                    o2 = stackPane2J3;
+                    o3 = stackPane3J3;
+                    o4 = stackPane4J3;
+                    break;
+                case 4:
+                    o1 = stackPane1J4;
+                    o2 = stackPane2J4;
+                    o3 = stackPane3J4;
+                    o4 = stackPane4J4;
+                    break;
+            }
+            Button button = (Button) o1.getChildren().get(0);
+            ImageView imageView = (ImageView) button.getGraphic();
+            Button button2 = (Button) o2.getChildren().get(0);
+            ImageView imageView2 = (ImageView) button2.getGraphic();
+            Button button3 = (Button) o3.getChildren().get(0);
+            ImageView imageView3 = (ImageView) button3.getGraphic();
+            Button button4 = (Button) o4.getChildren().get(0);
+            ImageView imageView4 = (ImageView) button4.getGraphic();
+
+            try {
+                if (imageView.getImage() != null) {
+                    if (getIndex(manoBot, VIRUS, RED) != -1) {
+                        ImageView imageVirus = (ImageView) o1.getChildren().get(1);
+                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Organ(RED));
+                            descartes.add(new Virus(RED));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Heal(RED));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
+                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, RED)].getImagen());
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
+                        }
+                    }
+                } else if (imageView2.getImage() != null) {
+                    if (getIndex(manoBot, VIRUS, BLUE) != -1) {
+                        ImageView imageVirus = (ImageView) o2.getChildren().get(1);
+                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Organ(BLUE));
+                            descartes.add(new Virus(BLUE));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Heal(BLUE));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
+                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, BLUE)].getImagen());
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
+                        }
+                    }
+                } else if(imageView3.getImage() != null) {
+                    if (getIndex(manoBot, VIRUS, GREEN) != -1) {
+                        ImageView imageVirus = (ImageView) o3.getChildren().get(1);
+                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Organ(GREEN));
+                            descartes.add(new Virus(GREEN));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Heal(GREEN));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
+                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, GREEN)].getImagen());
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
+                        }
+                    }
+                } else if(imageView4.getImage() != null) {
+                    if (getIndex(manoBot, VIRUS, YELLOW) != -1) {
+                        ImageView imageVirus = (ImageView) o4.getChildren().get(1);
+                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Organ(YELLOW));
+                            descartes.add(new Virus(YELLOW));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
+                            imageVirus.setImage(null);
+                            descartes.add(new Heal(YELLOW));
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
+                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
+                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, YELLOW)].getImagen());
+                            renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
+                        }
+                    }
+                }
+            } catch (NullPointerException e) {
+
+            }
+        }
+    }
+
     /* comodin */
     public void useVirusHealBot(Card manoBot[]) {
         descartes.add(manoBot[0]);
@@ -758,8 +897,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o1.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length()-5) != 'S') {
-                    System.out.println(url1);
+                if (url1.charAt(url1.length() - 5) != 'S') {
                     contador++;
                 }
             } catch (NullPointerException e) {
@@ -768,7 +906,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o2.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length()-5) != 'S') {
+                if (url1.charAt(url1.length() - 5) != 'S') {
                     contador++;
                 }
             } catch (NullPointerException e) {
@@ -777,7 +915,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o3.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length()-5) != 'S') {
+                if (url1.charAt(url1.length() - 5) != 'S') {
                     contador++;
                 }
             } catch (NullPointerException e) {
@@ -786,7 +924,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o4.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length()-5) != 'S') {
+                if (url1.charAt(url1.length() - 5) != 'S') {
                     contador++;
                 }
             } catch (NullPointerException e) {
