@@ -160,7 +160,7 @@ public class RootController implements Initializable {
     }
 
     public RootController() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/RootView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/rootView.fxml"));
         loader.setController(this);
         loader.load();
         
