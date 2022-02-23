@@ -1,7 +1,11 @@
 package dad.virus;
 
 import dad.virus.game.*;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -15,6 +19,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.text.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -22,8 +27,7 @@ import java.util.Collections;
 import java.util.ResourceBundle;
 
 import static dad.virus.game.Color.*;
-import static dad.virus.game.Type.HEAL;
-import static dad.virus.game.Type.VIRUS;
+import static dad.virus.game.Type.*;
 
 /**
  * Board controller.
@@ -549,13 +553,61 @@ public class BoardController implements Initializable {
      */
     public void juegatodosBot() {
         checkDeck();
-        if (!comprobarCuerpo(4))
-            if (jueganBots(manoBot1))
-                if (!comprobarCuerpo(1)) ;
-        if (jueganBots(manoBot2))
-            if (!comprobarCuerpo(2)) ;
-        jueganBots(manoBot3);
-        comprobarCuerpo(3);
+
+        if (comprobarCuerpo(4)) {
+
+            alertInformation(stage,
+                    "Virus",
+                    "¡¡ Tenemos ganador !!",
+                    "¡¡ Felicidades !! Has ganado a estos bots.\nNo olvides recoger tu certificado CoVirus en PDF."
+            ).showAndWait();
+
+        } else {
+
+            Timeline timeline = new Timeline();
+
+            KeyFrame kf1 = new KeyFrame(Duration.seconds(2), e -> {
+                System.out.println("juega bot 1");
+                jueganBots(manoBot1);
+                if (comprobarCuerpo(1)) {
+                    timeline.stop();
+                    alertInformation(stage,
+                            "Virus",
+                            "¡¡ Tenemos ganador !!",
+                            "¡¡ Felicidades !! Has ganado el bot 1."
+                    ).showAndWait();
+                }
+            });
+            KeyFrame kf2 = new KeyFrame(Duration.seconds(4), e -> {
+                System.out.println("juega bot 2");
+                jueganBots(manoBot2);
+                if (comprobarCuerpo(2)) {
+                    timeline.stop();
+                    alertInformation(stage,
+                            "Virus",
+                            "¡¡ Tenemos ganador !!",
+                            "¡¡ Felicidades !! Has ganado el bot 2."
+                    ).showAndWait();
+                }
+            });
+            KeyFrame kf3 = new KeyFrame(Duration.seconds(6), e -> {
+                System.out.println("juega bot 3");
+                jueganBots(manoBot3);
+                if (comprobarCuerpo(3)) {
+                    timeline.stop();
+                    alertInformation(stage,
+                            "Virus",
+                            "¡¡ Tenemos ganador !!",
+                            "¡¡ Felicidades !! Has ganado el bot 3."
+                    ).showAndWait();
+                }
+            });
+
+            timeline.getKeyFrames().addAll(kf1, kf2, kf3);
+            timeline.play();
+
+        }
+
     }//juegatodosBot
 
     /**
@@ -571,7 +623,7 @@ public class BoardController implements Initializable {
         boolean haJugado = false;
         checkDeck();
         useVirusBot(manoBot);
-        if (manoBot[0].getType().toString().equals("ORGAN")) {
+        if (manoBot[0].getType() == ORGAN) {
             juegaOrganBot(manoBot, 0);
             renovarMano(manoBot, 0);
             haJugado = true;
@@ -1070,10 +1122,10 @@ public class BoardController implements Initializable {
      */
     public boolean tieneTodosOrganos(int jugador) {
         boolean tiene = false;
-        StackPane o1 = new StackPane();
-        StackPane o2 = new StackPane();
-        StackPane o3 = new StackPane();
-        StackPane o4 = new StackPane();
+        StackPane o1 = null;
+        StackPane o2 = null;
+        StackPane o3 = null;
+        StackPane o4 = null;
         switch (jugador) {
             case 1:
                 o1 = stackPane1J1;
@@ -1208,7 +1260,7 @@ public class BoardController implements Initializable {
             }
             if (contador == 4) {
                 ganador = true;
-                alertInformation(stage, "Virus", "¡¡ Tenemos ganador !!", context).showAndWait();
+                //alertInformation(stage, "Virus", "¡¡ Tenemos ganador !!", context).showAndWait();
             }
         }
         return ganador;
