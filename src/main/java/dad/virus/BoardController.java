@@ -553,9 +553,7 @@ public class BoardController implements Initializable {
      */
     public void juegatodosBot() {
         checkDeck();
-
         if (comprobarCuerpo(4)) {
-
             alertInformation(stage,
                     "Virus",
                     "¡¡ Tenemos ganador !!",
@@ -622,7 +620,6 @@ public class BoardController implements Initializable {
     public boolean jueganBots(Card manoBot[]) {
         boolean haJugado = false;
         checkDeck();
-        useVirusBot(manoBot);
         if (manoBot[0].getType() == ORGAN) {
             juegaOrganBot(manoBot, 0);
             renovarMano(manoBot, 0);
@@ -1078,8 +1075,6 @@ public class BoardController implements Initializable {
      */
     public void renovarMiMano(int i) {
         checkDeck();
-        descartes.add(mano[i]);
-        discardDeck.setImage(descartes.get(0).getImagen());
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
