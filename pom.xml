@@ -38,6 +38,17 @@
 			<artifactId>commons-io</artifactId>
 			<version>2.11.0</version>
 		</dependency>
+		<dependency>
+			<groupId>net.sf.jasperreports</groupId>
+			<artifactId>jasperreports</artifactId>
+			<version>6.18.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.lowagie/itext -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>4.2.2</version>
+		</dependency>
 	</dependencies>
 
 	<repositories>
@@ -46,8 +57,6 @@
 			<url>https://jitpack.io</url>
 		</repository>
 	</repositories>
-
-
 	<build>
 		<plugins>
 			<plugin>

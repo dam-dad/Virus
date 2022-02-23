@@ -1,10 +1,9 @@
 @import "viewOptionsClear.css";
 @import "boardClear.css";
-
 #view{
-	-fx-background-color: #1a7cb6; /*Blue dark*/
+	-fx-background-image: url("../image/virusbackground.jpg");
+	-fx-background-color: #162340; /*Blue dark*/
 }
-
 #menuPrimary {
 	-fx-background-color:#20bfd8;
 	-fx-background-radius:10px;
@@ -12,5 +11,6 @@
 
 #menuPrimary > Button {
 	-fx-background-color: #20dad8; /* other Blue */
+	-fx-text-fill: #212329;
 	-fx-background-radius: 15;
 }

@@ -1,37 +1,75 @@
 #borderPaneView {
-    -fx-background-color:#1a7cb6;
+    -fx-background-image: url("../image/board/fondoMaderaClear.png");
+    /*-fx-background-color:  #162340;*/
 }
 
 #boardJ1 {
+    -fx-background-image: url("../image/board/clearBoard.png");
     -fx-border-color: white;
     -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-color: #20bfd8;
-    -fx-background-radius: 20;
+    -fx-background-color: #033e5f;
+
 }
 #boardJ2 {
+    -fx-background-image: url("../image/board/clearBoard.png");
     -fx-border-color: white;
     -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-color: #20bfd8;
-    -fx-background-radius: 20;
+    -fx-background-color: #033e5f;
 }
 #boardJ3 {
+    -fx-background-image: url("../image/board/clearBoard.png");
     -fx-border-color: white;
     -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-color: #20bfd8;
-    -fx-background-radius: 20;
+    -fx-background-color: #033e5f;
 }
 
 #boardJ4 {
+    -fx-background-image: url("../image/board/clearBoard.png");
     -fx-border-color: white;
     -fx-border-width: 2;
-    -fx-border-radius: 20;
-    -fx-background-color: #20bfd8;
-    -fx-background-radius: 20;
+    -fx-background-color: #033e5f;
 }
 
-#btnBackMenu {
-    -fx-background-color: #20dad8; /* other Blue */
+Button {
+    -fx-background-color: brown;
+}
+
+#c1:hover{
+    -fx-background-color: green;
+    -fx-scale-y:1.1;
+}
+#c2:hover{
+    -fx-background-color: green;
+    -fx-scale-y:1.1;
+}
+#c3:hover{
+    -fx-background-color: green;
+    -fx-scale-y:1.1;
+}
+
+#c1{
+    -fx-background-color: #800080;
+}
+#c2{
+    -fx-background-color: #800080;
+}
+#c3{
+    -fx-background-color: #800080;
+}
+
+.redCard {
+    -fx-background-color: brown;
+}
+
+.blueCard {
+    -fx-background-color: #0069c0;
+
+}
+
+.greenCard {
+    -fx-background-color: green;
+}
+
+.yellowCard {
+    -fx-background-color: #d09306;
 }

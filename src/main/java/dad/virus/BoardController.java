@@ -1,11 +1,10 @@
 package dad.virus;
 
 import dad.virus.game.*;
+import dad.virus.reports.ReportPDF;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
@@ -20,11 +19,11 @@ import javafx.scene.text.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.JRException;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.ResourceBundle;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static dad.virus.game.Color.*;
 import static dad.virus.game.Type.*;
@@ -43,6 +42,8 @@ public class BoardController implements Initializable {
     private static Organ[] playerBody;
     private static ArrayList<Card> descartes;
     private static String url = "/image/players/inmune.png";
+    private long ini;
+    private long end;
 
     @FXML
     private HBox boardJ2, boardJ4;
@@ -151,7 +152,7 @@ public class BoardController implements Initializable {
         handCard2.setImage(mano[1].getImagen());
         handCard3.setImage(mano[2].getImagen());
 
-
+        ini = System.currentTimeMillis();
     }
 
     /**
@@ -442,6 +443,9 @@ public class BoardController implements Initializable {
      * @return the boolean
      */
     public boolean juegaPlayer(Color color, StackPane stack) {
+        this.alertInformation(this.stage, "", "", "");
+
+
         Boolean haJugado = false;
         Button button = (Button) stack.getChildren().get(0);
         ImageView image = (ImageView) button.getGraphic();
@@ -1277,6 +1281,25 @@ public class BoardController implements Initializable {
         alert.setContentText(contentText);
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(stage);
+
+        end = System.currentTimeMillis();
+
+        long totalTime = (end - ini)/1000;
+
+        System.out.println(end - ini);
+        long seconds = totalTime % 60;
+        long minuts = (totalTime % 3600) / 60;
+        long hours = totalTime/3600;
+
+        String formatTime = String.format("%02d:%02d:%02d", hours, minuts, seconds);
+        ReportPDF reportPDF = new ReportPDF();
+
+        try {
+            reportPDF.report(formatTime);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
         return alert;
     }
 }
