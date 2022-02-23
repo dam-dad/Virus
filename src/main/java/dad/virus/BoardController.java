@@ -165,6 +165,7 @@ public class BoardController implements Initializable {
     /**
      * Onc 1 action.
      * Carta izquierda de la mano del jugador. Llama a buttonAction con parámetro 0 y continúa con la acción de los bots
+     *
      * @param event the event
      */
     @FXML
@@ -176,6 +177,7 @@ public class BoardController implements Initializable {
     /**
      * Onc 2 action.
      * Carta central de la mano del jugador. Llama a buttonAction con parámetro 1 y continúa con la acción de los bots
+     *
      * @param event the event
      */
     @FXML
@@ -187,6 +189,7 @@ public class BoardController implements Initializable {
     /**
      * Onc 3 action.
      * Carta derecha de la mano del jugador. Llama a buttonAction con parámetro 2 y continúa con la acción de los bots
+     *
      * @param event the event
      */
     @FXML
@@ -198,6 +201,7 @@ public class BoardController implements Initializable {
     /**
      * On o 1 j 4 action.
      * Donde está situado el lado rojo del cuerpo del jugador
+     *
      * @param event the event
      */
     @FXML
@@ -210,6 +214,7 @@ public class BoardController implements Initializable {
     /**
      * On o 2 j 4 action.
      * Donde está situado el lado azul del cuerpo del jugador
+     *
      * @param event the event
      */
     @FXML
@@ -222,6 +227,7 @@ public class BoardController implements Initializable {
     /**
      * On o 3 j 4 action.
      * Donde está situado el lado verde del cuerpo del jugador
+     *
      * @param event the event
      */
     @FXML
@@ -234,6 +240,7 @@ public class BoardController implements Initializable {
     /**
      * On o 4 j 4 action.
      * Donde está situado el lado amarillo del cuerpo del jugador
+     *
      * @param event the event
      */
     @FXML
@@ -246,6 +253,7 @@ public class BoardController implements Initializable {
     /**
      * On o 1 j 1 action.
      * Donde está situado el lado rojo del cuerpo del bot 1
+     *
      * @param event the event
      */
     @FXML
@@ -257,6 +265,7 @@ public class BoardController implements Initializable {
     /**
      * On o 1 j 2 action.
      * Donde está situado el lado rojo del cuerpo del bot 2
+     *
      * @param event the event
      */
     @FXML
@@ -267,7 +276,8 @@ public class BoardController implements Initializable {
 
     /**
      * On o 1 j 3 action.
-     *  Donde está situado el lado rojo del cuerpo del bot 3
+     * Donde está situado el lado rojo del cuerpo del bot 3
+     *
      * @param event the event
      */
     @FXML
@@ -280,6 +290,7 @@ public class BoardController implements Initializable {
     /**
      * On o 2 j 2 action.
      * Donde está situado el lado azul del cuerpo del bot 2
+     *
      * @param event the event
      */
     @FXML
@@ -291,6 +302,7 @@ public class BoardController implements Initializable {
     /**
      * On o 2 j 1 action.
      * Donde está situado el lado azul del cuerpo del bot 1
+     *
      * @param event the event
      */
     @FXML
@@ -302,6 +314,7 @@ public class BoardController implements Initializable {
     /**
      * On o 2 j 3 action.
      * Donde está situado el lado azul del cuerpo del bot 3
+     *
      * @param event the event
      */
     @FXML
@@ -313,6 +326,7 @@ public class BoardController implements Initializable {
     /**
      * On o 3 j 1 action.
      * Donde está situado el lado verde del cuerpo del bot 1
+     *
      * @param event the event
      */
     @FXML
@@ -324,6 +338,7 @@ public class BoardController implements Initializable {
     /**
      * On o 3 j 2 action.
      * Donde está situado el lado verde del cuerpo del bot 2
+     *
      * @param event the event
      */
     @FXML
@@ -335,6 +350,7 @@ public class BoardController implements Initializable {
     /**
      * On o 3 j 3 action.
      * Donde está situado el lado verde del cuerpo del bot 3
+     *
      * @param event the event
      */
     @FXML
@@ -346,6 +362,7 @@ public class BoardController implements Initializable {
     /**
      * On o 4 j 1 action.
      * Donde está situado el lado amarillo del cuerpo del bot 1
+     *
      * @param event the event
      */
     @FXML
@@ -357,6 +374,7 @@ public class BoardController implements Initializable {
     /**
      * On o 4 j 2 action.
      * Donde está situado el lado amarillo del cuerpo del bot 2
+     *
      * @param event the event
      */
     @FXML
@@ -368,6 +386,7 @@ public class BoardController implements Initializable {
     /**
      * On o 4 j 3 action.
      * Donde está situado el lado amarillo del cuerpo del bot 3
+     *
      * @param event the event
      */
     @FXML
@@ -385,6 +404,7 @@ public class BoardController implements Initializable {
     /**
      * Button action.
      * Descarta la carta de la mano del botón seleccionado
+     *
      * @param i the
      */
     public void buttonAction(int i) {
@@ -412,6 +432,7 @@ public class BoardController implements Initializable {
      * Juega player boolean.
      * Inserta el órgano del color y el stack introducidos por parametro. Si existe órgano, hace lo propio con la cura
      * en caso de tenerla en mano
+     *
      * @param color the color
      * @param stack the stack
      * @return the boolean
@@ -477,6 +498,7 @@ public class BoardController implements Initializable {
     /**
      * Use virus boolean.
      * Usa una carta de virus sobre el órgano seleccionado, con condicionales para añadir virus, quitar cura o quitar órgano;
+     *
      * @param color the color
      * @param stack the stack
      * @return the boolean
@@ -541,12 +563,14 @@ public class BoardController implements Initializable {
      * El bot llama a los métodos correspondientes con esta prioridad: intenta usar órgano, si no puede intenta curar órgano,
      * si no puede intenta infectar a un jugador aleatorio, en caso de que no pueda hacer nada de esto, descarta una carta
      * aleatoria
+     *
      * @param manoBot the mano bot
      * @return the boolean
      */
     public boolean jueganBots(Card manoBot[]) {
         boolean haJugado = false;
         checkDeck();
+        useVirusBot(manoBot);
         if (manoBot[0].getType().toString().equals("ORGAN")) {
             juegaOrganBot(manoBot, 0);
             renovarMano(manoBot, 0);
@@ -560,11 +584,10 @@ public class BoardController implements Initializable {
             renovarMano(manoBot, 2);
             haJugado = true;
         } else {
-            if (!useHealBot(manoBot)) {
+            if (!useHealBot(manoBot))
                 useVirusBot(manoBot);
-                haJugado = true;
-            }
         }
+        haJugado = true;
         return haJugado;
     }//jueganBots
 
@@ -572,6 +595,7 @@ public class BoardController implements Initializable {
      * Juega organ bot.
      * Método para insertar un órgano, pasando por parámetro la mano de cartas del bot correspondiente, un int aux para
      * recorrer la mano en busca de la carta oportuna
+     *
      * @param manoBot the mano bot
      * @param aux     the aux
      */
@@ -641,6 +665,7 @@ public class BoardController implements Initializable {
      * Método que introduce una cura en caso de poder, en función de la mano del bot que se pase por parámetro.
      * Da valor a 4 stackPane auxiliares en función de qué bot juegue. Intentará curar siguiendo la lógica de que si está
      * infectado, retira el virus y la cura, si no lo está, colocará una cura. Si ya tiene cura, lo hace inmune.
+     *
      * @param manoBot the mano bot
      * @return the boolean
      */
@@ -762,6 +787,7 @@ public class BoardController implements Initializable {
      * Use virus bot boolean.
      * Método que introduce un virus en caso de poder, en función de la mano del bot que se pase por parámetro.
      * Este condicionará un int descarte que se pasa por parámetro al siguiente método que infecta
+     *
      * @param manoBot the mano bot
      * @return the boolean
      */
@@ -770,16 +796,13 @@ public class BoardController implements Initializable {
         int descarte;
         if (manoBot.equals(manoBot1)) {
             descarte = 1;
-            infecta(descarte, manoBot1);
-            haJugado = true;
+            haJugado = infecta(descarte, manoBot1);
         } else if (manoBot.equals(manoBot2)) {
             descarte = 2;
-            infecta(descarte, manoBot2);
-            haJugado = true;
+            haJugado = infecta(descarte, manoBot2);
         } else if (manoBot.equals(manoBot3)) {
             descarte = 3;
-            infecta(descarte, manoBot3);
-            haJugado = true;
+            haJugado = infecta(descarte, manoBot3);
         }
         return haJugado;
     }
@@ -789,10 +812,13 @@ public class BoardController implements Initializable {
      * generando un número entre 1 y 4. Si coincide con el jugador que está jugando (param descarte) se descarta de una carta
      * aleatoria. Si no, tratará de infectar al jugador que le tocara, priorizando en este orden los órganos:
      * rojo, azul, verde, amarillo
+     *
      * @param descarte
      * @param manoBot
+     * @return
      */
-    private void infecta(int descarte, Card manoBot[]) {
+    private boolean infecta(int descarte, Card[] manoBot) {
+        boolean haJugado = false;
         StackPane o1 = new StackPane();
         StackPane o2 = new StackPane();
         StackPane o3 = new StackPane();
@@ -835,86 +861,121 @@ public class BoardController implements Initializable {
             ImageView imageView3 = (ImageView) button3.getGraphic();
             Button button4 = (Button) o4.getChildren().get(0);
             ImageView imageView4 = (ImageView) button4.getGraphic();
+            ImageView inmuneView = new ImageView(new Image(url));
 
-            try {
-                if (imageView.getImage() != null) {
+            if (imageView.getImage() != null) {
+                ImageView imageVirus = (ImageView) o1.getChildren().get(1);
+                try {
                     if (getIndex(manoBot, VIRUS, RED) != -1) {
-                        ImageView imageVirus = (ImageView) o1.getChildren().get(1);
-                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Organ(RED));
-                            descartes.add(new Virus(RED));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Heal(RED));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
-                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, RED)].getImagen());
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
+                        if (!imageVirus.getImage().equals(inmuneView)) {
+                            if (imageVirus.getImage().equals(manoBot[getIndex(manoBot, VIRUS, RED)].getImagen())) {
+                                imageVirus.setImage(null);
+                                imageView.setImage(null);
+                                descartes.add(new Organ(RED));
+                                descartes.add(new Virus(RED));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
+                                haJugado = true;
+                            } else {
+                                imageVirus.setImage(null);
+                                descartes.add(new Heal(RED));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
+                                haJugado = true;
+                            }
                         }
                     }
-                } else if (imageView2.getImage() != null) {
-                    if (getIndex(manoBot, VIRUS, BLUE) != -1) {
-                        ImageView imageVirus = (ImageView) o2.getChildren().get(1);
-                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Organ(BLUE));
-                            descartes.add(new Virus(BLUE));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Heal(BLUE));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
-                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, BLUE)].getImagen());
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
-                        }
-                    }
-                } else if(imageView3.getImage() != null) {
-                    if (getIndex(manoBot, VIRUS, GREEN) != -1) {
-                        ImageView imageVirus = (ImageView) o3.getChildren().get(1);
-                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Organ(GREEN));
-                            descartes.add(new Virus(GREEN));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Heal(GREEN));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
-                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, GREEN)].getImagen());
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
-                        }
-                    }
-                } else if(imageView4.getImage() != null) {
-                    if (getIndex(manoBot, VIRUS, YELLOW) != -1) {
-                        ImageView imageVirus = (ImageView) o4.getChildren().get(1);
-                        if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='S'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Organ(YELLOW));
-                            descartes.add(new Virus(YELLOW));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)=='L'){
-                            imageVirus.setImage(null);
-                            descartes.add(new Heal(YELLOW));
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
-                        }else if(imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length()-5)!='E'){
-                            imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, YELLOW)].getImagen());
-                            renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
-                        }
-                    }
+                } catch (NullPointerException e) {
+                    imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, RED)].getImagen());
+                    renovarMano(manoBot, getIndex(manoBot, VIRUS, RED));
+                    haJugado = true;
                 }
-            } catch (NullPointerException e) {
+
+            } else if (imageView2.getImage() != null) {
+                ImageView imageVirus = (ImageView) o2.getChildren().get(1);
+                try {
+                    if (getIndex(manoBot, VIRUS, BLUE) != -1) {
+                        if (!imageVirus.getImage().equals(inmuneView)) {
+                            if (imageVirus.getImage().equals(manoBot[getIndex(manoBot, VIRUS, BLUE)].getImagen())) {
+                                imageVirus.setImage(null);
+                                imageView.setImage(null);
+                                descartes.add(new Organ(BLUE));
+                                descartes.add(new Virus(BLUE));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
+                                haJugado = true;
+                            } else {
+                                imageVirus.setImage(null);
+                                descartes.add(new Heal(BLUE));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
+                                haJugado = true;
+                            }
+                        }
+                    }
+                } catch (NullPointerException e) {
+                    imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, BLUE)].getImagen());
+                    renovarMano(manoBot, getIndex(manoBot, VIRUS, BLUE));
+                    haJugado = true;
+                }
+
+            } else if (imageView3.getImage() != null) {
+                ImageView imageVirus = (ImageView) o3.getChildren().get(1);
+                try {
+                    if (getIndex(manoBot, VIRUS, GREEN) != -1) {
+                        if (!imageVirus.getImage().equals(inmuneView)) {
+                            if (imageVirus.getImage().equals(manoBot[getIndex(manoBot, VIRUS, GREEN)].getImagen())) {
+                                imageVirus.setImage(null);
+                                imageView.setImage(null);
+                                descartes.add(new Organ(GREEN));
+                                descartes.add(new Virus(GREEN));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
+                                haJugado = true;
+                            } else {
+                                imageVirus.setImage(null);
+                                descartes.add(new Heal(GREEN));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
+                                haJugado = true;
+                            }
+                        }
+                    }
+                } catch (NullPointerException e) {
+                    imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, GREEN)].getImagen());
+                    renovarMano(manoBot, getIndex(manoBot, VIRUS, GREEN));
+                    haJugado = true;
+                }
+
+            } else if (imageView4.getImage() != null) {
+                ImageView imageVirus = (ImageView) o4.getChildren().get(1);
+                try {
+                    if (getIndex(manoBot, VIRUS, YELLOW) != -1) {
+                        if (!imageVirus.getImage().equals(inmuneView)) {
+                            if (imageVirus.getImage().equals(manoBot[getIndex(manoBot, VIRUS, YELLOW)].getImagen())) {
+                                imageVirus.setImage(null);
+                                imageView.setImage(null);
+                                descartes.add(new Organ(YELLOW));
+                                descartes.add(new Virus(YELLOW));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
+                                haJugado = true;
+                            } else {
+                                imageVirus.setImage(null);
+                                descartes.add(new Heal(YELLOW));
+                                renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
+                                haJugado = true;
+                            }
+                        }
+                    }
+                } catch (NullPointerException e) {
+                    imageVirus.setImage(manoBot[getIndex(manoBot, VIRUS, YELLOW)].getImagen());
+                    renovarMano(manoBot, getIndex(manoBot, VIRUS, YELLOW));
+                    haJugado = true;
+                }
 
             }
         }
+        return haJugado;
     }
 
     /**
      * Use virus heal bot.
      * Comodín para descartarse un bot en caso de no poder jugar
+     *
      * @param manoBot the mano bot
      */
     /* comodin */
@@ -942,6 +1003,7 @@ public class BoardController implements Initializable {
      * Gets index.
      * Método que dará la posición de una carta específica que estemos buscando, pasando por parámetro la mano, el tipo
      * de carta y el color de esta
+     *
      * @param manoX the mano x
      * @param type  the type
      * @param color the color
@@ -1062,6 +1124,7 @@ public class BoardController implements Initializable {
     /**
      * Comprobar cuerpo boolean.
      * Verifica que todos los órganos están sanos (sin carta de virus encima)
+     *
      * @param jugador the jugador
      * @return the boolean
      */
