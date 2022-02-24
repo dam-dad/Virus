@@ -1053,8 +1053,8 @@ public class BoardController implements Initializable {
      */
     public void checkDeck() {
         if(descartes.size()!=0){
-            discardDeck.setImage(descartes.get(0).getImagen());
-            System.out.println(descartes.get(0).getImagen().getUrl()+" cantidad de cartas "+descartes.size());
+            discardDeck.setImage(descartes.get(descartes.size()-1).getImagen());
+            System.out.println(descartes.get(descartes.size()-1).getImagen().getUrl()+" cantidad de cartas "+descartes.size());
             System.out.println("---");
         }
         if (deck.getDeck().size() == 0) {
