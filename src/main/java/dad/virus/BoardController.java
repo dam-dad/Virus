@@ -594,6 +594,7 @@ public class BoardController implements Initializable {
             } catch (Exception ex) {
 
             }
+            
         } else {
 
             Timeline timeline = new Timeline();
@@ -606,7 +607,7 @@ public class BoardController implements Initializable {
                             "Virus",
                             " Tenemos ganador !!",
                             " Ha ganado el bot 1."
-                    ).showAndWait();
+                    ).show();
                 }
             });
             KeyFrame kf2 = new KeyFrame(Duration.seconds(2), e -> {
@@ -617,7 +618,8 @@ public class BoardController implements Initializable {
                             "Virus",
                             " Tenemos ganador !!",
                             " Ha ganado el bot 2."
-                    ).showAndWait();
+                    ).show();
+                    
                 }
             });
             KeyFrame kf3 = new KeyFrame(Duration.seconds(3), e -> {
@@ -628,7 +630,7 @@ public class BoardController implements Initializable {
                             "Virus",
                             " Tenemos ganador !!",
                             "Ha ganado el bot 3."
-                    ).showAndWait();
+                    ).show();
                 }
             });
 
@@ -709,7 +711,6 @@ public class BoardController implements Initializable {
         switch (manoBot[aux].getColor()) {
             case RED:
                 if (o1.getImage() == null) {
-                    System.out.println(o1.getImage());
                     o1.setImage(manoBot[aux].getImagen());
                     haJugado = true;
                 }
@@ -1073,8 +1074,6 @@ public class BoardController implements Initializable {
     public void checkDeck() {
         if (descartes.size() != 0) {
             discardDeck.setImage(descartes.get(descartes.size() - 1).getImagen());
-            System.out.println(descartes.get(descartes.size() - 1).getImagen().getUrl() + " cantidad de cartas " + descartes.size());
-            System.out.println("---");
         }
         if (deck.getDeck().size() == 0) {
             deck.getDeck().addAll(descartes);

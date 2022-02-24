@@ -74,7 +74,6 @@
 			                <!-- mandatory -->
 			                <winConfig>
 								<icoFile>Virus.ico</icoFile>
-								<headerType>console</headerType>
 							</winConfig>
 			                <mainClass>dad.virus.Main</mainClass>
 			                <!-- optional -->

@@ -17,6 +17,6 @@ public class PdfController {
         engine.setOnStatusChanged(event -> {
         	System.out.println(event.getEventType() + " - " + event.getData());
 		});
-        engine.load("https://docs.google.com/viewer?url=https://tranjisgames.com/wp-content/uploads/2017/02/VIRUS-RULES-esp.pdf");
+        engine.load("https://cloudpdf.io/view/WybIRELcE");
     }
 }
