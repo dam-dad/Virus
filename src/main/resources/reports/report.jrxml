@@ -19,6 +19,7 @@
 	</queryString>
 	<field name="tiempoJugado" class="java.lang.String"/>
 	<field name="fechaPartida" class="java.util.Date"/>
+	<field name="nTiradas" class="java.lang.Integer"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -57,32 +58,46 @@ CoVirus Certificate]]></text>
 				<reportElement x="0" y="-18" width="400" height="132" uuid="73ee8fd7-4145-49d9-ab75-1ba11bfdd07a"/>
 			</rectangle>
 			<staticText>
-				<reportElement x="10" y="14" width="210" height="26" uuid="002560ad-8877-4e18-a5ec-1a117487389d"/>
+				<reportElement x="10" y="-10" width="210" height="26" uuid="002560ad-8877-4e18-a5ec-1a117487389d"/>
 				<textElement>
 					<font fontName="Times New Roman" size="18"/>
 				</textElement>
 				<text><![CDATA[Tiempo en combatir el virus]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="60" y="42" width="120" height="30" uuid="86be7da2-f3fe-47ec-9286-d9ea21fa4c6a"/>
+				<reportElement x="60" y="17" width="140" height="28" uuid="86be7da2-f3fe-47ec-9286-d9ea21fa4c6a"/>
 				<textElement>
-					<font size="14"/>
+					<font fontName="Times New Roman" size="16"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{tiempoJugado}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="240" y="14" width="150" height="26" uuid="800c28c7-959f-4dd8-b474-e9ac4f8337a8"/>
+				<reportElement x="240" y="-10" width="150" height="26" uuid="800c28c7-959f-4dd8-b474-e9ac4f8337a8"/>
 				<textElement>
 					<font fontName="Times New Roman" size="18"/>
 				</textElement>
 				<text><![CDATA[Fecha de la partida]]></text>
 			</staticText>
 			<textField>
-				<reportElement style="Column header" x="260" y="40" width="120" height="30" forecolor="#000000" uuid="5dd59971-abe3-492f-893e-1c1e1f72b9a1"/>
+				<reportElement style="Column header" x="260" y="16" width="120" height="30" forecolor="#000000" uuid="5dd59971-abe3-492f-893e-1c1e1f72b9a1"/>
 				<textElement>
-					<font size="14" isBold="false"/>
+					<font size="16" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{fechaPartida}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="150" y="46" width="140" height="26" uuid="9f49edd1-e57c-4864-82ee-c7e7a1d43f4f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="18"/>
+				</textElement>
+				<text><![CDATA[Número de tiradas]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="72" width="30" height="30" uuid="ff89711d-44e7-4e83-90c5-b1605eaaa127"/>
+				<textElement>
+					<font fontName="Times New Roman" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nTiradas}]]></textFieldExpression>
 			</textField>
 		</band>
 	</columnHeader>

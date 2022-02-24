@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="viewrule" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(&quot;image/bkrules.jpg&quot;);" stylesheets="@../css/root.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane id="viewrule" prefHeight="600.0" prefWidth="800.0" style="-fx-background-image: url(&quot;image/bkrules.jpg&quot;);" stylesheets="@../css/rootDark.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" maxWidth="255.0" minWidth="10.0" prefWidth="49.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="698.0" minWidth="0.0" prefWidth="698.0" />
@@ -22,7 +22,7 @@
    </rowConstraints>
    <children>
       
-      <VBox id="vboxrule" fx:id="vboxrule" prefHeight="501.0" prefWidth="688.0" style="-fx-background-color: #39B047; -fx-background-radius: 8px;" stylesheets="@../css/root.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+      <VBox id="vboxrule" fx:id="vboxrule" prefHeight="501.0" prefWidth="688.0" style="-fx-background-color: #39B047; -fx-background-radius: 8px;" stylesheets="@../css/rootDark.css" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.rowSpan="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="42.0" prefWidth="688.0" text="NORMAS DEL JUEGO" VBox.vgrow="ALWAYS">
                <font>

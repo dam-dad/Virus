@@ -9,16 +9,16 @@ import net.sf.jasperreports.view.JasperViewer;
 import java.util.*;
 
 /**
- * The type Reporte pdf.
+ * Clase Reporte pdf.
  */
 public class ReportPDF {
     /**
-     * Report.
+     * Reporte
      */
-    public void report(String tiempoJugado) throws JRException {
+    public void report(String tiempoJugado, int nTiradas) throws JRException {
         try {
             List<Result> resultadoList = Arrays.asList(
-                    new Result(tiempoJugado, new Date())
+                    new Result(tiempoJugado, new Date(), nTiradas)
             );
 
             JasperDesign jd = JRXmlLoader.load(

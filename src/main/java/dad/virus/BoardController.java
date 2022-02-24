@@ -77,6 +77,8 @@ public class BoardController implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    private int nTiradas = 0;
+
     private void setImagePlayer() throws NullPointerException {
         boolean continua = true;
         while (continua) {
@@ -443,9 +445,6 @@ public class BoardController implements Initializable {
      * @return the boolean
      */
     public boolean juegaPlayer(Color color, StackPane stack) {
-        this.alertInformation(this.stage, "", "", "");
-
-
         Boolean haJugado = false;
         Button button = (Button) stack.getChildren().get(0);
         ImageView image = (ImageView) button.getGraphic();
@@ -499,6 +498,7 @@ public class BoardController implements Initializable {
                     haJugado = true;
                 }
             }
+
         }
         return haJugado;
     }//juegaPlayer
@@ -557,6 +557,7 @@ public class BoardController implements Initializable {
      */
     public void juegatodosBot() {
         checkDeck();
+        nTiradas++;
         if (comprobarCuerpo(4)) {
             alertInformation(stage,
                     "Virus",
@@ -607,7 +608,6 @@ public class BoardController implements Initializable {
 
             timeline.getKeyFrames().addAll(kf1, kf2, kf3);
             timeline.play();
-
         }
 
     }//juegatodosBot
@@ -1295,7 +1295,7 @@ public class BoardController implements Initializable {
         ReportPDF reportPDF = new ReportPDF();
 
         try {
-            reportPDF.report(formatTime);
+            reportPDF.report(formatTime, nTiradas);
         } catch (JRException e) {
             e.printStackTrace();
         }
