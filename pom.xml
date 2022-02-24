@@ -3,13 +3,25 @@
 	<groupId>dad</groupId>
 	<artifactId>Virus</artifactId>
 	<version>0.0.1</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>14</source>
+					<target>14</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 
 	<properties>
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.source>11</maven.compiler.source>
 		<project.buid.sourceEncoding>UTF-8</project.buid.sourceEncoding>
 		<exec.mainClass>dad.virus.Main</exec.mainClass>
-		<javafx.version>11.0.1</javafx.version>
+		<javafx.version>17.0.2</javafx.version>
 	</properties>
 
 	<dependencies>
