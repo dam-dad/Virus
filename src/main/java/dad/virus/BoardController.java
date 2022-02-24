@@ -19,11 +19,8 @@ import javafx.scene.text.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import net.sf.jasperreports.engine.JRException;
 
-import java.io.FileNotFoundException;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static dad.virus.game.Color.*;
@@ -419,7 +416,7 @@ public class BoardController implements Initializable {
     public void buttonAction(int i) {
         checkDeck();
         descartes.add(mano[i]);
-        discardDeck.setImage(mano[i].getImagen());
+        discardDeck.setImage(descartes.get(0).getImagen());
         mano[i] = null;
         mano[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
@@ -564,14 +561,18 @@ public class BoardController implements Initializable {
         	
             alertInformation(stage,
                     "Virus",
+<<<<<<< Updated upstream
                     "�� Tenemos ganador !!",
                     "�� Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
+=======
+                    "Tenemos ganador !!",
+                    "Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
+>>>>>>> Stashed changes
             ).showAndWait();
             end = System.currentTimeMillis();
 
             long totalTime = (end - ini)/1000;
 
-            System.out.println(end - ini);
             long seconds = totalTime % 60;
             long minuts = (totalTime % 3600) / 60;
             long hours = totalTime/3600;
@@ -582,43 +583,52 @@ public class BoardController implements Initializable {
             try {
                 reportPDF.report(formatTime, nTiradas);
             }catch(Exception ex) {
-            	System.out.println("");
+
             }} else {
 
             Timeline timeline = new Timeline();
 
             KeyFrame kf1 = new KeyFrame(Duration.seconds(1), e -> {
-                System.out.println("juega bot 1");
-                jueganBots(manoBot1);
+                juegaBot(manoBot1);
                 if (comprobarCuerpo(1)) {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
+<<<<<<< Updated upstream
                             " Tenemos ganador !!",
+=======
+                            "Tenemos ganador !!",
+>>>>>>> Stashed changes
                             " Ha ganado el bot 1."
                     ).showAndWait();
                 }
             });
             KeyFrame kf2 = new KeyFrame(Duration.seconds(2), e -> {
-                System.out.println("juega bot 2");
-                jueganBots(manoBot2);
+                juegaBot(manoBot2);
                 if (comprobarCuerpo(2)) {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
+<<<<<<< Updated upstream
                             " Tenemos ganador !!",
+=======
+                            "Tenemos ganador !!",
+>>>>>>> Stashed changes
                             " Ha ganado el bot 2."
                     ).showAndWait();
                 }
             });
             KeyFrame kf3 = new KeyFrame(Duration.seconds(3), e -> {
-                System.out.println("juega bot 3");
-                jueganBots(manoBot3);
+                juegaBot(manoBot3);
                 if (comprobarCuerpo(3)) {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
+<<<<<<< Updated upstream
                             " Tenemos ganador !!",
+=======
+                            "Tenemos ganador !!",
+>>>>>>> Stashed changes
                             "Ha ganado el bot 3."
                     ).showAndWait();
                 }
@@ -631,7 +641,7 @@ public class BoardController implements Initializable {
     }//juegatodosBot
 
     /**
-     * Juegan bots boolean.
+     * Juega bot boolean.
      * El bot llama a los métodos correspondientes con esta prioridad: intenta usar órgano, si no puede intenta curar órgano,
      * si no puede intenta infectar a un jugador aleatorio, en caso de que no pueda hacer nada de esto, descarta una carta
      * aleatoria
@@ -639,18 +649,18 @@ public class BoardController implements Initializable {
      * @param manoBot the mano bot
      * @return the boolean
      */
-    public boolean jueganBots(Card manoBot[]) {
+    public boolean juegaBot(Card manoBot[]) {
         boolean haJugado = false;
         checkDeck();
         if (manoBot[0].getType() == ORGAN) {
             juegaOrganBot(manoBot, 0);
             renovarMano(manoBot, 0);
             haJugado = true;
-        } else if (manoBot[1].getType().toString().equals("ORGAN")) {
+        } else if (manoBot[1].getType() == ORGAN) {
             juegaOrganBot(manoBot, 1);
             renovarMano(manoBot, 1);
             haJugado = true;
-        } else if (manoBot[2].getType().toString().equals("ORGAN")) {
+        } else if (manoBot[2].getType() == ORGAN) {
             juegaOrganBot(manoBot, 2);
             renovarMano(manoBot, 2);
             haJugado = true;
@@ -670,7 +680,8 @@ public class BoardController implements Initializable {
      * @param manoBot the mano bot
      * @param aux     the aux
      */
-    public void juegaOrganBot(Card manoBot[], int aux) {
+    public boolean juegaOrganBot(Card manoBot[], int aux) {
+        boolean haJugado = false;
         ImageView o1 = new ImageView();
         ImageView o2 = new ImageView();
         ImageView o3 = new ImageView();
@@ -692,43 +703,36 @@ public class BoardController implements Initializable {
             o3 = card1Stack3J3;
             o4 = card1Stack4J3;
         }
-        switch (manoBot[aux].getColor().toString()) {
-            case "RED":
+        switch (manoBot[aux].getColor()) {
+            case RED:
                 if (o1.getImage() == null) {
                     o1.setImage(manoBot[aux].getImagen());
-                } else {
-                    descartes.add(manoBot[aux]);
-                    discardDeck.setImage(manoBot[aux].getImagen());
+                    haJugado = true;
                 }
                 break;
-            case "BLUE":
+            case BLUE:
                 if (o2.getImage() == null) {
                     o2.setImage(manoBot[aux].getImagen());
-                } else {
-                    descartes.add(manoBot[aux]);
-                    discardDeck.setImage(manoBot[aux].getImagen());
+                    haJugado = true;
                 }
                 break;
-            case "GREEN":
+            case GREEN:
                 if (o3.getImage() == null) {
                     o3.setImage(manoBot[aux].getImagen());
-                } else {
-                    descartes.add(manoBot[aux]);
-                    discardDeck.setImage(manoBot[aux].getImagen());
+                    haJugado = true;
                 }
                 break;
-            case "YELLOW":
+            case YELLOW:
                 if (o4.getImage() == null) {
                     o4.setImage(manoBot[aux].getImagen());
-                } else {
-                    descartes.add(manoBot[aux]);
-                    discardDeck.setImage(manoBot[aux].getImagen());
+                    haJugado = true;
                 }
                 break;
             default:
                 discardDeck.setImage(new Image("/image/card/swapBody.png"));
                 break;
         }
+        return haJugado = true;
     }//juegaOrganBot
 
     /**
@@ -1063,6 +1067,9 @@ public class BoardController implements Initializable {
      * Para comprobar si el deck está vacío, en ese caso cogerá el montón de descartes y lo convierte en el nuevo mazo.
      */
     public void checkDeck() {
+        if(descartes.size()!=0){
+            discardDeck.setImage(descartes.get(0).getImagen());
+        }
         if (deck.getDeck().size() == 0) {
             deck.getDeck().addAll(descartes);
             descartes.clear();
@@ -1122,8 +1129,6 @@ public class BoardController implements Initializable {
      */
     public void renovarMano(Card manoX[], int i) {
         checkDeck();
-        descartes.add(manoX[i]);
-        discardDeck.setImage(descartes.get(0).getImagen());
         manoX[i] = null;
         manoX[i] = deck.getDeck().get(0);
         deck.getDeck().remove(0);
