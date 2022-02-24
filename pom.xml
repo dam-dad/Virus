@@ -71,6 +71,10 @@
 			            </goals>
 			            <configuration>
 			                <!-- mandatory -->
+			                <winConfig>
+								<icoFile>Virus.ico</icoFile>
+								<headerType>console</headerType>
+							</winConfig>
 			                <mainClass>dad.virus.Main</mainClass>
 			                <!-- optional -->
 			                <bundleJre>true</bundleJre>

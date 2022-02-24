@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import net.sf.jasperreports.engine.JRException;
 
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -153,7 +154,8 @@ public class BoardController implements Initializable {
         handCard1.setImage(mano[0].getImagen());
         handCard2.setImage(mano[1].getImagen());
         handCard3.setImage(mano[2].getImagen());
-
+        
+        
         ini = System.currentTimeMillis();
     }
 
@@ -479,7 +481,7 @@ public class BoardController implements Initializable {
                     haJugado = true;
                 }
             } else {
-                if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'L') {
+                if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'l') {
                     if (mano[0].getColor() == color && mano[0].getType() == HEAL) {
                         imageHeal.setImage(new Image(url));
                         renovarMiMano(0);
@@ -493,7 +495,7 @@ public class BoardController implements Initializable {
                         renovarMiMano(2);
                         haJugado = true;
                     }
-                } else if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 'S') {
+                } else if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 's') {
                     imageHeal.setImage(null);
                     haJugado = true;
                 }
@@ -518,14 +520,14 @@ public class BoardController implements Initializable {
         ImageView imageVirus = (ImageView) stack.getChildren().get(1);
         if (image.getImage() != null) {
             try {
-                if (imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length() - 5) == 'S') {
+                if (imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length() - 5) == 's') {
                     imageVirus.setImage(null);
                     image.setImage(null);
                     haJugado = true;
                     descartes.add(new Organ(color));
                     descartes.add(new Virus(color));
                     renovarMiMano(getIndex(mano, VIRUS, color));
-                } else if (imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length() - 5) == 'L') {
+                } else if (imageVirus.getImage().getUrl().charAt(imageVirus.getImage().getUrl().length() - 5) == 'l') {
                     imageVirus.setImage(null);
                     descartes.add(new Heal(color));
                     renovarMiMano(getIndex(mano, VIRUS, color));
@@ -559,49 +561,65 @@ public class BoardController implements Initializable {
         checkDeck();
         nTiradas++;
         if (comprobarCuerpo(4)) {
+        	
             alertInformation(stage,
                     "Virus",
-                    "¡¡ Tenemos ganador !!",
-                    "¡¡ Felicidades !! Has ganado a estos bots.\nNo olvides recoger tu certificado CoVirus en PDF."
+                    "�� Tenemos ganador !!",
+                    "�� Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
             ).showAndWait();
+            end = System.currentTimeMillis();
 
-        } else {
+            long totalTime = (end - ini)/1000;
+
+            System.out.println(end - ini);
+            long seconds = totalTime % 60;
+            long minuts = (totalTime % 3600) / 60;
+            long hours = totalTime/3600;
+
+            String formatTime = String.format("%02d:%02d:%02d", hours, minuts, seconds);
+            ReportPDF reportPDF = new ReportPDF();
+
+            try {
+                reportPDF.report(formatTime, nTiradas);
+            }catch(Exception ex) {
+            	System.out.println("");
+            }} else {
 
             Timeline timeline = new Timeline();
 
-            KeyFrame kf1 = new KeyFrame(Duration.seconds(2), e -> {
+            KeyFrame kf1 = new KeyFrame(Duration.seconds(1), e -> {
                 System.out.println("juega bot 1");
                 jueganBots(manoBot1);
                 if (comprobarCuerpo(1)) {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
-                            "¡¡ Tenemos ganador !!",
-                            "¡¡ Felicidades !! Has ganado el bot 1."
+                            " Tenemos ganador !!",
+                            " Ha ganado el bot 1."
                     ).showAndWait();
                 }
             });
-            KeyFrame kf2 = new KeyFrame(Duration.seconds(4), e -> {
+            KeyFrame kf2 = new KeyFrame(Duration.seconds(2), e -> {
                 System.out.println("juega bot 2");
                 jueganBots(manoBot2);
                 if (comprobarCuerpo(2)) {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
-                            "¡¡ Tenemos ganador !!",
-                            "¡¡ Felicidades !! Has ganado el bot 2."
+                            " Tenemos ganador !!",
+                            " Ha ganado el bot 2."
                     ).showAndWait();
                 }
             });
-            KeyFrame kf3 = new KeyFrame(Duration.seconds(6), e -> {
+            KeyFrame kf3 = new KeyFrame(Duration.seconds(3), e -> {
                 System.out.println("juega bot 3");
                 jueganBots(manoBot3);
                 if (comprobarCuerpo(3)) {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
-                            "¡¡ Tenemos ganador !!",
-                            "¡¡ Felicidades !! Has ganado el bot 3."
+                            " Tenemos ganador !!",
+                            "Ha ganado el bot 3."
                     ).showAndWait();
                 }
             });
@@ -752,12 +770,12 @@ public class BoardController implements Initializable {
         if (temporal.getImage() != null) {
             if (getIndex(manoBot, HEAL, RED) != -1) {
                 try {
-                    if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                    if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 's') {
                         imageHeal.setImage(null);
                         haJugado = true;
                         descartes.add(new Virus(RED));
                         renovarMano(manoBot, getIndex(manoBot, HEAL, RED));
-                    } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
+                    } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'l') {
                         imageHeal.setImage(new Image(url));
                         haJugado = true;
                     }
@@ -772,12 +790,12 @@ public class BoardController implements Initializable {
                 if (temporal.getImage() != null) {
                     if (getIndex(manoBot, HEAL, BLUE) != -1) {
                         try {
-                            if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                            if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 's') {
                                 imageHeal.setImage(null);
                                 haJugado = true;
                                 descartes.add(new Virus(BLUE));
                                 renovarMano(manoBot, getIndex(manoBot, HEAL, BLUE));
-                            } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
+                            } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'l') {
                                 imageHeal.setImage(new Image(url));
                                 haJugado = true;
                             }
@@ -793,12 +811,12 @@ public class BoardController implements Initializable {
                     if (temporal.getImage() != null) {
                         if (getIndex(manoBot, HEAL, GREEN) != -1) {
                             try {
-                                if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                                if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 's') {
                                     imageHeal.setImage(null);
                                     haJugado = true;
                                     descartes.add(new Virus(GREEN));
                                     renovarMano(manoBot, getIndex(manoBot, HEAL, GREEN));
-                                } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
+                                } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'l') {
                                     imageHeal.setImage(new Image(url));
                                     haJugado = true;
                                 }
@@ -814,12 +832,12 @@ public class BoardController implements Initializable {
                         if (temporal.getImage() != null) {
                             if (getIndex(manoBot, HEAL, YELLOW) != -1) {
                                 try {
-                                    if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'S') {
+                                    if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 's') {
                                         imageHeal.setImage(null);
                                         haJugado = true;
                                         descartes.add(new Virus(YELLOW));
                                         renovarMano(manoBot, getIndex(manoBot, HEAL, YELLOW));
-                                    } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'L') {
+                                    } else if (imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5) == 'l') {
                                         imageHeal.setImage(new Image(url));
                                         haJugado = true;
                                     }
@@ -1224,7 +1242,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o1.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length() - 5) != 'S') {
+                if (url1.charAt(url1.length() - 5) != 's') {
                     contador++;
                 }
             } catch (NullPointerException e) {
@@ -1233,7 +1251,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o2.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length() - 5) != 'S') {
+                if (url1.charAt(url1.length() - 5) != 's') {
                     contador++;
                 }
             } catch (NullPointerException e) {
@@ -1242,7 +1260,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o3.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length() - 5) != 'S') {
+                if (url1.charAt(url1.length() - 5) != 's') {
                     contador++;
                 }
             } catch (NullPointerException e) {
@@ -1251,7 +1269,7 @@ public class BoardController implements Initializable {
             try {
                 ImageView imageHeal = (ImageView) o4.getChildren().get(1);
                 String url1 = imageHeal.getImage().getUrl();
-                if (url1.charAt(url1.length() - 5) != 'S') {
+                if (url1.charAt(url1.length() - 5) != 's') {
                     contador++;
                 }
             } catch (NullPointerException e) {
