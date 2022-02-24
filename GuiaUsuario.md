@@ -12,13 +12,13 @@ Para saber cuales son las normas de juego y el valor de cada carta  , podemos ob
 
 Ahora si , empecemos , en primer lugar encontraras una interfaz de menú en el cual podrás navegar hacia cualquier ventana de opciones :
 
-![Captura de pantalla (466)](C:\Users\kevin\Pictures\Screenshots\Captura de pantalla (466).png)
+<img src="https://raw.githubusercontent.com/dam-dad/Virus/main/src/main/resources/image/Captura%20de%20pantalla%20(466).png">
 
 
 
 Vamos comenzar entrando en " Unirse A Partida " , para ello hacemos click en el botón y veremos una interfaz de juego:
 
-![Captura de pantalla (467)](C:\Users\kevin\Pictures\Screenshots\Captura de pantalla (467).png)
+<img src="https://raw.githubusercontent.com/dam-dad/Virus/main/src/main/resources/image/Captura%20de%20pantalla%20(467).png">
 
 Como podemos observar tendremos unas cartas en mano y una zona propia donde podrás formar tu cuerpo:
 
@@ -26,13 +26,13 @@ Como podemos observar tendremos unas cartas en mano y una zona propia donde podr
 
 Para poder curar a nuestro cuerpo simplemente tendremos que hacer click en el órgano que queremos añadir la cura y si tenemos una medicina de ese color , se colocará encima :
 
-![Captura de pantalla (470)](C:\Users\kevin\Pictures\Screenshots\Captura de pantalla (470).png)
+<img src="https://raw.githubusercontent.com/dam-dad/Virus/main/src/main/resources/image/Captura%20de%20pantalla%20(470).png">
 
 La siguiente misión del juego sería infectar a los demás , por lo cual tendríamos que hacer click sobre una carta del rival y si tenemos un virus de ese color , se infectará :
 
-![Captura de pantalla (471)](C:\Users\kevin\Pictures\Screenshots\Captura de pantalla (471).png)
+<img src="https://raw.githubusercontent.com/dam-dad/Virus/main/src/main/resources/image/Captura%20de%20pantalla%20(471).png">
 
 Por último , si queremos hacer descartes simplemente clickaremos en la cartas de tu mano que quieres descartar :
 
- ![Captura de pantalla (472)](C:\Users\kevin\Pictures\Screenshots\Captura de pantalla (472).png)
+​					 <img src="https://raw.githubusercontent.com/dam-dad/Virus/main/src/main/resources/image/Captura%20de%20pantalla%20(472).png">
 
