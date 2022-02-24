@@ -22,7 +22,7 @@ Vamos comenzar entrando en " Unirse A Partida " , para ello hacemos click en el 
 
 Como podemos observar tendremos unas cartas en mano y una zona propia donde podrás formar tu cuerpo:
 
-![Captura de pantalla (468)](C:\Users\kevin\Pictures\Screenshots\Captura de pantalla (468).png)
+<img src="https://raw.githubusercontent.com/dam-dad/Virus/main/src/main/resources/image/Captura%20de%20pantalla%20(468).png">
 
 Para poder curar a nuestro cuerpo simplemente tendremos que hacer click en el órgano que queremos añadir la cura y si tenemos una medicina de ese color , se colocará encima :
 
