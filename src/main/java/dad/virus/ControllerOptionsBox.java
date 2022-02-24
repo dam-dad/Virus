@@ -52,7 +52,7 @@ public class ControllerOptionsBox implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Listener, valores del slider opciones para el volúmen
-        this.sliderVol.setValue(50f);
+        this.sliderVol.setValue(RootController.mediaPlay.getVolume()*100);
         this.sliderVol.valueProperty().addListener((v,ov,nv) -> {
             vol.setValue(nv);
         });
