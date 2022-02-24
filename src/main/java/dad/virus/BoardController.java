@@ -152,8 +152,8 @@ public class BoardController implements Initializable {
         handCard1.setImage(mano[0].getImagen());
         handCard2.setImage(mano[1].getImagen());
         handCard3.setImage(mano[2].getImagen());
-        
-        
+
+
         ini = System.currentTimeMillis();
     }
 
@@ -494,8 +494,20 @@ public class BoardController implements Initializable {
                         haJugado = true;
                     }
                 } else if ((imageHeal.getImage().getUrl().charAt(imageHeal.getImage().getUrl().length() - 5)) == 's') {
-                    imageHeal.setImage(null);
-                    haJugado = true;
+                    if (mano[0].getColor() == color && mano[0].getType() == HEAL) {
+                        imageHeal.setImage(null);
+                        haJugado = true;
+                        renovarMiMano(0);
+                    } else if (mano[1].getColor() == color && mano[1].getType() == HEAL) {
+                        imageHeal.setImage(null);
+                        haJugado = true;
+                        renovarMiMano(1);
+
+                    } else if (mano[2].getColor() == color && mano[2].getType() == HEAL) {
+                        imageHeal.setImage(null);
+                        haJugado = true;
+                        renovarMiMano(2);
+                    }
                 }
             }
 
@@ -559,7 +571,7 @@ public class BoardController implements Initializable {
         checkDeck();
         nTiradas++;
         if (comprobarCuerpo(4)) {
-        	
+
             alertInformation(stage,
                     "Virus",
                     "Tenemos ganador !!",
@@ -568,20 +580,21 @@ public class BoardController implements Initializable {
             ).showAndWait();
             end = System.currentTimeMillis();
 
-            long totalTime = (end - ini)/1000;
+            long totalTime = (end - ini) / 1000;
 
             long seconds = totalTime % 60;
             long minuts = (totalTime % 3600) / 60;
-            long hours = totalTime/3600;
+            long hours = totalTime / 3600;
 
             String formatTime = String.format("%02d:%02d:%02d", hours, minuts, seconds);
             ReportPDF reportPDF = new ReportPDF();
 
             try {
                 reportPDF.report(formatTime, nTiradas);
-            }catch(Exception ex) {
+            } catch (Exception ex) {
 
-            }} else {
+            }
+        } else {
 
             Timeline timeline = new Timeline();
 
@@ -649,10 +662,15 @@ public class BoardController implements Initializable {
             juegaOrganBot(manoBot, 2);
             renovarMano(manoBot, 2);
             haJugado = true;
-        } else {
-            if (!useHealBot(manoBot))
-                useVirusBot(manoBot);
         }
+        if (!haJugado) {
+            if (!useHealBot(manoBot)) {
+                useVirusBot(manoBot);
+            }
+            haJugado = true;
+        }
+
+
         haJugado = true;
         return haJugado;
     }//jueganBots
@@ -691,6 +709,7 @@ public class BoardController implements Initializable {
         switch (manoBot[aux].getColor()) {
             case RED:
                 if (o1.getImage() == null) {
+                    System.out.println(o1.getImage());
                     o1.setImage(manoBot[aux].getImagen());
                     haJugado = true;
                 }
@@ -1052,9 +1071,9 @@ public class BoardController implements Initializable {
      * Para comprobar si el deck está vacío, en ese caso cogerá el montón de descartes y lo convierte en el nuevo mazo.
      */
     public void checkDeck() {
-        if(descartes.size()!=0){
-            discardDeck.setImage(descartes.get(descartes.size()-1).getImagen());
-            System.out.println(descartes.get(descartes.size()-1).getImagen().getUrl()+" cantidad de cartas "+descartes.size());
+        if (descartes.size() != 0) {
+            discardDeck.setImage(descartes.get(descartes.size() - 1).getImagen());
+            System.out.println(descartes.get(descartes.size() - 1).getImagen().getUrl() + " cantidad de cartas " + descartes.size());
             System.out.println("---");
         }
         if (deck.getDeck().size() == 0) {
@@ -1292,7 +1311,7 @@ public class BoardController implements Initializable {
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(stage);
 
-        
+
         return alert;
     }
 }
