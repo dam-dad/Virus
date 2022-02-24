@@ -37,6 +37,7 @@ public class Card {
 	public Image getImagen() {
 		String color = getColor().toString().toLowerCase();
 		String type = getType().toString().toLowerCase();
+		
 		imagen = new Image("/image/card/"+ color + type +".png");
 		return imagen;
 	}

@@ -22,7 +22,7 @@ VirusFX Game ha sido desarrollado por un grupo de estudiantes del Ciclo Superior
 
 VirusFX Game se desarrolla específicamente para sistemas windows ,  para acceder a descargar la última versión , lo puede hacer desde nuestro apartado de Releases a continuación:
 
-<a href="">Releases VirusFX Game</a>
+<a href="https://github.com/dam-dad/Virus/releases">Releases VirusFX Game</a>
 
 <h5> ¿ Con que tecnologías se ha desarrollado VirusFX Game ? </h5>
 
