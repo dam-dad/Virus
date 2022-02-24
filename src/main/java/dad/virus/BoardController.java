@@ -19,6 +19,7 @@ import javafx.scene.text.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.JRException;
 
 import java.net.URL;
 import java.util.*;
@@ -561,13 +562,9 @@ public class BoardController implements Initializable {
         	
             alertInformation(stage,
                     "Virus",
-<<<<<<< Updated upstream
-                    "ï¿½ï¿½ Tenemos ganador !!",
-                    "ï¿½ï¿½ Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
-=======
-                    "Tenemos ganador !!",
-                    "Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
->>>>>>> Stashed changes
+                    "¡¡ Tenemos ganador !!",
+                    "¡¡ Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
+
             ).showAndWait();
             end = System.currentTimeMillis();
 
@@ -594,11 +591,7 @@ public class BoardController implements Initializable {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
-<<<<<<< Updated upstream
                             " Tenemos ganador !!",
-=======
-                            "Tenemos ganador !!",
->>>>>>> Stashed changes
                             " Ha ganado el bot 1."
                     ).showAndWait();
                 }
@@ -609,11 +602,7 @@ public class BoardController implements Initializable {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
-<<<<<<< Updated upstream
                             " Tenemos ganador !!",
-=======
-                            "Tenemos ganador !!",
->>>>>>> Stashed changes
                             " Ha ganado el bot 2."
                     ).showAndWait();
                 }
@@ -624,11 +613,7 @@ public class BoardController implements Initializable {
                     timeline.stop();
                     alertInformation(stage,
                             "Virus",
-<<<<<<< Updated upstream
                             " Tenemos ganador !!",
-=======
-                            "Tenemos ganador !!",
->>>>>>> Stashed changes
                             "Ha ganado el bot 3."
                     ).showAndWait();
                 }
@@ -1305,24 +1290,7 @@ public class BoardController implements Initializable {
         alert.initModality(Modality.APPLICATION_MODAL);
         alert.initOwner(stage);
 
-        end = System.currentTimeMillis();
-
-        long totalTime = (end - ini)/1000;
-
-        System.out.println(end - ini);
-        long seconds = totalTime % 60;
-        long minuts = (totalTime % 3600) / 60;
-        long hours = totalTime/3600;
-
-        String formatTime = String.format("%02d:%02d:%02d", hours, minuts, seconds);
-        ReportPDF reportPDF = new ReportPDF();
-
-        try {
-            reportPDF.report(formatTime, nTiradas);
-        } catch (JRException e) {
-            e.printStackTrace();
-        }
-
+        
         return alert;
     }
 }
