@@ -562,8 +562,8 @@ public class BoardController implements Initializable {
         	
             alertInformation(stage,
                     "Virus",
-                    "¡¡ Tenemos ganador !!",
-                    "¡¡ Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
+                    "Tenemos ganador !!",
+                    "Felicidades !! Has ganado has vencido al virus.\nTe hacemos entrega del certificado CoVirus en PDF."
 
             ).showAndWait();
             end = System.currentTimeMillis();
@@ -1042,7 +1042,7 @@ public class BoardController implements Initializable {
     public void useVirusHealBot(Card manoBot[]) {
         descartes.add(manoBot[0]);
         renovarMano(manoBot, 0);
-        discardDeck.setImage(manoBot[0].getImagen());
+        discardDeck.setImage(descartes.get(0).getImagen());
     }
 
     /* UTILES */
@@ -1054,6 +1054,8 @@ public class BoardController implements Initializable {
     public void checkDeck() {
         if(descartes.size()!=0){
             discardDeck.setImage(descartes.get(0).getImagen());
+            System.out.println(descartes.get(0).getImagen().getUrl()+" cantidad de cartas "+descartes.size());
+            System.out.println("---");
         }
         if (deck.getDeck().size() == 0) {
             deck.getDeck().addAll(descartes);
